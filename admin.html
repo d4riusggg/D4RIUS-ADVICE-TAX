@@ -1,0 +1,3409 @@
+<!DOCTYPE html>
+<html lang="ro">
+  <script>
+function cautaPeGoogle() {
+  const cui = document.getElementById("clientCUI").value.trim();
+
+  if (!cui) {
+    alert("Introdu CUI-ul");
+    return;
+  }
+
+  const query = "CUI " + cui;
+  const url = "https://www.google.com/search?q=" + encodeURIComponent(query);
+
+  window.open(url, "_blank");
+}
+</script>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Panou Administrare - d4riusTAX ADVICE</title>
+<style>
+:root {
+  --primary: #0f2a44;
+  --secondary: #ff7a18;
+  --dark: #0b1b2b;
+  --light: #f5f7fb;
+  --success: #28a745;
+  --danger: #dc3545;
+  --warning: #ffc107;
+  --info: #17a2b8;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.login-container {
+  background: white;
+  padding: 50px 40px;
+  border-radius: 20px;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+  width: 100%;
+  max-width: 420px;
+  animation: slideIn 0.5s ease;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.login-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.login-header h1 {
+  color: var(--primary);
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.login-header p {
+  color: #666;
+  font-size: 14px;
+}
+
+.form-group {
+  margin-bottom: 25px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--primary);
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 14px 18px;
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
+  font-size: 15px;
+  transition: 0.3s;
+  background: #f9f9f9;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: var(--secondary);
+  background: white;
+}
+
+.login-btn {
+  width: 100%;
+  padding: 16px;
+  background: linear-gradient(135deg, var(--secondary), #ff9a3c);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+  box-shadow: 0 10px 20px rgba(255, 122, 24, 0.3);
+}
+
+.login-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 30px rgba(255, 122, 24, 0.4);
+}
+
+.error-message {
+  background: #ffebee;
+  color: var(--danger);
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  font-size: 14px;
+  border-left: 4px solid var(--danger);
+  display: none;
+}
+
+.admin-panel {
+  display: none;
+  background: #f5f7fb;
+  min-height: 100vh;
+  width: 100%;
+}
+
+.admin-header {
+  background: linear-gradient(135deg, var(--primary), var(--dark));
+  color: white;
+  padding: 20px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+.admin-header h1 {
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logout-btn {
+  background: rgba(255,255,255,0.2);
+  color: white;
+  border: 2px solid white;
+  padding: 10px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.logout-btn:hover {
+  background: white;
+  color: var(--primary);
+}
+
+.admin-content {
+  display: flex;
+  min-height: calc(100vh - 80px);
+}
+
+.sidebar {
+  width: 280px;
+  background: white;
+  padding: 30px 0;
+  box-shadow: 2px 0 10px rgba(0,0,0,0.05);
+}
+
+.menu-item {
+  padding: 16px 30px;
+  cursor: pointer;
+  transition: 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #555;
+  font-weight: 500;
+  border-left: 4px solid transparent;
+}
+
+.menu-item:hover {
+  background: #f0f0f0;
+  color: var(--primary);
+}
+
+.menu-item.active {
+  background: linear-gradient(90deg, rgba(255,122,24,0.1), transparent);
+  color: var(--secondary);
+  border-left-color: var(--secondary);
+  font-weight: 600;
+}
+
+.menu-icon {
+  font-size: 20px;
+  width: 24px;
+  text-align: center;
+}
+
+.main-content {
+  flex: 1;
+  padding: 40px;
+  overflow-y: auto;
+}
+
+.page-section {
+  display: none;
+}
+
+.page-section.active {
+  display: block;
+  animation: fadeIn 0.4s;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.page-title {
+  font-size: 32px;
+  color: var(--primary);
+  margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+  margin-bottom: 40px;
+}
+
+.stat-card {
+  background: white;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+  transition: 0.3s;
+  border-left: 5px solid var(--secondary);
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+}
+
+.stat-icon {
+  font-size: 40px;
+  margin-bottom: 15px;
+}
+
+.stat-value {
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 8px;
+}
+
+.stat-label {
+  color: #777;
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.card {
+  background: white;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+  margin-bottom: 30px;
+}
+
+.card-header {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--primary);
+  margin-bottom: 25px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid #f0f0f0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.btn {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 14px;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--secondary), #ff9a3c);
+  color: white;
+  box-shadow: 0 5px 15px rgba(255,122,24,0.3);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(255,122,24,0.4);
+}
+
+.btn-success {
+  background: var(--success);
+  color: white;
+}
+
+.btn-danger {
+  background: var(--danger);
+  color: white;
+}
+
+.btn-secondary {
+  background: #6c757d;
+  color: white;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.input-group {
+  margin-bottom: 20px;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--primary);
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.input-group input,
+.input-group textarea,
+.input-group select {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: 0.3s;
+  font-family: inherit;
+}
+
+.input-group textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.input-group input:focus,
+.input-group textarea:focus,
+.input-group select:focus {
+  outline: none;
+  border-color: var(--secondary);
+}
+
+.table-container {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead {
+  background: linear-gradient(135deg, var(--primary), var(--dark));
+  color: white;
+}
+
+th {
+  padding: 16px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+td {
+  padding: 16px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+tbody tr {
+  transition: 0.2s;
+}
+
+tbody tr:hover {
+  background: #f9f9f9;
+}
+
+.badge {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.badge-success {
+  background: #d4edda;
+  color: #155724;
+}
+
+.badge-warning {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.badge-danger {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+.badge-info {
+  background: #d1ecf1;
+  color: #0c5460;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.icon-btn {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 16px;
+}
+
+.icon-btn:hover {
+  transform: scale(1.1);
+}
+
+.alert {
+  padding: 16px 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  border-left: 4px solid;
+}
+
+.alert-success {
+  background: #d4edda;
+  color: #155724;
+  border-left-color: var(--success);
+}
+
+.alert-info {
+  background: #d1ecf1;
+  color: #0c5460;
+  border-left-color: var(--info);
+}
+
+.alert-warning {
+  background: #fff3cd;
+  color: #856404;
+  border-left-color: var(--warning);
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  z-index: 9999;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.3s;
+}
+
+.modal.active {
+  display: flex;
+}
+
+.modal-content {
+  background: white;
+  padding: 40px;
+  border-radius: 16px;
+  width: 90%;
+  max-width: 600px;
+  max-height: 90vh;
+  overflow-y: auto;
+  animation: slideIn 0.3s;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid #f0f0f0;
+}
+
+.modal-header h2 {
+  color: var(--primary);
+  font-size: 24px;
+}
+
+.close-modal {
+  background: none;
+  border: none;
+  font-size: 32px;
+  cursor: pointer;
+  color: #999;
+  transition: 0.3s;
+  padding: 0;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.close-modal:hover {
+  background: #f0f0f0;
+  color: #333;
+}
+
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: var(--success);
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+.password-strength {
+  margin-top: 10px;
+  font-size: 13px;
+}
+
+.strength-bar {
+  height: 5px;
+  background: #e0e0e0;
+  border-radius: 5px;
+  margin-top: 5px;
+  overflow: hidden;
+}
+
+.strength-fill {
+  height: 100%;
+  transition: width 0.3s, background 0.3s;
+}
+
+.strength-weak { background: var(--danger); }
+.strength-medium { background: var(--warning); }
+.strength-strong { background: var(--success); }
+
+.cui-loading {
+  display: inline-block;
+  margin-left: 10px;
+  color: var(--info);
+  font-size: 12px;
+}
+
+@media (max-width: 1024px) {
+  .admin-content {
+    flex-direction: column;
+  }
+  
+  .sidebar {
+    width: 100%;
+    padding: 20px 0;
+  }
+  
+  .main-content {
+    padding: 20px;
+  }
+  
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .login-container {
+    padding: 40px 30px;
+  }
+  
+  .page-title {
+    font-size: 24px;
+  }
+  
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+  
+  .table-container {
+    overflow-x: scroll;
+  }
+  
+  .admin-header {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
+  
+  .modal-content {
+    padding: 30px 20px;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="login-container" id="loginContainer">
+  <div class="login-header">
+    <h1>🔐 Panou Administrare</h1>
+    <p>d4riusTAX ADVICE S.R.L</p>
+  </div>
+  
+  <div class="error-message" id="loginError">
+    Username sau parolă incorectă!
+  </div>
+  
+  <form id="loginForm">
+    <div class="form-group">
+      <label for="username">👤 Username</label>
+      <input type="text" id="username" placeholder="Introduceți username-ul" required autocomplete="username">
+    </div>
+    
+    <div class="form-group">
+      <label for="password">🔑 Parolă</label>
+      <input type="password" id="password" placeholder="Introduceți parola" required autocomplete="current-password">
+    </div>
+    
+    <button type="submit" class="login-btn">Autentificare</button>
+  </form>
+</div>
+
+<div class="admin-panel" id="adminPanel">
+  <div class="admin-header">
+    <h1>
+      <span>🏢</span>
+      <span>Panou Administrare - d4riusTAX ADVICE</span>
+    </h1>
+    <button class="logout-btn" onclick="logout()">
+      <span>🚪</span> Deconectare
+    </button>
+  </div>
+  
+  <div class="admin-content">
+    <div class="sidebar">
+      <div class="menu-item active" onclick="showSection('dashboard')">
+        <span class="menu-icon">📊</span>
+        <span>Dashboard</span>
+      </div>
+      <div class="menu-item" onclick="showSection('services')">
+        <span class="menu-icon">⚙️</span>
+        <span>Servicii</span>
+      </div>
+      <div class="menu-item" onclick="showSection('clients')">
+        <span class="menu-icon">👥</span>
+        <span>Clienți</span>
+      </div>
+      <div class="menu-item" onclick="showSection('suppliers')">
+        <span class="menu-icon">🏭</span>
+        <span>Furnizori</span>
+      </div>
+      <div class="menu-item" onclick="showSection('invoices')">
+        <span class="menu-icon">🧾</span>
+        <span>Facturi Emise</span>
+      </div>
+      <div class="menu-item" onclick="showSection('expenses')">
+        <span class="menu-icon">💸</span>
+        <span>Cheltuieli</span>
+      </div>
+      <div class="menu-item" onclick="showSection('documents')">
+        <span class="menu-icon">📂</span>
+        <span>Documente</span>
+      </div>
+      <div class="menu-item" onclick="showSection('seo')">
+        <span class="menu-icon">🔍</span>
+        <span>SEO & Meta</span>
+      </div>
+      <div class="menu-item" onclick="showSection('settings')">
+        <span class="menu-icon">🔧</span>
+        <span>Setări</span>
+      </div>
+    </div>
+    
+    <div class="main-content">
+      
+      <!-- DASHBOARD -->
+      <div class="page-section active" id="dashboard">
+        <h2 class="page-title">
+          <span>📊</span>
+          <span>Dashboard Principal</span>
+        </h2>
+        
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-icon">📄</div>
+            <div class="stat-value" id="totalInvoices">0</div>
+            <div class="stat-label">Facturi Totale</div>
+          </div>
+          
+          <div class="stat-card">
+            <div class="stat-icon">⏳</div>
+            <div class="stat-value" id="pendingInvoices">0</div>
+            <div class="stat-label">Facturi Neachitate</div>
+          </div>
+          
+          <div class="stat-card">
+            <div class="stat-icon">✅</div>
+            <div class="stat-value" id="paidInvoices">0</div>
+            <div class="stat-label">Facturi Achitate</div>
+          </div>
+          
+          <div class="stat-card">
+            <div class="stat-icon">👥</div>
+            <div class="stat-value" id="totalClients">0</div>
+            <div class="stat-label">Clienți Activi</div>
+          </div>
+          
+          <div class="stat-card">
+            <div class="stat-icon">🏭</div>
+            <div class="stat-value" id="totalSuppliers">0</div>
+            <div class="stat-label">Furnizori Activi</div>
+          </div>
+          
+          <div class="stat-card">
+            <div class="stat-icon">💰</div>
+            <div class="stat-value" id="monthRevenue">0 RON</div>
+            <div class="stat-label">Venituri Luna Aceasta</div>
+          </div>
+          
+          <div class="stat-card">
+            <div class="stat-icon">💸</div>
+            <div class="stat-value" id="monthExpenses">0 RON</div>
+            <div class="stat-label">Cheltuieli Luna Aceasta</div>
+          </div>
+        </div>
+        
+        <div class="card">
+          <div class="card-header">📈 Activitate Recentă</div>
+          <div class="table-container">
+            <table>
+              <thead>
+                <tr>
+                  <th>Data</th>
+                  <th>Eveniment</th>
+                  <th>Detalii</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="recentActivity">
+                <tr>
+                  <td colspan="4" style="text-align:center;color:#999;">Nu există activitate recentă</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- SERVICII -->
+      <div class="page-section" id="services">
+        <h2 class="page-title">
+          <span>⚙️</span>
+          <span>Gestionare Servicii</span>
+        </h2>
+        
+        <div class="card">
+          <div class="card-header">
+            <span>Serviciile Tale</span>
+            <button class="btn btn-primary" onclick="openModal('addServiceModal')">
+              ➕ Adaugă Serviciu Nou
+            </button>
+          </div>
+          
+          <div class="table-container">
+            <table>
+              <thead>
+                <tr>
+                  <th>Nume Serviciu</th>
+                  <th>Descriere</th>
+                  <th>Icon</th>
+                  <th>Status</th>
+                  <th>Acțiuni</th>
+                </tr>
+              </thead>
+              <tbody id="servicesTable">
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- CLIENȚI -->
+      <div class="page-section" id="clients">
+        <h2 class="page-title">
+          <span>👥</span>
+          <span>Gestionare Clienți</span>
+        </h2>
+        
+        <div class="card">
+          <div class="card-header">
+            <span>Lista Clienți</span>
+            <button class="btn btn-primary" onclick="openModal('addClientModal')">
+              ➕ Adaugă Client
+            </button>
+          </div>
+          
+          <div class="table-container">
+            <table>
+              <thead>
+                <tr>
+                  <th>Nume Companie</th>
+                  <th>CUI</th>
+                  <th>Persoană Contact</th>
+                  <th>Telefon</th>
+                  <th>Email</th>
+                  <th>Nr. Facturi</th>
+                  <th>Status</th>
+                  <th>Acțiuni</th>
+                </tr>
+              </thead>
+              <tbody id="clientsTable">
+                <tr>
+                  <td colspan="8" style="text-align:center;color:#999;">Nu există clienți înregistrați</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- FURNIZORI -->
+      <div class="page-section" id="suppliers">
+        <h2 class="page-title">
+          <span>🏭</span>
+          <span>Gestionare Furnizori</span>
+        </h2>
+        
+        <div class="card">
+          <div class="card-header">
+            <span>Lista Furnizori</span>
+            <button class="btn btn-primary" onclick="openModal('addSupplierModal')">
+              ➕ Adaugă Furnizor
+            </button>
+          </div>
+          
+          <div class="table-container">
+            <table>
+              <thead>
+                <tr>
+                  <th>Nume Companie</th>
+                  <th>CUI</th>
+                  <th>Persoană Contact</th>
+                  <th>Telefon</th>
+                  <th>Email</th>
+                  <th>Status</th>
+                  <th>Acțiuni</th>
+                </tr>
+              </thead>
+              <tbody id="suppliersTable">
+                <tr>
+                  <td colspan="7" style="text-align:center;color:#999;">Nu există furnizori înregistrați</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- FACTURI EMISE -->
+      <div class="page-section" id="invoices">
+        <h2 class="page-title">
+          <span>🧾</span>
+          <span>Gestionare Facturi Emise</span>
+        </h2>
+        
+        <div class="stats-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); margin-bottom: 30px;">
+          <div class="stat-card" style="border-left-color: var(--info);">
+            <div class="stat-icon">📄</div>
+            <div class="stat-value" id="invoiceTotalCount">0</div>
+            <div class="stat-label">Total Facturi</div>
+          </div>
+          
+          <div class="stat-card" style="border-left-color: var(--warning);">
+            <div class="stat-icon">⏳</div>
+            <div class="stat-value" id="invoicePendingCount">0</div>
+            <div class="stat-label">Neachitate</div>
+          </div>
+          
+          <div class="stat-card" style="border-left-color: var(--success);">
+            <div class="stat-icon">✅</div>
+            <div class="stat-value" id="invoicePaidCount">0</div>
+            <div class="stat-label">Achitate</div>
+          </div>
+          
+          <div class="stat-card" style="border-left-color: var(--danger);">
+            <div class="stat-icon">⚠️</div>
+            <div class="stat-value" id="invoiceOverdueCount">0</div>
+            <div class="stat-label">Întârziate</div>
+          </div>
+          
+          <div class="stat-card" style="border-left-color: var(--secondary);">
+            <div class="stat-icon">💰</div>
+            <div class="stat-value" id="invoiceTotalAmount">0 RON</div>
+            <div class="stat-label">Total Valoare</div>
+          </div>
+          
+          <div class="stat-card" style="border-left-color: #28a745;">
+            <div class="stat-icon">💵</div>
+            <div class="stat-value" id="invoicePaidAmount">0 RON</div>
+            <div class="stat-label">Încasat</div>
+          </div>
+        </div>
+        
+        <div class="card">
+          <div class="card-header">
+            <span>Lista Facturi Emise</span>
+            <div style="display:flex;gap:10px;">
+              <select id="invoiceFilter" onchange="filterInvoices()" style="padding:10px;border-radius:8px;border:2px solid #e0e0e0;">
+                <option value="all">Toate</option>
+                <option value="pending">Neachitate</option>
+                <option value="paid">Achitate</option>
+                <option value="overdue">Întârziate</option>
+                <option value="cancelled">Anulate</option>
+              </select>
+              <button class="btn btn-primary" onclick="openModal('addInvoiceModal')">
+                ➕ Adaugă Factură
+              </button>
+            </div>
+          </div>
+          
+          <div class="table-container">
+            <table>
+              <thead>
+                <tr>
+                  <th>Nr. Factură</th>
+                  <th>Client</th>
+                  <th>Serviciu</th>
+                  <th>Valoare</th>
+                  <th>Data Emitere</th>
+                  <th>Data Scadență</th>
+                  <th>Status</th>
+                  <th>Acțiuni</th>
+                </tr>
+              </thead>
+              <tbody id="invoicesTable">
+                <tr>
+                  <td colspan="8" style="text-align:center;color:#999;">Nu există facturi înregistrate</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        
+        <div class="card">
+          <div class="card-header">📊 Statistici Lunare</div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;">
+            <div style="background:#f0f9ff;padding:20px;border-radius:12px;border-left:4px solid #3b82f6;">
+              <div style="color:#666;font-size:13px;margin-bottom:5px;">LUNA CURENTĂ</div>
+              <div style="font-size:28px;font-weight:700;color:#3b82f6;" id="currentMonthAmount">0 RON</div>
+              <div style="color:#666;font-size:12px;margin-top:5px;" id="currentMonthInvoices">0 facturi</div>
+            </div>
+            
+            <div style="background:#f0fdf4;padding:20px;border-radius:12px;border-left:4px solid #22c55e;">
+              <div style="color:#666;font-size:13px;margin-bottom:5px;">ÎNCASAT LUNA ACEASTA</div>
+              <div style="font-size:28px;font-weight:700;color:#22c55e;" id="currentMonthPaid">0 RON</div>
+              <div style="color:#666;font-size:12px;margin-top:5px;" id="currentMonthPaidCount">0 facturi achitate</div>
+            </div>
+            
+            <div style="background:#fffbeb;padding:20px;border-radius:12px;border-left:4px solid #f59e0b;">
+              <div style="color:#666;font-size:13px;margin-bottom:5px;">DE ÎNCASAT</div>
+              <div style="font-size:28px;font-weight:700;color:#f59e0b;" id="currentMonthPending">0 RON</div>
+              <div style="color:#666;font-size:12px;margin-top:5px;" id="currentMonthPendingCount">0 facturi neachitate</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CHELTUIELI -->
+      <div class="page-section" id="expenses">
+        <h2 class="page-title">
+          <span>💸</span>
+          <span>Gestionare Cheltuieli</span>
+        </h2>
+        
+        <div class="stats-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); margin-bottom: 30px;">
+          <div class="stat-card" style="border-left-color: var(--danger);">
+            <div class="stat-icon">💸</div>
+            <div class="stat-value" id="totalExpenses">0 RON</div>
+            <div class="stat-label">Total Cheltuieli</div>
+          </div>
+          
+          <div class="stat-card" style="border-left-color: var(--warning);">
+            <div class="stat-icon">📅</div>
+            <div class="stat-value" id="monthExpensesCount">0 RON</div>
+            <div class="stat-label">Luna Aceasta</div>
+          </div>
+          
+          <div class="stat-card" style="border-left-color: var(--info);">
+            <div class="stat-icon">📊</div>
+            <div class="stat-value" id="avgExpense">0 RON</div>
+            <div class="stat-label">Medie Lunară</div>
+          </div>
+        </div>
+        
+        <div class="card">
+          <div class="card-header">
+            <span>Lista Cheltuieli</span>
+            <button class="btn btn-primary" onclick="openModal('addExpenseModal')">
+              ➕ Adaugă Cheltuială
+            </button>
+          </div>
+          
+          <div class="table-container">
+            <table>
+              <thead>
+                <tr>
+                  <th>Data</th>
+                  <th>Categorie</th>
+                  <th>Descriere</th>
+                  <th>Valoare</th>
+                  <th>Furnizor</th>
+                  <th>Acțiuni</th>
+                </tr>
+              </thead>
+              <tbody id="expensesTable">
+                <tr>
+                  <td colspan="6" style="text-align:center;color:#999;">Nu există cheltuieli înregistrate</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- DOCUMENTE -->
+      <div class="page-section" id="documents">
+        <h2 class="page-title">
+          <span>📂</span>
+          <span>Gestionare Documente</span>
+        </h2>
+        
+        <div class="card">
+          <div class="card-header">
+            <span>Documente Încărcate</span>
+            <button class="btn btn-primary" onclick="openModal('addDocumentModal')">
+              ➕ Adaugă Document
+            </button>
+          </div>
+          
+          <div class="table-container">
+            <table>
+              <thead>
+                <tr>
+                  <th>Nume Document</th>
+                  <th>Tip</th>
+                  <th>Client</th>
+                  <th>Data Încărcare</th>
+                  <th>Dimensiune</th>
+                  <th>Acțiuni</th>
+                </tr>
+              </thead>
+              <tbody id="documentsTable">
+                <tr>
+                  <td colspan="6" style="text-align:center;color:#999;">Nu există documente încărcate</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- SEO -->
+      <div class="page-section" id="seo">
+        <h2 class="page-title">
+          <span>🔍</span>
+          <span>SEO & Meta Tags</span>
+        </h2>
+        
+        <div class="card">
+          <div class="card-header">Configurare SEO</div>
+          
+          <div class="input-group">
+            <label>Meta Title (Română)</label>
+            <input type="text" id="metaTitleRO" placeholder="d4riusTAX ADVICE S.R.L – Contabilitate & Consultanță">
+          </div>
+          
+          <div class="input-group">
+            <label>Meta Description (Română)</label>
+            <textarea id="metaDescriptionRO" placeholder="Servicii profesionale de contabilitate, salarizare și consultanță financiară în Târgoviște."></textarea>
+          </div>
+          
+          <div class="input-group">
+            <label>Meta Keywords (Română)</label>
+            <input type="text" id="metaKeywordsRO" placeholder="contabilitate, consultanță, Târgoviște">
+          </div>
+          
+          <button class="btn btn-primary" onclick="saveSEO()">
+            💾 Salvează SEO
+          </button>
+        </div>
+      </div>
+
+      <!-- SETĂRI -->
+      <div class="page-section" id="settings">
+        <h2 class="page-title">
+          <span>🔧</span>
+          <span>Setări Generale</span>
+        </h2>
+        
+        <div class="card">
+          <div class="card-header">Schimbă Credențiale Acces</div>
+          
+          <div class="input-group">
+            <label>Username Curent</label>
+            <input type="text" id="currentUsername" readonly>
+          </div>
+          
+          <div class="input-group">
+            <label>Username Nou</label>
+            <input type="text" id="newUsername" placeholder="Introduceți username-ul nou">
+          </div>
+          
+          <div class="input-group">
+            <label>Parolă Curentă</label>
+            <input type="password" id="currentPassword" placeholder="Introduceți parola curentă">
+          </div>
+          
+          <div class="input-group">
+            <label>Parolă Nouă</label>
+            <input type="password" id="newPassword" placeholder="Introduceți parola nouă" oninput="checkPasswordStrength(this.value)">
+            <div class="password-strength">
+              <div class="strength-bar">
+                <div class="strength-fill" id="strengthFill"></div>
+              </div>
+              <p id="strengthText" style="margin-top:5px;"></p>
+            </div>
+          </div>
+          
+          <div class="input-group">
+            <label>Confirmă Parolă Nouă</label>
+            <input type="password" id="confirmPassword" placeholder="Confirmați parola nouă">
+          </div>
+          
+          <button class="btn btn-primary" onclick="changeCredentials()">
+            🔐 Actualizează Credențiale
+          </button>
+        </div>
+        
+        <div class="card">
+          <div class="card-header">Informații Contact</div>
+          
+          <div class="form-row">
+            <div class="input-group">
+              <label>Email</label>
+              <input type="email" id="contactEmail" value="d4riusconsulting.contact@gmail.com">
+            </div>
+            
+            <div class="input-group">
+              <label>Telefon</label>
+              <input type="tel" id="contactPhone" value="+40 770 430 731">
+            </div>
+          </div>
+          
+          <div class="input-group">
+            <label>Adresă</label>
+            <input type="text" id="contactAddress" value="Târgoviște, Dâmbovița">
+          </div>
+          
+          <button class="btn btn-primary" onclick="saveContactInfo()">
+            💾 Salvează Informații
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- MODALS -->
+
+<!-- Add Service Modal -->
+<div class="modal" id="addServiceModal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>➕ Adaugă Serviciu Nou</h2>
+      <button class="close-modal" onclick="closeModal('addServiceModal')">×</button>
+    </div>
+    
+    <div class="input-group">
+      <label>Nume Serviciu (Română)</label>
+      <input type="text" id="serviceNameRO" placeholder="ex: Contabilitate primară">
+    </div>
+    
+    <div class="input-group">
+      <label>Descriere (Română)</label>
+      <textarea id="serviceDescRO" placeholder="Descrierea serviciului în română"></textarea>
+    </div>
+    
+    <div class="input-group">
+      <label>Icon Emoji</label>
+      <input type="text" id="serviceIcon" placeholder="ex: ✅" maxlength="2">
+    </div>
+    
+    <button class="btn btn-primary" onclick="addService()">
+      ✅ Adaugă Serviciu
+    </button>
+  </div>
+</div>
+
+<!-- Edit Service Modal -->
+<div class="modal" id="editServiceModal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>✏️ Editează Serviciu</h2>
+      <button class="close-modal" onclick="closeModal('editServiceModal')">×</button>
+    </div>
+    
+    <input type="hidden" id="editServiceId">
+    
+    <div class="input-group">
+      <label>Nume Serviciu (Română)</label>
+      <input type="text" id="editServiceNameRO" placeholder="ex: Contabilitate primară">
+    </div>
+    
+    <div class="input-group">
+      <label>Descriere (Română)</label>
+      <textarea id="editServiceDescRO" placeholder="Descrierea serviciului în română"></textarea>
+    </div>
+    
+    <div class="input-group">
+      <label>Icon Emoji</label>
+      <input type="text" id="editServiceIcon" placeholder="ex: ✅" maxlength="2">
+    </div>
+    
+    <button class="btn btn-primary" onclick="updateService()">
+      💾 Salvează Modificările
+    </button>
+  </div>
+</div>
+
+<!-- Add Client Modal -->
+<div class="modal" id="addClientModal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>➕ Adaugă Client Nou</h2>
+      <button class="close-modal" onclick="closeModal('addClientModal')">×</button>
+    </div>
+    
+    <div class="input-group">
+      <label>CUI (se va completa automat numele companiei)</label>
+      <input type="text" id="clientCUI" placeholder="ex: RO12345678" oninput="checkCUIClient(this.value)">
+      <span id="clientCUILoading" class="cui-loading" style="display:none;">🔄 Verificare...</span>
+    </div>
+    
+    <div class="input-group">
+      <label>Nume Companie</label>
+      <input type="text" id="clientCompany" placeholder="Se completează automat după CUI" readonly>
+    </div>
+    
+    <div class="input-group">
+      <label>Persoană de Contact</label>
+      <input type="text" id="clientContact" placeholder="Nume persoană">
+    </div>
+    
+    <div class="form-row">
+      <div class="input-group">
+        <label>Telefon</label>
+        <input type="tel" id="clientPhone" placeholder="+40 xxx xxx xxx">
+      </div>
+      
+      <div class="input-group">
+        <label>Email</label>
+        <input type="email" id="clientEmail" placeholder="client@exemplu.ro">
+      </div>
+    </div>
+    
+    <div class="input-group">
+      <label>Adresă</label>
+      <input type="text" id="clientAddress" placeholder="Adresa completă">
+    </div>
+    
+    <button class="btn btn-primary" onclick="addClient()">
+      ✅ Adaugă Client
+    </button>
+  </div>
+</div>
+
+<!-- Edit Client Modal -->
+<div class="modal" id="editClientModal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>✏️ Editează Client</h2>
+      <button class="close-modal" onclick="closeModal('editClientModal')">×</button>
+    </div>
+    
+    <input type="hidden" id="editClientId">
+    
+    <div class="input-group">
+      <label>CUI</label>
+      <input type="text" id="editClientCUI" placeholder="ex: RO12345678" oninput="checkCUIEditClient(this.value)">
+      <span id="editClientCUILoading" class="cui-loading" style="display:none;">🔄 Verificare...</span>
+    </div>
+    
+    <div class="input-group">
+      <label>Nume Companie</label>
+      <input type="text" id="editClientCompany" placeholder="ex: SC EXEMPLU SRL">
+    </div>
+    
+    <div class="input-group">
+      <label>Persoană de Contact</label>
+      <input type="text" id="editClientContact" placeholder="Nume persoană">
+    </div>
+    
+    <div class="form-row">
+      <div class="input-group">
+        <label>Telefon</label>
+        <input type="tel" id="editClientPhone" placeholder="+40 xxx xxx xxx">
+      </div>
+      
+      <div class="input-group">
+        <label>Email</label>
+        <input type="email" id="editClientEmail" placeholder="client@exemplu.ro">
+      </div>
+    </div>
+    
+    <div class="input-group">
+      <label>Adresă</label>
+      <input type="text" id="editClientAddress" placeholder="Adresa completă">
+    </div>
+    
+    <button class="btn btn-primary" onclick="updateClient()">
+      💾 Salvează Modificările
+    </button>
+  </div>
+</div>
+
+<!-- Add Supplier Modal -->
+<div class="modal" id="addSupplierModal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>➕ Adaugă Furnizor Nou</h2>
+      <button class="close-modal" onclick="closeModal('addSupplierModal')">×</button>
+    </div>
+    
+    <div class="input-group">
+      <label>CUI (se va completa automat numele companiei)</label>
+      <input type="text" id="supplierCUI" placeholder="ex: RO12345678" oninput="checkCUISupplier(this.value)">
+      <span id="supplierCUILoading" class="cui-loading" style="display:none;">🔄 Verificare...</span>
+    </div>
+    
+    <div class="input-group">
+      <label>Nume Companie</label>
+      <input type="text" id="supplierCompany" placeholder="Se completează automat după CUI" readonly>
+    </div>
+    
+    <div class="input-group">
+      <label>Persoană de Contact</label>
+      <input type="text" id="supplierContact" placeholder="Nume persoană">
+    </div>
+    
+    <div class="form-row">
+      <div class="input-group">
+        <label>Telefon</label>
+        <input type="tel" id="supplierPhone" placeholder="+40 xxx xxx xxx">
+      </div>
+      
+      <div class="input-group">
+        <label>Email</label>
+        <input type="email" id="supplierEmail" placeholder="furnizor@exemplu.ro">
+      </div>
+    </div>
+    
+    <div class="input-group">
+      <label>Adresă</label>
+      <input type="text" id="supplierAddress" placeholder="Adresa completă">
+    </div>
+    
+    <button class="btn btn-primary" onclick="addSupplier()">
+      ✅ Adaugă Furnizor
+    </button>
+  </div>
+</div>
+
+<!-- Edit Supplier Modal -->
+<div class="modal" id="editSupplierModal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>✏️ Editează Furnizor</h2>
+      <button class="close-modal" onclick="closeModal('editSupplierModal')">×</button>
+    </div>
+    
+    <input type="hidden" id="editSupplierId">
+    
+    <div class="input-group">
+      <label>CUI</label>
+      <input type="text" id="editSupplierCUI" placeholder="ex: RO12345678" oninput="checkCUIEditSupplier(this.value)">
+      <span id="editSupplierCUILoading" class="cui-loading" style="display:none;">🔄 Verificare...</span>
+    </div>
+    
+    <div class="input-group">
+      <label>Nume Companie</label>
+      <input type="text" id="editSupplierCompany" placeholder="ex: SC EXEMPLU SRL">
+    </div>
+    
+    <div class="input-group">
+      <label>Persoană de Contact</label>
+      <input type="text" id="editSupplierContact" placeholder="Nume persoană">
+    </div>
+    
+    <div class="form-row">
+      <div class="input-group">
+        <label>Telefon</label>
+        <input type="tel" id="editSupplierPhone" placeholder="+40 xxx xxx xxx">
+      </div>
+      
+      <div class="input-group">
+        <label>Email</label>
+        <input type="email" id="editSupplierEmail" placeholder="furnizor@exemplu.ro">
+      </div>
+    </div>
+    
+    <div class="input-group">
+      <label>Adresă</label>
+      <input type="text" id="editSupplierAddress" placeholder="Adresa completă">
+    </div>
+    
+    <button class="btn btn-primary" onclick="updateSupplier()">
+      💾 Salvează Modificările
+    </button>
+  </div>
+</div>
+
+<!-- Add Invoice Modal -->
+<div class="modal" id="addInvoiceModal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>➕ Adaugă Factură Nouă</h2>
+      <button class="close-modal" onclick="closeModal('addInvoiceModal')">×</button>
+    </div>
+    
+    <div class="form-row">
+      <div class="input-group">
+        <label>Număr Factură</label>
+        <input type="text" id="invoiceNumber" placeholder="ex: F2025001">
+      </div>
+      
+      <div class="input-group">
+        <label>Serie Factură</label>
+        <input type="text" id="invoiceSeries" placeholder="ex: DTX" value="DTX">
+      </div>
+    </div>
+    
+    <div class="input-group">
+      <label>Client (selectează sau introdu manual)</label>
+      <select id="invoiceClientSelect" onchange="selectInvoiceClient()">
+        <option value="">-- Selectează Client --</option>
+      </select>
+    </div>
+    
+    <div class="input-group">
+      <label>Sau introdu manual</label>
+      <input type="text" id="invoiceClient" placeholder="Nume complet client">
+    </div>
+    
+    <div class="input-group">
+      <label>Serviciu Prestat</label>
+      <select id="invoiceService">
+        <option value="">Selectează serviciul</option>
+        <option value="Contabilitate primară">Contabilitate primară</option>
+        <option value="Salarizare">Salarizare</option>
+        <option value="Consultanță fiscală">Consultanță fiscală</option>
+        <option value="Înființare firmă">Înființare firmă</option>
+        <option value="Declarații fiscale">Declarații fiscale</option>
+        <option value="Optimizare fiscală">Optimizare fiscală</option>
+        <option value="Altele">Altele</option>
+      </select>
+    </div>
+    
+    <div class="form-row">
+      <div class="input-group">
+        <label>Valoare (RON)</label>
+        <input type="number" id="invoiceAmount" placeholder="0.00" step="0.01" min="0">
+      </div>
+      
+      <div class="input-group">
+        <label>TVA (%)</label>
+        <input type="number" id="invoiceTVA" placeholder="19" value="19" step="1" min="0" max="100">
+      </div>
+    </div>
+    
+    <div class="form-row">
+      <div class="input-group">
+        <label>Data Emitere</label>
+        <input type="date" id="invoiceIssueDate">
+      </div>
+      
+      <div class="input-group">
+        <label>Data Scadență</label>
+        <input type="date" id="invoiceDueDate">
+      </div>
+    </div>
+    
+    <div class="input-group">
+      <label>Status</label>
+      <select id="invoiceStatus">
+        <option value="pending">Neachitată</option>
+        <option value="paid">Achitată</option>
+        <option value="overdue">Întârziată</option>
+        <option value="cancelled">Anulată</option>
+      </select>
+    </div>
+    
+    <div class="input-group">
+      <label>Observații (opțional)</label>
+      <textarea id="invoiceNotes" placeholder="Adaugă observații sau note despre factură..." rows="3"></textarea>
+    </div>
+    
+    <button class="btn btn-primary" onclick="addInvoice()">
+      ✅ Adaugă Factură
+    </button>
+  </div>
+</div>
+
+<!-- View Invoice Modal -->
+<div class="modal" id="viewInvoiceModal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>👁️ Detalii Factură</h2>
+      <button class="close-modal" onclick="closeModal('viewInvoiceModal')">×</button>
+    </div>
+    
+    <div id="invoiceDetails" style="line-height:2;"></div>
+    
+    <div style="margin-top:30px;display:flex;gap:10px;">
+      <button class="btn btn-secondary" onclick="closeModal('viewInvoiceModal')">
+        ✖️ Închide
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Edit Invoice Modal -->
+<div class="modal" id="editInvoiceModal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>✏️ Editează Factură</h2>
+      <button class="close-modal" onclick="closeModal('editInvoiceModal')">×</button>
+    </div>
+    
+    <input type="hidden" id="editInvoiceId">
+    
+    <div class="form-row">
+      <div class="input-group">
+        <label>Număr Factură</label>
+        <input type="text" id="editInvoiceNumber">
+      </div>
+      
+      <div class="input-group">
+        <label>Serie Factură</label>
+        <input type="text" id="editInvoiceSeries">
+      </div>
+    </div>
+    
+    <div class="input-group">
+      <label>Client</label>
+      <select id="editInvoiceClientSelect" onchange="selectEditInvoiceClient()">
+        <option value="">-- Selectează Client --</option>
+      </select>
+    </div>
+    
+    <div class="input-group">
+      <label>Sau introdu manual</label>
+      <input type="text" id="editInvoiceClient">
+    </div>
+    
+    <div class="input-group">
+      <label>Serviciu Prestat</label>
+      <select id="editInvoiceService">
+        <option value="Contabilitate primară">Contabilitate primară</option>
+        <option value="Salarizare">Salarizare</option>
+        <option value="Consultanță fiscală">Consultanță fiscală</option>
+        <option value="Înființare firmă">Înființare firmă</option>
+        <option value="Declarații fiscale">Declarații fiscale</option>
+        <option value="Optimizare fiscală">Optimizare fiscală</option>
+        <option value="Altele">Altele</option>
+      </select>
+    </div>
+    
+    <div class="form-row">
+      <div class="input-group">
+        <label>Valoare (RON)</label>
+        <input type="number" id="editInvoiceAmount" step="0.01" min="0">
+      </div>
+      
+      <div class="input-group">
+        <label>TVA (%)</label>
+        <input type="number" id="editInvoiceTVA" step="1" min="0" max="100">
+      </div>
+    </div>
+    
+    <div class="form-row">
+      <div class="input-group">
+        <label>Data Emitere</label>
+        <input type="date" id="editInvoiceIssueDate">
+      </div>
+      
+      <div class="input-group">
+        <label>Data Scadență</label>
+        <input type="date" id="editInvoiceDueDate">
+      </div>
+    </div>
+    
+    <div class="input-group">
+      <label>Status</label>
+      <select id="editInvoiceStatus">
+        <option value="pending">Neachitată</option>
+        <option value="paid">Achitată</option>
+        <option value="overdue">Întârziată</option>
+        <option value="cancelled">Anulată</option>
+      </select>
+    </div>
+    
+    <div class="input-group">
+      <label>Observații</label>
+      <textarea id="editInvoiceNotes" rows="3"></textarea>
+    </div>
+    
+    <button class="btn btn-primary" onclick="updateInvoice()">
+      💾 Salvează Modificările
+    </button>
+  </div>
+</div>
+
+<!-- Add Expense Modal -->
+<div class="modal" id="addExpenseModal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>➕ Adaugă Cheltuială</h2>
+      <button class="close-modal" onclick="closeModal('addExpenseModal')">×</button>
+    </div>
+    
+    <div class="input-group">
+      <label>Data</label>
+      <input type="date" id="expenseDate">
+    </div>
+    
+    <div class="input-group">
+      <label>Categorie</label>
+      <select id="expenseCategory">
+        <option value="Utilități">Utilități</option>
+        <option value="Chirii">Chirii</option>
+        <option value="Salarii">Salarii</option>
+        <option value="Materiale birou">Materiale birou</option>
+        <option value="Software">Software</option>
+        <option value="Transport">Transport</option>
+        <option value="Altele">Altele</option>
+      </select>
+    </div>
+    
+    <div class="input-group">
+      <label>Descriere</label>
+      <input type="text" id="expenseDescription" placeholder="Descriere cheltuială">
+    </div>
+    
+    <div class="input-group">
+      <label>Valoare (RON)</label>
+      <input type="number" id="expenseAmount" placeholder="0.00" step="0.01" min="0">
+    </div>
+    
+    <div class="input-group">
+      <label>Furnizor (selectează sau introdu manual)</label>
+      <select id="expenseSupplierSelect" onchange="selectExpenseSupplier()">
+        <option value="">-- Selectează Furnizor --</option>
+      </select>
+    </div>
+    
+    <div class="input-group">
+      <label>Sau introdu manual</label>
+      <input type="text" id="expenseSupplier" placeholder="Nume furnizor">
+    </div>
+    
+    <button class="btn btn-primary" onclick="addExpense()">
+      ✅ Adaugă Cheltuială
+    </button>
+  </div>
+</div>
+
+<!-- Edit Expense Modal -->
+<div class="modal" id="editExpenseModal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>✏️ Editează Cheltuială</h2>
+      <button class="close-modal" onclick="closeModal('editExpenseModal')">×</button>
+    </div>
+    
+    <input type="hidden" id="editExpenseId">
+    
+    <div class="input-group">
+      <label>Data</label>
+      <input type="date" id="editExpenseDate">
+    </div>
+    
+    <div class="input-group">
+      <label>Categorie</label>
+      <select id="editExpenseCategory">
+        <option value="Utilități">Utilități</option>
+        <option value="Chirii">Chirii</option>
+        <option value="Salarii">Salarii</option>
+        <option value="Materiale birou">Materiale birou</option>
+        <option value="Software">Software</option>
+        <option value="Transport">Transport</option>
+        <option value="Altele">Altele</option>
+      </select>
+    </div>
+    
+    <div class="input-group">
+      <label>Descriere</label>
+      <input type="text" id="editExpenseDescription" placeholder="Descriere cheltuială">
+    </div>
+    
+    <div class="input-group">
+      <label>Valoare (RON)</label>
+      <input type="number" id="editExpenseAmount" placeholder="0.00" step="0.01" min="0">
+    </div>
+    
+    <div class="input-group">
+      <label>Furnizor</label>
+      <select id="editExpenseSupplierSelect" onchange="selectEditExpenseSupplier()">
+        <option value="">-- Selectează Furnizor --</option>
+      </select>
+    </div>
+    
+    <div class="input-group">
+      <label>Sau introdu manual</label>
+      <input type="text" id="editExpenseSupplier" placeholder="Nume furnizor">
+    </div>
+    
+    <button class="btn btn-primary" onclick="updateExpense()">
+      💾 Salvează Modificările
+    </button>
+  </div>
+</div>
+
+<!-- Add Document Modal -->
+<div class="modal" id="addDocumentModal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>➕ Adaugă Document</h2>
+      <button class="close-modal" onclick="closeModal('addDocumentModal')">×</button>
+    </div>
+    
+    <div class="input-group">
+      <label>Nume Document</label>
+      <input type="text" id="documentName" placeholder="ex: Contract colaborare">
+    </div>
+    
+    <div class="input-group">
+      <label>Tip Document</label>
+      <select id="documentType">
+        <option value="Contract">Contract</option>
+        <option value="Factură">Factură</option>
+        <option value="Declarație">Declarație</option>
+        <option value="Raport">Raport</option>
+        <option value="Altele">Altele</option>
+      </select>
+    </div>
+    
+    <div class="input-group">
+      <label>Client Asociat</label>
+      <input type="text" id="documentClient" placeholder="Nume client">
+    </div>
+    
+    <div class="alert alert-info">
+      📝 Notă: Funcția de încărcare fișiere va fi implementată în versiunea viitoare
+    </div>
+    
+    <button class="btn btn-primary" onclick="addDocument()">
+      ✅ Adaugă Document
+    </button>
+  </div>
+</div>
+
+<!-- Edit Document Modal -->
+<div class="modal" id="editDocumentModal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>✏️ Editează Document</h2>
+      <button class="close-modal" onclick="closeModal('editDocumentModal')">×</button>
+    </div>
+    
+    <input type="hidden" id="editDocumentId">
+    
+    <div class="input-group">
+      <label>Nume Document</label>
+      <input type="text" id="editDocumentName" placeholder="ex: Contract colaborare">
+    </div>
+    
+    <div class="input-group">
+      <label>Tip Document</label>
+      <select id="editDocumentType">
+        <option value="Contract">Contract</option>
+        <option value="Factură">Factură</option>
+        <option value="Declarație">Declarație</option>
+        <option value="Raport">Raport</option>
+        <option value="Altele">Altele</option>
+      </select>
+    </div>
+    
+    <div class="input-group">
+      <label>Client Asociat</label>
+      <input type="text" id="editDocumentClient" placeholder="Nume client">
+    </div>
+    
+    <button class="btn btn-primary" onclick="updateDocument()">
+      💾 Salvează Modificările
+    </button>
+  </div>
+</div>
+
+<script>
+const DEFAULT_ADMIN = {
+  username: 'admin',
+  password: 'admin123'
+};
+
+let adminData = JSON.parse(localStorage.getItem('adminData')) || {
+  credentials: { ...DEFAULT_ADMIN },
+  services: [
+    {
+      id: 1,
+      nameRO: 'Contabilitate primară',
+      descRO: 'Organizare documente lunare, pregătire documente lunare, verificare și analiză financiară documente.',
+      icon: '✅',
+      active: true
+    },
+    {
+      id: 2,
+      nameRO: 'Intocmire pontaje si salarizare',
+      descRO: 'State de plată și Reges online',
+      icon: '✅',
+      active: true
+    }
+  ],
+  invoices: [],
+  clients: [],
+  suppliers: [],
+  expenses: [],
+  documents: [],
+  seo: {
+    titleRO: 'd4riusTAX ADVICE S.R.L – Contabilitate, Salarizare & Consultanță Financiară',
+    descriptionRO: 'd4riusTAX ADVICE S.R.L – servicii profesionale de contabilitate, salarizare și consultanță financiară în Târgoviște. Peste 15 ani de experiență. Solicită ofertă!',
+    keywordsRO: 'contabilitate, consultanta, salarizare, Targoviste, firma contabilitate'
+  },
+  contactInfo: {
+    email: 'd4riusconsulting.contact@gmail.com',
+    phone: '+40 770 430 731',
+    address: 'Târgoviște, Dâmbovița'
+  },
+  recentActivity: []
+};
+
+function saveAdminData() {
+  localStorage.setItem('adminData', JSON.stringify(adminData));
+}
+
+// CUI CHECKER - ANAF API
+async function fetchCompanyByCUI(cui) {
+  try {
+    // Curăță CUI-ul
+    cui = cui.replace(/[^0-9]/g, '');
+    
+    if (cui.length < 6) {
+      return null;
+    }
+    
+    // API ANAF pentru verificare CUI
+    const response = await fetch(`https://webservicesp.anaf.ro/PlatitorTvaRest/api/v8/ws/tva`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify([{
+        
+        cui: cui,
+        data: new Date().toISOString().split('T')[0]
+      }])
+    });
+    
+    if (!response.ok) {
+      return null;
+    }
+    
+    const data = await response.json();
+    
+    if (data.found && data.found.length > 0) {
+      const company = data.found[0];
+      return {
+        name: company.denumire || '',
+        address: company.adresa || '',
+        cui: company.cui || cui
+      };
+    }
+    
+    return null;
+  } catch (error) {
+    console.error('Eroare verificare CUI:', error);
+    return null;
+  }
+}
+
+// CUI Check pentru Client - Add
+let cuiCheckTimeout;
+async function checkCUIClient(cui) {
+  clearTimeout(cuiCheckTimeout);
+  
+  const loading = document.getElementById('clientCUILoading');
+  const companyInput = document.getElementById('clientCompany');
+  
+  if (cui.length < 6) {
+    loading.style.display = 'none';
+    companyInput.value = '';
+    companyInput.removeAttribute('readonly');
+    return;
+  }
+  
+  loading.style.display = 'inline';
+  companyInput.setAttribute('readonly', 'readonly');
+  
+  cuiCheckTimeout = setTimeout(async () => {
+    const companyData = await fetchCompanyByCUI(cui);
+    
+    loading.style.display = 'none';
+    
+    if (companyData) {
+      companyInput.value = companyData.name;
+      if (companyData.address && !document.getElementById('clientAddress').value) {
+        document.getElementById('clientAddress').value = companyData.address;
+      }
+    } else {
+      companyInput.removeAttribute('readonly');
+      companyInput.value = '';
+      companyInput.placeholder = 'Nu s-a găsit compania. Introduceți manual.';
+    }
+  }, 1000);
+}
+
+// CUI Check pentru Client - Edit
+let cuiEditCheckTimeout;
+async function checkCUIEditClient(cui) {
+  clearTimeout(cuiEditCheckTimeout);
+  
+  const loading = document.getElementById('editClientCUILoading');
+  const companyInput = document.getElementById('editClientCompany');
+  
+  if (cui.length < 6) {
+    loading.style.display = 'none';
+    return;
+  }
+  
+  loading.style.display = 'inline';
+  
+  cuiEditCheckTimeout = setTimeout(async () => {
+    const companyData = await fetchCompanyByCUI(cui);
+    
+    loading.style.display = 'none';
+    
+    if (companyData) {
+      companyInput.value = companyData.name;
+      if (companyData.address && !document.getElementById('editClientAddress').value) {
+        document.getElementById('editClientAddress').value = companyData.address;
+      }
+    }
+  }, 1000);
+}
+
+// CUI Check pentru Furnizor - Add
+let cuiSupplierCheckTimeout;
+async function checkCUISupplier(cui) {
+  clearTimeout(cuiSupplierCheckTimeout);
+  
+  const loading = document.getElementById('supplierCUILoading');
+  const companyInput = document.getElementById('supplierCompany');
+  
+  if (cui.length < 6) {
+    loading.style.display = 'none';
+    companyInput.value = '';
+    companyInput.removeAttribute('readonly');
+    return;
+  }
+  
+  loading.style.display = 'inline';
+  companyInput.setAttribute('readonly', 'readonly');
+  
+  cuiSupplierCheckTimeout = setTimeout(async () => {
+    const companyData = await fetchCompanyByCUI(cui);
+    
+    loading.style.display = 'none';
+    
+    if (companyData) {
+      companyInput.value = companyData.name;
+      if (companyData.address && !document.getElementById('supplierAddress').value) {
+        document.getElementById('supplierAddress').value = companyData.address;
+      }
+    } else {
+      companyInput.removeAttribute('readonly');
+      companyInput.value = '';
+      companyInput.placeholder = 'Nu s-a găsit compania. Introduceți manual.';
+    }
+  }, 1000);
+}
+
+// CUI Check pentru Furnizor - Edit
+let cuiEditSupplierCheckTimeout;
+async function checkCUIEditSupplier(cui) {
+  clearTimeout(cuiEditSupplierCheckTimeout);
+  
+  const loading = document.getElementById('editSupplierCUILoading');
+  const companyInput = document.getElementById('editSupplierCompany');
+  
+  if (cui.length < 6) {
+    loading.style.display = 'none';
+    return;
+  }
+  
+  loading.style.display = 'inline';
+  
+  cuiEditSupplierCheckTimeout = setTimeout(async () => {
+    const companyData = await fetchCompanyByCUI(cui);
+    
+    loading.style.display = 'none';
+    
+    if (companyData) {
+      companyInput.value = companyData.name;
+      if (companyData.address && !document.getElementById('editSupplierAddress').value) {
+        document.getElementById('editSupplierAddress').value = companyData.address;
+      }
+    }
+  }, 1000);
+}
+
+// LOGIN
+document.getElementById('loginForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const username = document.getElementById('username').value;
+  const password = document.getElementById('password').value;
+  
+  if (username === adminData.credentials.username && password === adminData.credentials.password) {
+    document.getElementById('loginContainer').style.display = 'none';
+    document.getElementById('adminPanel').style.display = 'block';
+    loadDashboard();
+  } else {
+    document.getElementById('loginError').style.display = 'block';
+    setTimeout(() => {
+      document.getElementById('loginError').style.display = 'none';
+    }, 3000);
+  }
+});
+
+function logout() {
+  if (confirm('Sigur doriți să vă deconectați?')) {
+    document.getElementById('loginContainer').style.display = 'block';
+    document.getElementById('adminPanel').style.display = 'none';
+    document.getElementById('username').value = '';
+    document.getElementById('password').value = '';
+  }
+}
+
+// NAVIGATION
+function showSection(sectionId) {
+  document.querySelectorAll('.page-section').forEach(section => {
+    section.classList.remove('active');
+  });
+  document.querySelectorAll('.menu-item').forEach(item => {
+    item.classList.remove('active');
+  });
+  
+  document.getElementById(sectionId).classList.add('active');
+  event.target.closest('.menu-item').classList.add('active');
+  
+  if (sectionId === 'dashboard') loadDashboard();
+  if (sectionId === 'services') loadServices();
+  if (sectionId === 'clients') loadClients();
+  if (sectionId === 'suppliers') loadSuppliers();
+  if (sectionId === 'invoices') loadInvoices();
+  if (sectionId === 'expenses') loadExpenses();
+  if (sectionId === 'documents') loadDocuments();
+  if (sectionId === 'seo') loadSEO();
+  if (sectionId === 'settings') loadSettings();
+}
+
+// DASHBOARD
+function loadDashboard() {
+  const invoices = adminData.invoices || [];
+  const clients = adminData.clients || [];
+  const suppliers = adminData.suppliers || [];
+  const expenses = adminData.expenses || [];
+  
+  document.getElementById('totalInvoices').textContent = invoices.length;
+  document.getElementById('pendingInvoices').textContent = invoices.filter(inv => inv.status === 'pending').length;
+  document.getElementById('paidInvoices').textContent = invoices.filter(inv => inv.status === 'paid').length;
+  document.getElementById('totalClients').textContent = clients.filter(c => c.active).length;
+  document.getElementById('totalSuppliers').textContent = suppliers.filter(s => s.active).length;
+  
+  const now = new Date();
+  const currentMonth = now.getMonth();
+  const currentYear = now.getFullYear();
+  
+  const monthInvoices = invoices.filter(inv => {
+    const invDate = new Date(inv.issueDate);
+    return invDate.getMonth() === currentMonth && invDate.getFullYear() === currentYear;
+  });
+  
+  const monthRevenue = monthInvoices
+    .filter(inv => inv.status === 'paid')
+    .reduce((sum, inv) => sum + parseFloat(inv.amount || 0), 0);
+  
+  const monthExpensesTotal = expenses
+    .filter(exp => {
+      const expDate = new Date(exp.date);
+      return expDate.getMonth() === currentMonth && expDate.getFullYear() === currentYear;
+    })
+    .reduce((sum, exp) => sum + parseFloat(exp.amount || 0), 0);
+  
+  document.getElementById('monthRevenue').textContent = monthRevenue.toFixed(2) + ' RON';
+  document.getElementById('monthExpenses').textContent = monthExpensesTotal.toFixed(2) + ' RON';
+  
+  const activityTable = document.getElementById('recentActivity');
+  if (adminData.recentActivity.length === 0) {
+    activityTable.innerHTML = '<tr><td colspan="4" style="text-align:center;color:#999;">Nu există activitate recentă</td></tr>';
+  } else {
+    activityTable.innerHTML = adminData.recentActivity.slice(0, 10).map(activity => `
+      <tr>
+        <td>${new Date(activity.date).toLocaleString('ro-RO')}</td>
+        <td>${activity.event}</td>
+        <td>${activity.details}</td>
+        <td><span class="badge badge-${activity.status}">${activity.statusLabel}</span></td>
+      </tr>
+    `).join('');
+  }
+}
+
+// SERVICES
+function loadServices() {
+  const table = document.getElementById('servicesTable');
+  table.innerHTML = adminData.services.map(service => `
+    <tr>
+      <td><strong>${service.nameRO}</strong></td>
+      <td>${service.descRO.substring(0, 80)}...</td>
+      <td style="font-size:24px;">${service.icon}</td>
+      <td><span class="badge badge-${service.active ? 'success' : 'danger'}">${service.active ? 'Activ' : 'Inactiv'}</span></td>
+      <td class="action-buttons">
+        <button class="icon-btn" style="background:#ffc107;color:white;" onclick="editService(${service.id})" title="Editează">✏️</button>
+        <button class="icon-btn" style="background:#dc3545;color:white;" onclick="deleteService(${service.id})" title="Șterge">🗑️</button>
+      </td>
+    </tr>
+  `).join('');
+}
+
+function addService() {
+  const newService = {
+    id: Date.now(),
+    nameRO: document.getElementById('serviceNameRO').value,
+    descRO: document.getElementById('serviceDescRO').value,
+    icon: document.getElementById('serviceIcon').value,
+    active: true
+  };
+  
+  if (!newService.nameRO || !newService.descRO) {
+    alert('⚠️ Completați toate câmpurile obligatorii!');
+    return;
+  }
+  
+  adminData.services.push(newService);
+  saveAdminData();
+  closeModal('addServiceModal');
+  loadServices();
+  alert('✅ Serviciul a fost adăugat cu succes!');
+  
+  document.getElementById('serviceNameRO').value = '';
+  document.getElementById('serviceDescRO').value = '';
+  document.getElementById('serviceIcon').value = '';
+}
+
+function deleteService(id) {
+  if (confirm('Sigur doriți să ștergeți acest serviciu?')) {
+    adminData.services = adminData.services.filter(s => s.id !== id);
+    saveAdminData();
+    loadServices();
+    alert('✅ Serviciul a fost șters!');
+  }
+}
+
+function editService(id) {
+  const service = adminData.services.find(s => s.id === id);
+  if (!service) return;
+  
+  document.getElementById('editServiceId').value = id;
+  document.getElementById('editServiceNameRO').value = service.nameRO;
+  document.getElementById('editServiceDescRO').value = service.descRO;
+  document.getElementById('editServiceIcon').value = service.icon;
+  
+  openModal('editServiceModal');
+}
+
+function updateService() {
+  const id = parseInt(document.getElementById('editServiceId').value);
+  const nameRO = document.getElementById('editServiceNameRO').value;
+  const descRO = document.getElementById('editServiceDescRO').value;
+  const icon = document.getElementById('editServiceIcon').value;
+  
+  if (!nameRO || !descRO) {
+    alert('⚠️ Completați toate câmpurile obligatorii!');
+    return;
+  }
+  
+  const serviceIndex = adminData.services.findIndex(s => s.id === id);
+  if (serviceIndex !== -1) {
+    adminData.services[serviceIndex] = {
+      ...adminData.services[serviceIndex],
+      nameRO: nameRO,
+      descRO: descRO,
+      icon: icon
+    };
+    
+    saveAdminData();
+    closeModal('editServiceModal');
+    loadServices();
+    alert('✅ Serviciul a fost actualizat cu succes!');
+  }
+}
+
+// CLIENTS
+function loadClients() {
+  const table = document.getElementById('clientsTable');
+  const clients = adminData.clients || [];
+  
+  if (clients.length === 0) {
+    table.innerHTML = '<tr><td colspan="8" style="text-align:center;color:#999;">Nu există clienți înregistrați</td></tr>';
+    return;
+  }
+  
+  table.innerHTML = clients.map(client => {
+    const invoiceCount = (adminData.invoices || []).filter(inv => inv.clientId === client.id).length;
+    
+    return `
+      <tr>
+        <td><strong>${client.company}</strong></td>
+        <td>${client.cui}</td>
+        <td>${client.contact}</td>
+        <td>${client.phone}</td>
+        <td>${client.email}</td>
+        <td><span class="badge badge-info">${invoiceCount}</span></td>
+        <td>
+          <label class="toggle-switch">
+            <input type="checkbox" ${client.active ? 'checked' : ''} onchange="toggleClientStatus(${client.id})">
+            <span class="slider"></span>
+          </label>
+        </td>
+        <td class="action-buttons">
+          <button class="icon-btn" style="background:#ffc107;color:white;" onclick="editClient(${client.id})" title="Editează">✏️</button>
+          <button class="icon-btn" style="background:#dc3545;color:white;" onclick="deleteClient(${client.id})" title="Șterge">🗑️</button>
+        </td>
+      </tr>
+    `;
+  }).join('');
+}
+
+function addClient() {
+  const newClient = {
+    id: Date.now(),
+    company: document.getElementById('clientCompany').value,
+    cui: document.getElementById('clientCUI').value,
+    contact: document.getElementById('clientContact').value,
+    phone: document.getElementById('clientPhone').value,
+    email: document.getElementById('clientEmail').value,
+    address: document.getElementById('clientAddress').value,
+    active: true
+  };
+  
+  if (!newClient.company || !newClient.cui) {
+    alert('⚠️ Completați câmpurile obligatorii (Companie și CUI)!');
+    return;
+  }
+  
+  if (!adminData.clients) {
+    adminData.clients = [];
+  }
+  
+  adminData.clients.push(newClient);
+  saveAdminData();
+  closeModal('addClientModal');
+  loadClients();
+  populateClientSelects();
+  alert('✅ Clientul a fost adăugat cu succes!');
+  
+  document.getElementById('clientCompany').value = '';
+  document.getElementById('clientCUI').value = '';
+  document.getElementById('clientContact').value = '';
+  document.getElementById('clientPhone').value = '';
+  document.getElementById('clientEmail').value = '';
+  document.getElementById('clientAddress').value = '';
+}
+
+function deleteClient(id) {
+  const hasInvoices = (adminData.invoices || []).some(inv => inv.clientId === id);
+  
+  if (hasInvoices) {
+    if (!confirm('Acest client are facturi asociate. Dacă îl ștergeți, facturile vor rămâne dar legătura cu clientul se va pierde. Continuați?')) {
+      return;
+    }
+  }
+  
+  if (confirm('Sigur doriți să ștergeți acest client?')) {
+    adminData.clients = adminData.clients.filter(c => c.id !== id);
+    saveAdminData();
+    loadClients();
+    populateClientSelects();
+    alert('✅ Clientul a fost șters!');
+  }
+}
+
+function editClient(id) {
+  const client = adminData.clients.find(c => c.id === id);
+  if (!client) return;
+  
+  document.getElementById('editClientId').value = id;
+  document.getElementById('editClientCompany').value = client.company;
+  document.getElementById('editClientCUI').value = client.cui;
+  document.getElementById('editClientContact').value = client.contact;
+  document.getElementById('editClientPhone').value = client.phone;
+  document.getElementById('editClientEmail').value = client.email;
+  document.getElementById('editClientAddress').value = client.address;
+  
+  openModal('editClientModal');
+}
+
+function updateClient() {
+  const id = parseInt(document.getElementById('editClientId').value);
+  const company = document.getElementById('editClientCompany').value;
+  const cui = document.getElementById('editClientCUI').value;
+  const contact = document.getElementById('editClientContact').value;
+  const phone = document.getElementById('editClientPhone').value;
+  const email = document.getElementById('editClientEmail').value;
+  const address = document.getElementById('editClientAddress').value;
+  
+  if (!company || !cui) {
+    alert('⚠️ Completați câmpurile obligatorii (Companie și CUI)!');
+    return;
+  }
+  
+  const clientIndex = adminData.clients.findIndex(c => c.id === id);
+  if (clientIndex !== -1) {
+    const oldCompany = adminData.clients[clientIndex].company;
+    
+    adminData.clients[clientIndex] = {
+      ...adminData.clients[clientIndex],
+      company: company,
+      cui: cui,
+      contact: contact,
+      phone: phone,
+      email: email,
+      address: address
+    };
+    
+    // Actualizează și facturile care au acest client
+    if (adminData.invoices) {
+      adminData.invoices.forEach(invoice => {
+        if (invoice.clientId === id || invoice.client === oldCompany) {
+          invoice.client = company;
+          invoice.clientId = id;
+        }
+      });
+    }
+    
+    saveAdminData();
+    closeModal('editClientModal');
+    loadClients();
+    populateClientSelects();
+    alert('✅ Clientul a fost actualizat cu succes!');
+  }
+}
+
+function toggleClientStatus(id) {
+  const clientIndex = adminData.clients.findIndex(c => c.id === id);
+  if (clientIndex !== -1) {
+    adminData.clients[clientIndex].active = !adminData.clients[clientIndex].active;
+    saveAdminData();
+    loadClients();
+    loadDashboard();
+  }
+}
+
+// SUPPLIERS
+function loadSuppliers() {
+  const table = document.getElementById('suppliersTable');
+  const suppliers = adminData.suppliers || [];
+  
+  if (suppliers.length === 0) {
+    table.innerHTML = '<tr><td colspan="7" style="text-align:center;color:#999;">Nu există furnizori înregistrați</td></tr>';
+    return;
+  }
+  
+  table.innerHTML = suppliers.map(supplier => `
+    <tr>
+      <td><strong>${supplier.company}</strong></td>
+      <td>${supplier.cui}</td>
+      <td>${supplier.contact}</td>
+      <td>${supplier.phone}</td>
+      <td>${supplier.email}</td>
+      <td>
+        <label class="toggle-switch">
+          <input type="checkbox" ${supplier.active ? 'checked' : ''} onchange="toggleSupplierStatus(${supplier.id})">
+          <span class="slider"></span>
+        </label>
+      </td>
+      <td class="action-buttons">
+        <button class="icon-btn" style="background:#ffc107;color:white;" onclick="editSupplier(${supplier.id})" title="Editează">✏️</button>
+        <button class="icon-btn" style="background:#dc3545;color:white;" onclick="deleteSupplier(${supplier.id})" title="Șterge">🗑️</button>
+      </td>
+    </tr>
+  `).join('');
+}
+
+function addSupplier() {
+  const newSupplier = {
+    id: Date.now(),
+    company: document.getElementById('supplierCompany').value,
+    cui: document.getElementById('supplierCUI').value,
+    contact: document.getElementById('supplierContact').value,
+    phone: document.getElementById('supplierPhone').value,
+    email: document.getElementById('supplierEmail').value,
+    address: document.getElementById('supplierAddress').value,
+    active: true
+  };
+  
+  if (!newSupplier.company || !newSupplier.cui) {
+    alert('⚠️ Completați câmpurile obligatorii (Companie și CUI)!');
+    return;
+  }
+  
+  if (!adminData.suppliers) {
+    adminData.suppliers = [];
+  }
+  
+  adminData.suppliers.push(newSupplier);
+  saveAdminData();
+  closeModal('addSupplierModal');
+  loadSuppliers();
+  populateSupplierSelects();
+  alert('✅ Furnizorul a fost adăugat cu succes!');
+  
+  document.getElementById('supplierCompany').value = '';
+  document.getElementById('supplierCUI').value = '';
+  document.getElementById('supplierContact').value = '';
+  document.getElementById('supplierPhone').value = '';
+  document.getElementById('supplierEmail').value = '';
+  document.getElementById('supplierAddress').value = '';
+}
+
+function deleteSupplier(id) {
+  if (confirm('Sigur doriți să ștergeți acest furnizor?')) {
+    adminData.suppliers = adminData.suppliers.filter(s => s.id !== id);
+    saveAdminData();
+    loadSuppliers();
+    populateSupplierSelects();
+    alert('✅ Furnizorul a fost șters!');
+  }
+}
+
+function editSupplier(id) {
+  const supplier = adminData.suppliers.find(s => s.id === id);
+  if (!supplier) return;
+  
+  document.getElementById('editSupplierId').value = id;
+  document.getElementById('editSupplierCompany').value = supplier.company;
+  document.getElementById('editSupplierCUI').value = supplier.cui;
+  document.getElementById('editSupplierContact').value = supplier.contact;
+  document.getElementById('editSupplierPhone').value = supplier.phone;
+  document.getElementById('editSupplierEmail').value = supplier.email;
+  document.getElementById('editSupplierAddress').value = supplier.address;
+  
+  openModal('editSupplierModal');
+}
+
+function updateSupplier() {
+  const id = parseInt(document.getElementById('editSupplierId').value);
+  const company = document.getElementById('editSupplierCompany').value;
+  const cui = document.getElementById('editSupplierCUI').value;
+  const contact = document.getElementById('editSupplierContact').value;
+  const phone = document.getElementById('editSupplierPhone').value;
+  const email = document.getElementById('editSupplierEmail').value;
+  const address = document.getElementById('editSupplierAddress').value;
+  
+  if (!company || !cui) {
+    alert('⚠️ Completați câmpurile obligatorii (Companie și CUI)!');
+    return;
+  }
+  
+  const supplierIndex = adminData.suppliers.findIndex(s => s.id === id);
+  if (supplierIndex !== -1) {
+    adminData.suppliers[supplierIndex] = {
+      ...adminData.suppliers[supplierIndex],
+      company: company,
+      cui: cui,
+      contact: contact,
+      phone: phone,
+      email: email,
+      address: address
+    };
+    
+    saveAdminData();
+    closeModal('editSupplierModal');
+    loadSuppliers();
+    populateSupplierSelects();
+    alert('✅ Furnizorul a fost actualizat cu succes!');
+  }
+}
+
+function toggleSupplierStatus(id) {
+  const supplierIndex = adminData.suppliers.findIndex(s => s.id === id);
+  if (supplierIndex !== -1) {
+    adminData.suppliers[supplierIndex].active = !adminData.suppliers[supplierIndex].active;
+    saveAdminData();
+    loadSuppliers();
+    loadDashboard();
+  }
+}
+
+// INVOICES
+function populateClientSelects() {
+  const clients = adminData.clients || [];
+  const activeClients = clients.filter(c => c.active);
+  
+  const invoiceSelect = document.getElementById('invoiceClientSelect');
+  const editSelect = document.getElementById('editInvoiceClientSelect');
+  
+  const options = '<option value="">-- Selectează Client --</option>' + 
+    activeClients.map(c => `<option value="${c.id}">${c.company}</option>`).join('');
+  
+  invoiceSelect.innerHTML = options;
+  editSelect.innerHTML = options;
+}
+
+function selectInvoiceClient() {
+  const select = document.getElementById('invoiceClientSelect');
+  const clientId = select.value;
+  
+  if (clientId) {
+    const client = adminData.clients.find(c => c.id == clientId);
+    if (client) {
+      document.getElementById('invoiceClient').value = client.company;
+      document.getElementById('invoiceClient').setAttribute('data-client-id', clientId);
+    }
+  } else {
+    document.getElementById('invoiceClient').value = '';
+    document.getElementById('invoiceClient').removeAttribute('data-client-id');
+  }
+}
+
+function selectEditInvoiceClient() {
+  const select = document.getElementById('editInvoiceClientSelect');
+  const clientId = select.value;
+  
+  if (clientId) {
+    const client = adminData.clients.find(c => c.id == clientId);
+    if (client) {
+      document.getElementById('editInvoiceClient').value = client.company;
+      document.getElementById('editInvoiceClient').setAttribute('data-client-id', clientId);
+    }
+  } else {
+    document.getElementById('editInvoiceClient').removeAttribute('data-client-id');
+  }
+}
+
+function loadInvoices() {
+  if (!adminData.invoices) {
+    adminData.invoices = [];
+  }
+  
+  populateClientSelects();
+  calculateInvoiceStats();
+  displayInvoices('all');
+}
+
+function calculateInvoiceStats() {
+  const invoices = adminData.invoices || [];
+  
+  const totalCount = invoices.length;
+  const pendingCount = invoices.filter(inv => inv.status === 'pending').length;
+  const paidCount = invoices.filter(inv => inv.status === 'paid').length;
+  const overdueCount = invoices.filter(inv => inv.status === 'overdue').length;
+  
+  const totalAmount = invoices.reduce((sum, inv) => sum + parseFloat(inv.amount || 0), 0);
+  const paidAmount = invoices.filter(inv => inv.status === 'paid').reduce((sum, inv) => sum + parseFloat(inv.amount || 0), 0);
+  
+  document.getElementById('invoiceTotalCount').textContent = totalCount;
+  document.getElementById('invoicePendingCount').textContent = pendingCount;
+  document.getElementById('invoicePaidCount').textContent = paidCount;
+  document.getElementById('invoiceOverdueCount').textContent = overdueCount;
+  document.getElementById('invoiceTotalAmount').textContent = totalAmount.toFixed(2) + ' RON';
+  document.getElementById('invoicePaidAmount').textContent = paidAmount.toFixed(2) + ' RON';
+  
+  const now = new Date();
+  const currentMonth = now.getMonth();
+  const currentYear = now.getFullYear();
+  
+  const currentMonthInvoices = invoices.filter(inv => {
+    const invDate = new Date(inv.issueDate);
+    return invDate.getMonth() === currentMonth && invDate.getFullYear() === currentYear;
+  });
+  
+  const currentMonthAmount = currentMonthInvoices.reduce((sum, inv) => sum + parseFloat(inv.amount || 0), 0);
+  const currentMonthPaidInvoices = currentMonthInvoices.filter(inv => inv.status === 'paid');
+  const currentMonthPaidAmount = currentMonthPaidInvoices.reduce((sum, inv) => sum + parseFloat(inv.amount || 0), 0);
+  const currentMonthPendingInvoices = currentMonthInvoices.filter(inv => inv.status === 'pending' || inv.status === 'overdue');
+  const currentMonthPendingAmount = currentMonthPendingInvoices.reduce((sum, inv) => sum + parseFloat(inv.amount || 0), 0);
+  
+  document.getElementById('currentMonthAmount').textContent = currentMonthAmount.toFixed(2) + ' RON';
+  document.getElementById('currentMonthInvoices').textContent = currentMonthInvoices.length + ' facturi';
+  document.getElementById('currentMonthPaid').textContent = currentMonthPaidAmount.toFixed(2) + ' RON';
+  document.getElementById('currentMonthPaidCount').textContent = currentMonthPaidInvoices.length + ' facturi achitate';
+  document.getElementById('currentMonthPending').textContent = currentMonthPendingAmount.toFixed(2) + ' RON';
+  document.getElementById('currentMonthPendingCount').textContent = currentMonthPendingInvoices.length + ' facturi neachitate';
+}
+
+function displayInvoices(filter = 'all') {
+  let invoices = adminData.invoices || [];
+  
+  if (filter !== 'all') {
+    invoices = invoices.filter(inv => inv.status === filter);
+  }
+  
+  const table = document.getElementById('invoicesTable');
+  
+  if (invoices.length === 0) {
+    table.innerHTML = '<tr><td colspan="8" style="text-align:center;color:#999;">Nu există facturi pentru acest filtru</td></tr>';
+    return;
+  }
+  
+  invoices.sort((a, b) => new Date(b.issueDate) - new Date(a.issueDate));
+  
+  table.innerHTML = invoices.map(invoice => {
+    const statusLabels = {
+      pending: 'Neachitată',
+      paid: 'Achitată',
+      overdue: 'Întârziată',
+      cancelled: 'Anulată'
+    };
+    
+    const statusColors = {
+      pending: 'warning',
+      paid: 'success',
+      overdue: 'danger',
+      cancelled: 'secondary'
+    };
+    
+    return `
+      <tr>
+        <td><strong>${invoice.series}-${invoice.number}</strong></td>
+        <td>${invoice.client}</td>
+        <td>${invoice.service}</td>
+        <td><strong>${parseFloat(invoice.amount).toFixed(2)} RON</strong></td>
+        <td>${new Date(invoice.issueDate).toLocaleDateString('ro-RO')}</td>
+        <td>${new Date(invoice.dueDate).toLocaleDateString('ro-RO')}</td>
+        <td><span class="badge badge-${statusColors[invoice.status]}">${statusLabels[invoice.status]}</span></td>
+        <td class="action-buttons">
+          <button class="icon-btn" style="background:#17a2b8;color:white;" onclick="viewInvoice(${invoice.id})" title="Vizualizează">👁️</button>
+          <button class="icon-btn" style="background:#ffc107;color:white;" onclick="editInvoice(${invoice.id})" title="Editează">✏️</button>
+          <button class="icon-btn" style="background:#dc3545;color:white;" onclick="deleteInvoice(${invoice.id})" title="Șterge">🗑️</button>
+        </td>
+      </tr>
+    `;
+  }).join('');
+}
+
+function filterInvoices() {
+  const filter = document.getElementById('invoiceFilter').value;
+  displayInvoices(filter);
+}
+
+function addInvoice() {
+  const number = document.getElementById('invoiceNumber').value;
+  const series = document.getElementById('invoiceSeries').value;
+  const clientInput = document.getElementById('invoiceClient');
+  const client = clientInput.value;
+  const clientId = clientInput.getAttribute('data-client-id');
+  const service = document.getElementById('invoiceService').value;
+  const amount = document.getElementById('invoiceAmount').value;
+  const tva = document.getElementById('invoiceTVA').value;
+  const issueDate = document.getElementById('invoiceIssueDate').value;
+  const dueDate = document.getElementById('invoiceDueDate').value;
+  const status = document.getElementById('invoiceStatus').value;
+  const notes = document.getElementById('invoiceNotes').value;
+  
+  if (!number || !client || !service || !amount || !issueDate || !dueDate) {
+    alert('⚠️ Completați toate câmpurile obligatorii!');
+    return;
+  }
+  
+  const totalAmount = parseFloat(amount) + (parseFloat(amount) * parseFloat(tva) / 100);
+  
+  const newInvoice = {
+    id: Date.now(),
+    number: number,
+    series: series || 'DTX',
+    client: client,
+    clientId: clientId ? parseInt(clientId) : null,
+    service: service,
+    amount: totalAmount.toFixed(2),
+    baseAmount: parseFloat(amount).toFixed(2),
+    tva: tva,
+    issueDate: issueDate,
+    dueDate: dueDate,
+    status: status,
+    notes: notes,
+    createdAt: new Date().toISOString()
+  };
+  
+  if (!adminData.invoices) {
+    adminData.invoices = [];
+  }
+  
+  adminData.invoices.push(newInvoice);
+  saveAdminData();
+  
+  closeModal('addInvoiceModal');
+  loadInvoices();
+  loadClients();
+  
+  document.getElementById('invoiceNumber').value = '';
+  document.getElementById('invoiceClientSelect').value = '';
+  document.getElementById('invoiceClient').value = '';
+  document.getElementById('invoiceClient').removeAttribute('data-client-id');
+  document.getElementById('invoiceService').value = '';
+  document.getElementById('invoiceAmount').value = '';
+  document.getElementById('invoiceTVA').value = '19';
+  document.getElementById('invoiceIssueDate').value = '';
+  document.getElementById('invoiceDueDate').value = '';
+  document.getElementById('invoiceStatus').value = 'pending';
+  document.getElementById('invoiceNotes').value = '';
+  
+  alert('✅ Factura a fost adăugată cu succes!');
+}
+
+function viewInvoice(id) {
+  const invoice = adminData.invoices.find(inv => inv.id === id);
+  if (!invoice) return;
+  
+  const statusLabels = {
+    pending: 'Neachitată',
+    paid: 'Achitată',
+    overdue: 'Întârziată',
+    cancelled: 'Anulată'
+  };
+  
+  const statusColors = {
+    pending: '#f59e0b',
+    paid: '#22c55e',
+    overdue: '#ef4444',
+    cancelled: '#6b7280'
+  };
+  
+  document.getElementById('invoiceDetails').innerHTML = `
+    <div style="background:#f9fafb;padding:20px;border-radius:12px;margin-bottom:20px;">
+      <h3 style="color:var(--primary);margin-bottom:15px;">Factură ${invoice.series}-${invoice.number}</h3>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:15px;">
+        <div>
+          <strong style="color:#666;">Client:</strong><br>
+          <span style="font-size:16px;">${invoice.client}</span>
+        </div>
+        <div>
+          <strong style="color:#666;">Serviciu:</strong><br>
+          <span style="font-size:16px;">${invoice.service}</span>
+        </div>
+      </div>
+    </div>
+    
+    <div style="background:#f9fafb;padding:20px;border-radius:12px;margin-bottom:20px;">
+      <h4 style="color:var(--primary);margin-bottom:15px;">Detalii Financiare</h4>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:15px;">
+        <div>
+          <strong style="color:#666;">Valoare (fără TVA):</strong><br>
+          <span style="font-size:18px;font-weight:600;">${parseFloat(invoice.baseAmount).toFixed(2)} RON</span>
+        </div>
+        <div>
+          <strong style="color:#666;">TVA (${invoice.tva}%):</strong><br>
+          <span style="font-size:18px;font-weight:600;">${(parseFloat(invoice.amount) - parseFloat(invoice.baseAmount)).toFixed(2)} RON</span>
+        </div>
+        <div style="grid-column:1/-1;background:white;padding:15px;border-radius:8px;border:2px solid var(--secondary);">
+          <strong style="color:#666;">Total de plată:</strong><br>
+          <span style="font-size:24px;font-weight:700;color:var(--secondary);">${parseFloat(invoice.amount).toFixed(2)} RON</span>
+        </div>
+      </div>
+    </div>
+    
+    <div style="background:#f9fafb;padding:20px;border-radius:12px;margin-bottom:20px;">
+      <h4 style="color:var(--primary);margin-bottom:15px;">Date Importante</h4>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:15px;">
+        <div>
+          <strong style="color:#666;">Data emitere:</strong><br>
+          <span style="font-size:16px;">${new Date(invoice.issueDate).toLocaleDateString('ro-RO')}</span>
+        </div>
+        <div>
+          <strong style="color:#666;">Data scadență:</strong><br>
+          <span style="font-size:16px;">${new Date(invoice.dueDate).toLocaleDateString('ro-RO')}</span>
+        </div>
+      </div>
+    </div>
+    
+    <div style="background:#f9fafb;padding:20px;border-radius:12px;margin-bottom:20px;">
+      <strong style="color:#666;">Status:</strong><br>
+      <span style="display:inline-block;margin-top:10px;padding:8px 16px;border-radius:20px;font-weight:600;background:${statusColors[invoice.status]};color:white;">
+        ${statusLabels[invoice.status]}
+      </span>
+    </div>
+    
+    ${invoice.notes ? `
+      <div style="background:#f9fafb;padding:20px;border-radius:12px;">
+        <strong style="color:#666;">Observații:</strong><br>
+        <p style="margin-top:10px;line-height:1.6;">${invoice.notes}</p>
+      </div>
+    ` : ''}
+  `;
+  
+  openModal('viewInvoiceModal');
+}
+
+function deleteInvoice(id) {
+  const invoice = adminData.invoices.find(inv => inv.id === id);
+  if (!invoice) return;
+  
+  if (confirm(`Sigur doriți să ștergeți factura ${invoice.series}-${invoice.number} pentru ${invoice.client}?`)) {
+    adminData.invoices = adminData.invoices.filter(inv => inv.id !== id);
+    saveAdminData();
+    loadInvoices();
+    loadClients();
+    alert('✅ Factura a fost ștearsă!');
+  }
+}
+
+function editInvoice(id) {
+  const invoice = adminData.invoices.find(inv => inv.id === id);
+  if (!invoice) return;
+  
+  populateClientSelects();
+  
+  document.getElementById('editInvoiceId').value = id;
+  document.getElementById('editInvoiceNumber').value = invoice.number;
+  document.getElementById('editInvoiceSeries').value = invoice.series;
+  document.getElementById('editInvoiceClient').value = invoice.client;
+  
+  if (invoice.clientId) {
+    document.getElementById('editInvoiceClientSelect').value = invoice.clientId;
+    document.getElementById('editInvoiceClient').setAttribute('data-client-id', invoice.clientId);
+  }
+  
+  document.getElementById('editInvoiceService').value = invoice.service;
+  document.getElementById('editInvoiceAmount').value = invoice.baseAmount;
+  document.getElementById('editInvoiceTVA').value = invoice.tva;
+  document.getElementById('editInvoiceIssueDate').value = invoice.issueDate;
+  document.getElementById('editInvoiceDueDate').value = invoice.dueDate;
+  document.getElementById('editInvoiceStatus').value = invoice.status;
+  document.getElementById('editInvoiceNotes').value = invoice.notes || '';
+  
+  openModal('editInvoiceModal');
+}
+
+function updateInvoice() {
+  const id = parseInt(document.getElementById('editInvoiceId').value);
+  const number = document.getElementById('editInvoiceNumber').value;
+  const series = document.getElementById('editInvoiceSeries').value;
+  const clientInput = document.getElementById('editInvoiceClient');
+  const client = clientInput.value;
+  const clientId = clientInput.getAttribute('data-client-id');
+  const service = document.getElementById('editInvoiceService').value;
+  const baseAmount = document.getElementById('editInvoiceAmount').value;
+  const tva = document.getElementById('editInvoiceTVA').value;
+  const issueDate = document.getElementById('editInvoiceIssueDate').value;
+  const dueDate = document.getElementById('editInvoiceDueDate').value;
+  const status = document.getElementById('editInvoiceStatus').value;
+  const notes = document.getElementById('editInvoiceNotes').value;
+  
+  if (!number || !client || !service || !baseAmount || !issueDate || !dueDate) {
+    alert('⚠️ Completați toate câmpurile obligatorii!');
+    return;
+  }
+  
+  const totalAmount = parseFloat(baseAmount) + (parseFloat(baseAmount) * parseFloat(tva) / 100);
+  
+  const invoiceIndex = adminData.invoices.findIndex(inv => inv.id === id);
+  if (invoiceIndex !== -1) {
+    adminData.invoices[invoiceIndex] = {
+      ...adminData.invoices[invoiceIndex],
+      number: number,
+      series: series,
+      client: client,
+      clientId: clientId ? parseInt(clientId) : null,
+      service: service,
+      amount: totalAmount.toFixed(2),
+      baseAmount: parseFloat(baseAmount).toFixed(2),
+      tva: tva,
+      issueDate: issueDate,
+      dueDate: dueDate,
+      status: status,
+      notes: notes,
+      updatedAt: new Date().toISOString()
+    };
+    
+    saveAdminData();
+    closeModal('editInvoiceModal');
+    loadInvoices();
+    loadClients();
+    alert('✅ Factura a fost actualizată cu succes!');
+  }
+}
+
+// EXPENSES
+function populateSupplierSelects() {
+  const suppliers = adminData.suppliers || [];
+  const activeSuppliers = suppliers.filter(s => s.active);
+  
+  const expenseSelect = document.getElementById('expenseSupplierSelect');
+  const editSelect = document.getElementById('editExpenseSupplierSelect');
+  
+  const options = '<option value="">-- Selectează Furnizor --</option>' + 
+    activeSuppliers.map(s => `<option value="${s.id}">${s.company}</option>`).join('');
+  
+  if (expenseSelect) expenseSelect.innerHTML = options;
+  if (editSelect) editSelect.innerHTML = options;
+}
+
+function selectExpenseSupplier() {
+  const select = document.getElementById('expenseSupplierSelect');
+  const supplierId = select.value;
+  
+  if (supplierId) {
+    const supplier = adminData.suppliers.find(s => s.id == supplierId);
+    if (supplier) {
+      document.getElementById('expenseSupplier').value = supplier.company;
+    }
+  } else {
+    document.getElementById('expenseSupplier').value = '';
+  }
+}
+
+function selectEditExpenseSupplier() {
+  const select = document.getElementById('editExpenseSupplierSelect');
+  const supplierId = select.value;
+  
+  if (supplierId) {
+    const supplier = adminData.suppliers.find(s => s.id == supplierId);
+    if (supplier) {
+      document.getElementById('editExpenseSupplier').value = supplier.company;
+    }
+  }
+}
+
+function loadExpenses() {
+  const expenses = adminData.expenses || [];
+  
+  populateSupplierSelects();
+  
+  const totalExpenses = expenses.reduce((sum, exp) => sum + parseFloat(exp.amount || 0), 0);
+  
+  const now = new Date();
+  const currentMonth = now.getMonth();
+  const currentYear = now.getFullYear();
+  
+  const monthExpenses = expenses.filter(exp => {
+    const expDate = new Date(exp.date);
+    return expDate.getMonth() === currentMonth && expDate.getFullYear() === currentYear;
+  });
+  
+  const monthExpensesTotal = monthExpenses.reduce((sum, exp) => sum + parseFloat(exp.amount || 0), 0);
+  
+  const avgExpense = expenses.length > 0 ? totalExpenses / expenses.length : 0;
+  
+  document.getElementById('totalExpenses').textContent = totalExpenses.toFixed(2) + ' RON';
+  document.getElementById('monthExpensesCount').textContent = monthExpensesTotal.toFixed(2) + ' RON';
+  document.getElementById('avgExpense').textContent = avgExpense.toFixed(2) + ' RON';
+  
+  const table = document.getElementById('expensesTable');
+  
+  if (expenses.length === 0) {
+    table.innerHTML = '<tr><td colspan="6" style="text-align:center;color:#999;">Nu există cheltuieli înregistrate</td></tr>';
+    return;
+  }
+  
+  expenses.sort((a, b) => new Date(b.date) - new Date(a.date));
+  
+  table.innerHTML = expenses.map(expense => `
+    <tr>
+      <td>${new Date(expense.date).toLocaleDateString('ro-RO')}</td>
+      <td><span class="badge badge-info">${expense.category}</span></td>
+      <td>${expense.description}</td>
+      <td><strong>${parseFloat(expense.amount).toFixed(2)} RON</strong></td>
+      <td>${expense.supplier}</td>
+      <td class="action-buttons">
+        <button class="icon-btn" style="background:#ffc107;color:white;" onclick="editExpense(${expense.id})" title="Editează">✏️</button>
+        <button class="icon-btn" style="background:#dc3545;color:white;" onclick="deleteExpense(${expense.id})" title="Șterge">🗑️</button>
+      </td>
+    </tr>
+  `).join('');
+}
+
+function addExpense() {
+  const newExpense = {
+    id: Date.now(),
+    date: document.getElementById('expenseDate').value,
+    category: document.getElementById('expenseCategory').value,
+    description: document.getElementById('expenseDescription').value,
+    amount: document.getElementById('expenseAmount').value,
+    supplier: document.getElementById('expenseSupplier').value
+  };
+  
+  if (!newExpense.date || !newExpense.description || !newExpense.amount) {
+    alert('⚠️ Completați câmpurile obligatorii!');
+    return;
+  }
+  
+  if (!adminData.expenses) {
+    adminData.expenses = [];
+  }
+  
+  adminData.expenses.push(newExpense);
+  saveAdminData();
+  closeModal('addExpenseModal');
+  loadExpenses();
+  alert('✅ Cheltuiala a fost adăugată cu succes!');
+  
+  document.getElementById('expenseDate').value = '';
+  document.getElementById('expenseCategory').value = 'Utilități';
+  document.getElementById('expenseDescription').value = '';
+  document.getElementById('expenseAmount').value = '';
+  document.getElementById('expenseSupplierSelect').value = '';
+  document.getElementById('expenseSupplier').value = '';
+}
+
+function deleteExpense(id) {
+  if (confirm('Sigur doriți să ștergeți această cheltuială?')) {
+    adminData.expenses = adminData.expenses.filter(e => e.id !== id);
+    saveAdminData();
+    loadExpenses();
+    alert('✅ Cheltuiala a fost ștearsă!');
+  }
+}
+
+function editExpense(id) {
+  const expense = adminData.expenses.find(e => e.id === id);
+  if (!expense) return;
+  
+  populateSupplierSelects();
+  
+  document.getElementById('editExpenseId').value = id;
+  document.getElementById('editExpenseDate').value = expense.date;
+  document.getElementById('editExpenseCategory').value = expense.category;
+  document.getElementById('editExpenseDescription').value = expense.description;
+  document.getElementById('editExpenseAmount').value = expense.amount;
+  document.getElementById('editExpenseSupplier').value = expense.supplier;
+  
+  openModal('editExpenseModal');
+}
+
+function updateExpense() {
+  const id = parseInt(document.getElementById('editExpenseId').value);
+  const date = document.getElementById('editExpenseDate').value;
+  const category = document.getElementById('editExpenseCategory').value;
+  const description = document.getElementById('editExpenseDescription').value;
+  const amount = document.getElementById('editExpenseAmount').value;
+  const supplier = document.getElementById('editExpenseSupplier').value;
+  
+  if (!date || !description || !amount) {
+    alert('⚠️ Completați câmpurile obligatorii!');
+    return;
+  }
+  
+  const expenseIndex = adminData.expenses.findIndex(e => e.id === id);
+  if (expenseIndex !== -1) {
+    adminData.expenses[expenseIndex] = {
+      ...adminData.expenses[expenseIndex],
+      date: date,
+      category: category,
+      description: description,
+      amount: amount,
+      supplier: supplier
+    };
+    
+    saveAdminData();
+    closeModal('editExpenseModal');
+    loadExpenses();
+    alert('✅ Cheltuiala a fost actualizată cu succes!');
+  }
+}
+
+// DOCUMENTS
+function loadDocuments() {
+  const table = document.getElementById('documentsTable');
+  const documents = adminData.documents || [];
+  
+  if (documents.length === 0) {
+    table.innerHTML = '<tr><td colspan="6" style="text-align:center;color:#999;">Nu există documente încărcate</td></tr>';
+    return;
+  }
+  
+  table.innerHTML = documents.map(doc => `
+    <tr>
+      <td><strong>${doc.name}</strong></td>
+      <td><span class="badge badge-info">${doc.type}</span></td>
+      <td>${doc.client}</td>
+      <td>${new Date(doc.uploadDate).toLocaleDateString('ro-RO')}</td>
+      <td>${doc.size || '-'}</td>
+      <td class="action-buttons">
+        <button class="icon-btn" style="background:#ffc107;color:white;" onclick="editDocument(${doc.id})" title="Editează">✏️</button>
+        <button class="icon-btn" style="background:#dc3545;color:white;" onclick="deleteDocument(${doc.id})" title="Șterge">🗑️</button>
+      </td>
+    </tr>
+  `).join('');
+}
+
+function addDocument() {
+  const newDocument = {
+    id: Date.now(),
+    name: document.getElementById('documentName').value,
+    type: document.getElementById('documentType').value,
+    client: document.getElementById('documentClient').value,
+    uploadDate: new Date().toISOString(),
+    size: '-'
+  };
+  
+  if (!newDocument.name || !newDocument.type) {
+    alert('⚠️ Completați câmpurile obligatorii!');
+    return;
+  }
+  
+  if (!adminData.documents) {
+    adminData.documents = [];
+  }
+  
+  adminData.documents.push(newDocument);
+  saveAdminData();
+  closeModal('addDocumentModal');
+  loadDocuments();
+  alert('✅ Documentul a fost adăugat cu succes!');
+  
+  document.getElementById('documentName').value = '';
+  document.getElementById('documentType').value = 'Contract';
+  document.getElementById('documentClient').value = '';
+}
+
+function deleteDocument(id) {
+  if (confirm('Sigur doriți să ștergeți acest document?')) {
+    adminData.documents = adminData.documents.filter(d => d.id !== id);
+    saveAdminData();
+    loadDocuments();
+    alert('✅ Documentul a fost șters!');
+  }
+}
+
+function editDocument(id) {
+  const doc = adminData.documents.find(d => d.id === id);
+  if (!doc) return;
+  
+  document.getElementById('editDocumentId').value = id;
+  document.getElementById('editDocumentName').value = doc.name;
+  document.getElementById('editDocumentType').value = doc.type;
+  document.getElementById('editDocumentClient').value = doc.client;
+  
+  openModal('editDocumentModal');
+}
+
+function updateDocument() {
+  const id = parseInt(document.getElementById('editDocumentId').value);
+  const name = document.getElementById('editDocumentName').value;
+  const type = document.getElementById('editDocumentType').value;
+  const client = document.getElementById('editDocumentClient').value;
+  
+  if (!name || !type) {
+    alert('⚠️ Completați câmpurile obligatorii!');
+    return;
+  }
+  
+  const documentIndex = adminData.documents.findIndex(d => d.id === id);
+  if (documentIndex !== -1) {
+    adminData.documents[documentIndex] = {
+      ...adminData.documents[documentIndex],
+      name: name,
+      type: type,
+      client: client
+    };
+    
+    saveAdminData();
+    closeModal('editDocumentModal');
+    loadDocuments();
+    alert('✅ Documentul a fost actualizat cu succes!');
+  }
+}
+
+// SEO
+function loadSEO() {
+  document.getElementById('metaTitleRO').value = adminData.seo.titleRO;
+  document.getElementById('metaDescriptionRO').value = adminData.seo.descriptionRO;
+  document.getElementById('metaKeywordsRO').value = adminData.seo.keywordsRO;
+}
+
+function saveSEO() {
+  adminData.seo.titleRO = document.getElementById('metaTitleRO').value;
+  adminData.seo.descriptionRO = document.getElementById('metaDescriptionRO').value;
+  adminData.seo.keywordsRO = document.getElementById('metaKeywordsRO').value;
+  
+  saveAdminData();
+  alert('✅ Setările SEO au fost salvate cu succes!');
+}
+
+// SETTINGS
+function loadSettings() {
+  document.getElementById('currentUsername').value = adminData.credentials.username;
+  document.getElementById('contactEmail').value = adminData.contactInfo.email;
+  document.getElementById('contactPhone').value = adminData.contactInfo.phone;
+  document.getElementById('contactAddress').value = adminData.contactInfo.address;
+}
+
+function changeCredentials() {
+  const currentPassword = document.getElementById('currentPassword').value;
+  const newUsername = document.getElementById('newUsername').value;
+  const newPassword = document.getElementById('newPassword').value;
+  const confirmPassword = document.getElementById('confirmPassword').value;
+  
+  if (!currentPassword) {
+    alert('⚠️ Introduceți parola curentă!');
+    return;
+  }
+  
+  if (currentPassword !== adminData.credentials.password) {
+    alert('❌ Parola curentă este incorectă!');
+    return;
+  }
+  
+  if (newPassword && newPassword !== confirmPassword) {
+    alert('❌ Parolele noi nu coincid!');
+    return;
+  }
+  
+  if (newUsername) {
+    adminData.credentials.username = newUsername;
+  }
+  
+  if (newPassword) {
+    adminData.credentials.password = newPassword;
+  }
+  
+  saveAdminData();
+  alert('✅ Credențialele au fost actualizate cu succes!');
+  
+  document.getElementById('currentUsername').value = adminData.credentials.username;
+  document.getElementById('newUsername').value = '';
+  document.getElementById('currentPassword').value = '';
+  document.getElementById('newPassword').value = '';
+  document.getElementById('confirmPassword').value = '';
+}
+
+function checkPasswordStrength(password) {
+  const strengthFill = document.getElementById('strengthFill');
+  const strengthText = document.getElementById('strengthText');
+  
+  let strength = 0;
+  if (password.length >= 8) strength++;
+  if (password.length >= 12) strength++;
+  if (/[a-z]/.test(password) && /[A-Z]/.test(password)) strength++;
+  if (/[0-9]/.test(password)) strength++;
+  if (/[^a-zA-Z0-9]/.test(password)) strength++;
+  
+  const percent = (strength / 5) * 100;
+  strengthFill.style.width = percent + '%';
+  
+  if (strength <= 2) {
+    strengthFill.className = 'strength-fill strength-weak';
+    strengthText.textContent = '⚠️ Parolă slabă';
+    strengthText.style.color = 'var(--danger)';
+  } else if (strength <= 3) {
+    strengthFill.className = 'strength-fill strength-medium';
+    strengthText.textContent = '⚡ Parolă medie';
+    strengthText.style.color = 'var(--warning)';
+  } else {
+    strengthFill.className = 'strength-fill strength-strong';
+    strengthText.textContent = '✅ Parolă puternică';
+    strengthText.style.color = 'var(--success)';
+  }
+}
+
+function saveContactInfo() {
+  adminData.contactInfo.email = document.getElementById('contactEmail').value;
+  adminData.contactInfo.phone = document.getElementById('contactPhone').value;
+  adminData.contactInfo.address = document.getElementById('contactAddress').value;
+  
+  saveAdminData();
+  alert('✅ Informațiile de contact au fost salvate!');
+}
+
+// MODAL FUNCTIONS
+function openModal(modalId) {
+  document.getElementById(modalId).classList.add('active');
+}
+
+function closeModal(modalId) {
+  document.getElementById(modalId).classList.remove('active');
+}
+
+window.onclick = function(event) {
+  if (event.target.classList.contains('modal')) {
+    event.target.classList.remove('active');
+  }
+}
+</script>
+
+</body>
+</html>
