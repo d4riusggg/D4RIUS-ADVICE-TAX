@@ -15,20 +15,12 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-:root{
-  --primary:#14314d;
-  --secondary:#ff7a18;
-  --dark:#0b1b2b;
-  --light:#f5f7fb;
-  --text:#333;
-  --radius:20px;
-}
+:root{--primary:#14314d;--secondary:#ff7a18;--dark:#0b1b2b;--light:#f5f7fb;--text:#333;--radius:20px;}
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif;}
 html{scroll-behavior:smooth}
 body{background:#fff;color:var(--text);line-height:1.7;padding-top:100px;}
 .container{width:90%;max-width:1200px;margin:auto;}
 img{max-width:100%;display:block}
-
 header{background:linear-gradient(135deg,var(--primary),var(--dark));position:fixed;top:0;left:0;right:0;z-index:999;backdrop-filter:blur(6px);box-shadow:0 15px 40px rgba(0,0,0,.25);}
 .nav{display:flex;align-items:center;justify-content:space-between;padding:16px 0;gap:20px;}
 .brand{color:#fff;font-size:22px;font-weight:800;}
@@ -38,7 +30,6 @@ nav ul{display:flex;list-style:none;gap:26px;align-items:center;}
 nav a{color:#fff;text-decoration:none;font-weight:500;position:relative;}
 nav a::after{content:"";position:absolute;bottom:-6px;left:0;width:0;height:2px;background:var(--secondary);transition:.3s;}
 nav a:hover::after{width:100%}
-
 .language-selector{position:relative;display:inline-block;}
 .lang-current{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,0.1);padding:8px 15px;border-radius:8px;cursor:pointer;transition:.3s;border:2px solid transparent;}
 .lang-current:hover{background:rgba(255,255,255,0.2);border-color:var(--secondary);}
@@ -51,14 +42,12 @@ nav a:hover::after{width:100%}
 .lang-option:hover{background:linear-gradient(135deg,#ff7a18,#ff9a3c);}
 .lang-option:hover .lang-text{color:#fff;}
 .lang-option .lang-text{color:var(--primary);font-weight:600;font-size:14px;}
-
 .hero{background:linear-gradient(135deg,var(--primary),var(--dark));padding:110px 0;color:#fff;overflow:hidden;}
 .hero-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:70px;align-items:center;}
 h1{font-size:46px;margin-bottom:22px;}
 .hero p{font-size:18px;opacity:.9;margin-bottom:35px;}
 .btn{display:inline-block;background:linear-gradient(135deg,var(--secondary),#ff9a3c);color:#fff;padding:15px 36px;border-radius:50px;font-weight:600;text-decoration:none;transition:.35s;box-shadow:0 15px 30px rgba(255,122,24,.4);}
 .btn:hover{transform:translateY(-4px) scale(1.03);box-shadow:0 25px 45px rgba(255,122,24,.6);}
-
 section{padding:100px 0}
 .section-title{text-align:center;margin-bottom:65px;}
 h2{font-size:38px;color:var(--primary);}
@@ -68,17 +57,13 @@ h2{font-size:38px;color:var(--primary);}
 .card:hover::before{opacity:1}
 .card:hover{transform:translateY(-12px);}
 .card h3{margin-bottom:14px;color:var(--primary);}
-
 .about{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center;}
 .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:40px;}
 .stat{background:#fff;padding:28px;text-align:center;border-radius:16px;box-shadow:0 10px 25px rgba(0,0,0,.08);transition:.3s;}
 .stat:hover{transform:scale(1.05)}
 .stat h3{color:var(--secondary);font-size:32px;}
-
 .blog-card h4{margin-bottom:12px;}
 .blog-card span{font-size:14px;color:#777;display:block;margin-bottom:10px;}
-
-/* FOOTER */
 footer{background:linear-gradient(135deg,var(--dark),#000);color:#fff;padding:80px 0 30px;}
 .footer-grid{display:grid;grid-template-columns:1fr 1.5fr 1fr 1fr;gap:40px;}
 .footer-logo img{height:80px}
@@ -88,27 +73,21 @@ footer a:hover{color:var(--secondary)}
 .footer-desc{color:#aaa;font-size:14px;margin-top:10px;line-height:1.7;}
 .footer-divider{border:none;border-top:1px solid rgba(255,255,255,.1);margin:30px 0 0;}
 .copyright{text-align:center;margin-top:20px;font-size:13px;opacity:.5;}
-
 .reveal{opacity:0;transform:translateY(40px);transition:1s;}
 .reveal.active{opacity:1;transform:translateY(0);}
-
-/* ═══════════════ CHATBOT ═══════════════ */
 #chatbot-btn{position:fixed;bottom:20px;right:20px;background:linear-gradient(135deg,#ff7a18,#ff9a3c);color:#fff;width:65px;height:65px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:28px;cursor:pointer;box-shadow:0 10px 30px rgba(255,122,24,.5);z-index:9999;transition:.3s;animation:pulse 2s infinite;}
 #chatbot-btn:hover{transform:scale(1.1);box-shadow:0 15px 40px rgba(255,122,24,.7);}
 @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
-
 #chatbot-box{position:fixed;bottom:100px;right:20px;width:380px;max-width:calc(100vw - 40px);background:#fff;border-radius:20px;box-shadow:0 20px 60px rgba(0,0,0,.3);display:none;flex-direction:column;overflow:hidden;z-index:9999;max-height:600px;}
 #chatbot-header{background:linear-gradient(135deg,var(--primary),var(--dark));color:#fff;padding:20px;font-weight:600;font-size:18px;display:flex;justify-content:space-between;align-items:center;}
 #close-chat{background:transparent;border:none;color:#fff;font-size:24px;cursor:pointer;padding:0;width:30px;height:30px;display:flex;align-items:center;justify-content:center;border-radius:50%;transition:.3s;}
 #close-chat:hover{background:rgba(255,255,255,.2);}
-
 #chatbot-messages{padding:20px;flex:1;overflow-y:auto;font-size:15px;background:linear-gradient(180deg,#f9fafb,#fff);max-height:400px;}
 .msg{padding:12px 16px;border-radius:16px;margin-bottom:12px;animation:slideIn .4s;box-shadow:0 2px 8px rgba(0,0,0,.05);}
 .bot{background:#e9ecef;color:#333;max-width:85%;}
 .user{background:linear-gradient(135deg,#ff7a18,#ff9a3c);color:#fff;margin-left:auto;text-align:right;max-width:85%;}
 .expert-msg{background:linear-gradient(135deg,#ede9fe,#e0e7ff)!important;color:#1e1b4b!important;max-width:90%;}
 @keyframes slideIn{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:translateY(0)}}
-
 #chatbot-options{padding:15px;background:#fff;border-top:2px solid #f0f0f0;max-height:220px;overflow-y:auto;}
 .option-btn{width:100%;padding:14px 18px;margin-bottom:10px;border:2px solid #e0e0e0;border-radius:12px;background:#fff;color:var(--primary);font-size:14px;font-weight:600;cursor:pointer;transition:.3s;text-align:left;display:flex;align-items:center;gap:10px;font-family:'Inter',sans-serif;}
 .option-btn:hover{background:linear-gradient(135deg,#ff7a18,#ff9a3c);color:#fff;border-color:transparent;transform:translateX(5px);}
@@ -120,26 +99,22 @@ footer a:hover{color:var(--secondary)}
 .contact-option:hover{background:linear-gradient(135deg,#20ba5a,#1fa855);transform:scale(1.02);}
 .expert-option{background:linear-gradient(135deg,#6366f1,#8b5cf6);color:#fff;border:none;}
 .expert-option:hover{background:linear-gradient(135deg,#4f46e5,#7c3aed);transform:scale(1.02);}
-
 #expert-input-row{display:none;gap:8px;padding:12px;border-top:2px solid #f0f0f0;background:#fff;align-items:flex-end;}
 #expert-input{flex:1;padding:10px 14px;border:2px solid #e0e0e0;border-radius:12px;font-size:14px;outline:none;font-family:'Inter',sans-serif;transition:.3s;resize:none;max-height:80px;}
 #expert-input:focus{border-color:#6366f1;}
 #expert-send{background:linear-gradient(135deg,#6366f1,#8b5cf6);color:#fff;border:none;border-radius:12px;padding:10px 16px;cursor:pointer;font-size:18px;transition:.3s;flex-shrink:0;height:42px;}
 #expert-send:hover{transform:scale(1.05);}
 #expert-send:disabled{opacity:.5;cursor:not-allowed;transform:none;}
-
 .typing-indicator{display:flex;gap:4px;align-items:center;padding:12px 16px;background:#e9ecef;border-radius:16px;width:65px;margin-bottom:10px;}
 .typing-dot{width:7px;height:7px;border-radius:50%;background:#888;animation:typingBounce 1.2s infinite;}
 .typing-dot:nth-child(2){animation-delay:.2s;}
 .typing-dot:nth-child(3){animation-delay:.4s;}
 @keyframes typingBounce{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-6px)}}
-
 @media(max-width:900px){.hero-grid,.about,.footer-grid{grid-template-columns:1fr}.nav{flex-direction:column}nav ul{flex-wrap:wrap;justify-content:center}h1{font-size:38px}}
 @media(max-width:500px){#chatbot-box{width:calc(100vw - 30px);right:15px;bottom:90px;}#chatbot-btn{width:60px;height:60px;font-size:26px;}}
 </style>
 </head>
 <body>
-
 <header>
 <div class="container nav">
   <div class="brand">d4riusfn<span>TAX ADVICE S.R.L</span></div>
@@ -170,7 +145,7 @@ footer a:hover{color:var(--secondary)}
   <div>
     <h1 data-i18n="hero_title">CONSULTANTA ANALIZA RESURSE UMANE</h1>
     <p data-i18n="hero_subtitle">Experienta in domeniul financiar contabil de peste 15 ani.</p>
-    <a href="#contact" class="btn" data-i18n="hero_cta">Solicită ofertă</a>
+    <a href="#contact" class="btn" data-i18n="hero_cta">Solicita oferta</a>
   </div>
   <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&q=80" style="border-radius:var(--radius)" alt="Contabilitate">
 </div>
@@ -180,13 +155,13 @@ footer a:hover{color:var(--secondary)}
 <div class="container">
   <div class="section-title">
     <h2 data-i18n="services_title">Serviciile Noastre</h2>
-    <p style="max-width:700px;margin:20px auto 0;color:#666;" data-i18n="services_subtitle">Soluții complete de contabilitate și consultanță adaptate nevoilor afacerii tale</p>
+    <p style="max-width:700px;margin:20px auto 0;color:#666;" data-i18n="services_subtitle">Solutii complete de contabilitate si consultanta adaptate nevoilor afacerii tale</p>
   </div>
   <div class="grid">
-    <div class="card"><h3 data-i18n="service1_title">✅ Contabilitate primară</h3><p data-i18n="service1_desc">Organizare documente lunare, pregătire documente lunare, verificare și analiză financiară documente.</p></div>
-    <div class="card"><h3 data-i18n="service2_title">✅ Intocmire pontaje si salarizare</h3><p data-i18n="service2_desc">State de plată și Reges online</p></div>
-    <div class="card"><h3 data-i18n="service3_title">✅ Consultanță in afaceri</h3><p data-i18n="service3_desc">Suport decizional</p></div>
-    <div class="card"><h3 data-i18n="service4_title">✅ Înființare firme</h3><p data-i18n="service4_desc">SRL, PFA, ONG</p></div>
+    <div class="card"><h3 data-i18n="service1_title">✅ Contabilitate primara</h3><p data-i18n="service1_desc">Organizare documente lunare, pregatire documente lunare, verificare si analiza financiara documente.</p></div>
+    <div class="card"><h3 data-i18n="service2_title">✅ Intocmire pontaje si salarizare</h3><p data-i18n="service2_desc">State de plata si Reges online</p></div>
+    <div class="card"><h3 data-i18n="service3_title">✅ Consultanta in afaceri</h3><p data-i18n="service3_desc">Suport decizional</p></div>
+    <div class="card"><h3 data-i18n="service4_title">✅ Infiintare firme</h3><p data-i18n="service4_desc">SRL, PFA, ONG</p></div>
   </div>
 </div>
 </section>
@@ -195,12 +170,12 @@ footer a:hover{color:var(--secondary)}
 <div class="container about">
   <div>
     <h2 data-i18n="about_title">Despre noi</h2>
-    <p data-i18n="about_text1">d4riusfnTAX ADVICE S.R.L este o firmă nou-înființată.</p>
-    <p data-i18n="about_text2">Contabilul coordonator are <strong>peste 15 ani experiență</strong> profesională.</p>
+    <p data-i18n="about_text1">d4riusfnTAX ADVICE S.R.L este o firma nou-infiintata.</p>
+    <p data-i18n="about_text2">Contabilul coordonator are <strong>peste 15 ani experienta</strong> profesionala.</p>
     <div class="stats">
-      <div class="stat"><h3>15+</h3><p data-i18n="stat1">Ani experiență</p></div>
+      <div class="stat"><h3>15+</h3><p data-i18n="stat1">Ani experienta</p></div>
       <div class="stat"><h3>100%</h3><p data-i18n="stat2">Conformitate</p></div>
-      <div class="stat"><h3 id="views">0</h3><p data-i18n="stat3">Vizualizări site</p></div>
+      <div class="stat"><h3 id="views">0</h3><p data-i18n="stat3">Vizualizari site</p></div>
     </div>
   </div>
   <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=600&q=80" style="border-radius:var(--radius)" alt="Echipa d4riusTAX">
@@ -211,9 +186,9 @@ footer a:hover{color:var(--secondary)}
 <div class="container">
   <div class="section-title"><h2 data-i18n="blog_title">Blog</h2></div>
   <div class="grid">
-    <div class="card blog-card"><h4 data-i18n="blog1_title">Când ai nevoie de consultanță în afaceri</h4><span data-i18n="blog1_category">Ghid antreprenori</span><p data-i18n="blog1_desc">Semne clare că este momentul să consulți afacerii tale.</p></div>
-    <div class="card blog-card"><h4 data-i18n="blog2_title">Diferența dintre contabilitate și consultanță</h4><span data-i18n="blog2_category">Clarificări utile</span><p data-i18n="blog2_desc">Ce face un consultant financiar și cum te ajută în decizii.</p></div>
-    <div class="card blog-card"><h4 data-i18n="blog3_title">Greșeli frecvente la firmele mici</h4><span data-i18n="blog3_category">Experiență practică</span><p data-i18n="blog3_desc">Ce am observat după peste 15 ani de activitate contabilă.</p></div>
+    <div class="card blog-card"><h4 data-i18n="blog1_title">Cand ai nevoie de consultanta in afaceri</h4><span data-i18n="blog1_category">Ghid antreprenori</span><p data-i18n="blog1_desc">Semne clare ca este momentul sa consulti afacerii tale.</p></div>
+    <div class="card blog-card"><h4 data-i18n="blog2_title">Diferenta dintre contabilitate si consultanta</h4><span data-i18n="blog2_category">Clarificari utile</span><p data-i18n="blog2_desc">Ce face un consultant financiar si cum te ajuta in decizii.</p></div>
+    <div class="card blog-card"><h4 data-i18n="blog3_title">Greseli frecvente la firmele mici</h4><span data-i18n="blog3_category">Experienta practica</span><p data-i18n="blog3_desc">Ce am observat dupa peste 15 ani de activitate contabila.</p></div>
   </div>
 </div>
 </section>
@@ -221,8 +196,8 @@ footer a:hover{color:var(--secondary)}
 <section id="contact" class="reveal">
 <div class="container">
   <div class="section-title">
-    <h2 data-i18n="contact_title">Contactează-ne</h2>
-    <p style="max-width:600px;margin:20px auto 0;color:#666;" data-i18n="contact_subtitle">Suntem aici să te ajutăm! Alege modalitatea preferată de contact.</p>
+    <h2 data-i18n="contact_title">Contacteaza-ne</h2>
+    <p style="max-width:600px;margin:20px auto 0;color:#666;" data-i18n="contact_subtitle">Suntem aici sa te ajutam! Alege modalitatea preferata de contact.</p>
   </div>
   <div class="grid">
     <div class="card">
@@ -233,15 +208,15 @@ footer a:hover{color:var(--secondary)}
     <div class="card">
       <h3 data-i18n="contact_phone_title">📞 Telefon</h3>
       <p style="margin-bottom:15px;color:#666;">+40 770 430 731</p>
-      <a href="tel:+40770430731" class="btn" data-i18n="contact_phone_btn">Sună Acum</a>
+      <a href="tel:+40770430731" class="btn" data-i18n="contact_phone_btn">Suna Acum</a>
     </div>
     <div class="card">
       <h3 data-i18n="contact_location_title">📍 Sediu</h3>
-      <p style="margin-bottom:15px;" data-i18n="contact_location_address">Târgoviște, Dâmbovița</p>
+      <p style="margin-bottom:15px;" data-i18n="contact_location_address">Targoviste, Dambovita</p>
       <p style="font-size:14px;color:#666;line-height:1.6;">
         <strong data-i18n="contact_schedule_label">Program:</strong><br>
         <span data-i18n="contact_schedule_weekday">Luni - Vineri: 10:00 - 18:00</span><br>
-        <span data-i18n="contact_schedule_weekend">Sâmbătă - Duminică: 11:00 - 18:00</span>
+        <span data-i18n="contact_schedule_weekend">Sambata - Duminica: 11:00 - 18:00</span>
       </p>
     </div>
   </div>
@@ -253,11 +228,11 @@ footer a:hover{color:var(--secondary)}
   <div class="footer-grid">
     <div>
       <div class="footer-logo"><img src="D4RIUS TAX.png" alt="Logo d4riusTAX"></div>
-      <p class="footer-desc" data-i18n="footer_desc">Contabilitate și consultanță financiară.</p>
+      <p class="footer-desc" data-i18n="footer_desc">Contabilitate si consultanta financiara.</p>
     </div>
     <div>
       <h4>d4riusfnTAX ADVICE S.R.L</h4>
-      <p class="footer-desc" data-i18n="footer_about_long">Firmă cu experiență de peste 15 ani în domeniul financiar-contabil. Oferim servicii complete, profesionale și personalizate pentru afacerea ta.</p>
+      <p class="footer-desc" data-i18n="footer_about_long">Firma cu experienta de peste 15 ani in domeniul financiar-contabil.</p>
     </div>
     <div>
       <h4 data-i18n="footer_nav_title">Navigare</h4>
@@ -268,111 +243,38 @@ footer a:hover{color:var(--secondary)}
     </div>
     <div>
       <h4 data-i18n="footer_sitemap_title">Sitemap</h4>
-      <a href="index.html" data-i18n="footer_sitemap_home">🏠 Pagina Principală</a>
-      <a href="#servicii" data-i18n="footer_sitemap_services">📊 Servicii</a>
-      <a href="#despre" data-i18n="footer_sitemap_about">👥 Despre Noi</a>
-      <a href="#blog" data-i18n="footer_sitemap_blog">📝 Blog</a>
-      <a href="#contact" data-i18n="footer_sitemap_contact">📞 Contact</a>
-      <a href="404.html" data-i18n="footer_sitemap_404">🔗 Pagina 404</a>
+      <a href="index.html">🏠 Pagina Principala</a>
+      <a href="#servicii">📊 Servicii</a>
+      <a href="#despre">👥 Despre Noi</a>
+      <a href="#blog">📝 Blog</a>
+      <a href="#contact">📞 Contact</a>
+      <a href="404.html">🔗 Pagina 404</a>
     </div>
   </div>
   <hr class="footer-divider">
-  <div class="copyright" data-i18n="footer_copyright">© 2026 d4riusfnTAX ADVICE S.R.L – Toate drepturile rezervate</div>
+  <div class="copyright">© 2026 d4riusfnTAX ADVICE S.R.L - Toate drepturile rezervate</div>
 </div>
 </footer>
 
-<!-- CHATBOT -->
 <div id="chatbot-btn">💬</div>
 <div id="chatbot-box">
   <div id="chatbot-header">
-    <span id="chatTitleEl" data-i18n="chatbot_title">🤖 Asistent d4rius</span>
+    <span id="chatTitleEl">🤖 Asistent d4rius</span>
     <button id="close-chat">×</button>
   </div>
   <div id="chatbot-messages">
-    <div class="msg bot" data-i18n="chatbot_welcome">Bună! Sunt asistentul virtual d4rius 😊<br><br>Alege una dintre opțiuni pentru a afla mai multe:</div>
+    <div class="msg bot">Buna! Sunt asistentul virtual d4rius 😊<br><br>Alege una dintre optiuni pentru a afla mai multe:</div>
   </div>
   <div id="chatbot-options"></div>
   <div id="expert-input-row">
-    <textarea id="expert-input" rows="1" placeholder="Scrie întrebarea ta..."></textarea>
+    <textarea id="expert-input" rows="1" placeholder="Scrie intrebarea ta..."></textarea>
     <button id="expert-send">➤</button>
   </div>
 </div>
 
 <script>
-const API_KEY = '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';
-
-const translations = {
-  ro:{
-    nav_services:"Servicii",nav_about:"Despre",nav_blog:"Blog",nav_contact:"Contact",
-    hero_title:"CONSULTANTA ANALIZA RESURSE UMANE",hero_subtitle:"Experienta in domeniul financiar contabil de peste 15 ani.",hero_cta:"Solicită ofertă",
-    services_title:"Serviciile Noastre",services_subtitle:"Soluții complete de contabilitate și consultanță adaptate nevoilor afacerii tale",
-    service1_title:"✅ Contabilitate primară",service1_desc:"Organizare documente lunare, pregătire documente lunare, verificare și analiză financiară documente.",
-    service2_title:"✅ Intocmire pontaje si salarizare",service2_desc:"State de plată și Reges online",
-    service3_title:"✅ Consultanță in afaceri",service3_desc:"Suport decizional",
-    service4_title:"✅ Înființare firme",service4_desc:"SRL, PFA, ONG",
-    about_title:"Despre noi",about_text1:"d4riusfnTAX ADVICE S.R.L este o firmă nou-înființată.",about_text2:"Contabilul coordonator are <strong>peste 15 ani experiență</strong> profesională.",
-    stat1:"Ani experiență",stat2:"Conformitate",stat3:"Vizualizări site",
-    blog_title:"Blog",
-    blog1_title:"Când ai nevoie de consultanță în afaceri",blog1_category:"Ghid antreprenori",blog1_desc:"Semne clare că este momentul să consulți afacerii tale.",
-    blog2_title:"Diferența dintre contabilitate și consultanță",blog2_category:"Clarificări utile",blog2_desc:"Ce face un consultant financiar și cum te ajută în decizii.",
-    blog3_title:"Greșeli frecvente la firmele mici",blog3_category:"Experiență practică",blog3_desc:"Ce am observat după peste 15 ani de activitate contabilă.",
-    contact_title:"Contactează-ne",contact_subtitle:"Suntem aici să te ajutăm! Alege modalitatea preferată de contact.",
-    contact_email_title:"📧 Email",contact_email_btn:"Trimite Email",
-    contact_phone_title:"📞 Telefon",contact_phone_btn:"Sună Acum",
-    contact_location_title:"📍 Sediu",contact_location_address:"Târgoviște, Dâmbovița",
-    contact_schedule_label:"Program:",contact_schedule_weekday:"Luni - Vineri: 10:00 - 18:00",contact_schedule_weekend:"Sâmbătă - Duminică: 11:00 - 18:00",
-    footer_desc:"Contabilitate și consultanță financiară.",
-    footer_about_long:"Firmă cu experiență de peste 15 ani în domeniul financiar-contabil. Oferim servicii complete, profesionale și personalizate pentru afacerea ta.",
-    footer_nav_title:"Navigare",footer_sitemap_title:"Sitemap",
-    footer_sitemap_home:"🏠 Pagina Principală",footer_sitemap_services:"📊 Servicii",footer_sitemap_about:"👥 Despre Noi",footer_sitemap_blog:"📝 Blog",footer_sitemap_contact:"📞 Contact",footer_sitemap_404:"🔗 Pagina 404",
-    footer_copyright:"© 2026 d4riusfnTAX ADVICE S.R.L – Toate drepturile rezervate",
-    chatbot_title:"🤖 Asistent d4rius",
-    chatbot_welcome:"Bună! Sunt asistentul virtual d4rius 😊<br><br>Alege una dintre opțiuni pentru a afla mai multe:",
-    chatbot_services:"Servicii oferite",chatbot_pricing:"Prețuri și pachete",chatbot_schedule:"Program de lucru",chatbot_incorporation:"Înființare firmă",
-    chatbot_documents:"Documente necesare",chatbot_fiscal:"Fiscalitate și declarații",chatbot_optimization:"Optimizare fiscală",
-    chatbot_about:"Despre noi",chatbot_faq:"Întrebări frecvente",
-    chatbot_expert:"🧑‍💼 Discută cu un Expert AI",
-    chatbot_contact:"Contactează-ne acum",chatbot_back:"Înapoi la meniu",chatbot_contact_us:"Contactează-ne",
-    chatbot_chose:"Ai ales:",chatbot_back_msg:"Înapoi la meniu principal",
-    exp_welcome:"Bună ziua! Sunt expertul virtual d4riusTAX 🧑‍💼\n\nPoți să mă întrebi orice despre contabilitate, fiscalitate, înființare de firme sau consultanță financiară. Sunt aici să te ajut!",
-    exp_ph:"Scrie întrebarea ta...",exp_back:"← Înapoi la meniu"
-  },
-  en:{
-    nav_services:"Services",nav_about:"About",nav_blog:"Blog",nav_contact:"Contact",
-    hero_title:"HUMAN RESOURCES ANALYSIS CONSULTING",hero_subtitle:"Over 15 years of experience in financial accounting.",hero_cta:"Request Quote",
-    services_title:"Our Services",services_subtitle:"Complete accounting and consulting solutions tailored to your business needs",
-    service1_title:"✅ Primary Accounting",service1_desc:"Monthly document organization, preparation, verification and financial analysis.",
-    service2_title:"✅ Timesheet & Payroll",service2_desc:"Payroll statements and online Reges",
-    service3_title:"✅ Business Consulting",service3_desc:"Decision support",
-    service4_title:"✅ Company Incorporation",service4_desc:"SRL, PFA, NGO",
-    about_title:"About Us",about_text1:"d4riusfnTAX ADVICE S.R.L is a newly established company.",about_text2:"The coordinating accountant has <strong>over 15 years of professional experience</strong>.",
-    stat1:"Years Experience",stat2:"Compliance",stat3:"Site Views",
-    blog_title:"Blog",
-    blog1_title:"When You Need Business Consulting",blog1_category:"Entrepreneur Guide",blog1_desc:"Clear signs that it's time to consult your business.",
-    blog2_title:"The Difference Between Accounting and Consulting",blog2_category:"Useful Clarifications",blog2_desc:"What a financial consultant does and how they help in decisions.",
-    blog3_title:"Common Mistakes in Small Businesses",blog3_category:"Practical Experience",blog3_desc:"What we observed after over 15 years of accounting activity.",
-    contact_title:"Contact Us",contact_subtitle:"We're here to help! Choose your preferred contact method.",
-    contact_email_title:"📧 Email",contact_email_btn:"Send Email",
-    contact_phone_title:"📞 Phone",contact_phone_btn:"Call Now",
-    contact_location_title:"📍 Office",contact_location_address:"Târgoviște, Dâmbovița",
-    contact_schedule_label:"Schedule:",contact_schedule_weekday:"Monday - Friday: 10:00 AM - 6:00 PM",contact_schedule_weekend:"Saturday - Sunday: 11:00 AM - 6:00 PM",
-    footer_desc:"Accounting and financial consulting.",
-    footer_about_long:"Company with over 15 years of experience in financial accounting. We offer complete, professional and personalized services for your business.",
-    footer_nav_title:"Navigation",footer_sitemap_title:"Sitemap",
-    footer_sitemap_home:"🏠 Home Page",footer_sitemap_services:"📊 Services",footer_sitemap_about:"👥 About Us",footer_sitemap_blog:"📝 Blog",footer_sitemap_contact:"📞 Contact",footer_sitemap_404:"🔗 404 Page",
-    footer_copyright:"© 2026 d4riusfnTAX ADVICE S.R.L – All rights reserved",
-    chatbot_title:"🤖 d4rius Assistant",
-    chatbot_welcome:"Hello! I'm the d4rius virtual assistant 😊<br><br>Choose one of the options to learn more:",
-    chatbot_services:"Services Offered",chatbot_pricing:"Pricing & Packages",chatbot_schedule:"Working Hours",chatbot_incorporation:"Company Incorporation",
-    chatbot_documents:"Required Documents",chatbot_fiscal:"Taxation & Declarations",chatbot_optimization:"Tax Optimization",
-    chatbot_about:"About Us",chatbot_faq:"Frequently Asked Questions",
-    chatbot_expert:"🧑‍💼 Chat with an AI Expert",
-    chatbot_contact:"Contact Us Now",chatbot_back:"Back to Menu",chatbot_contact_us:"Contact Us",
-    chatbot_chose:"You chose:",chatbot_back_msg:"Back to main menu",
-    exp_welcome:"Hello! I am the d4riusTAX virtual expert 🧑‍💼\n\nYou can ask me anything about accounting, taxation, company incorporation or financial consulting in Romania. I am here to help!",
-    exp_ph:"Type your question...",exp_back:"← Back to menu"
-  }
-};
+// API key-ul e ascuns pe Cloudflare - nu apare nicaieri in cod!
+const WORKER_URL = 'https://lucky-water-3cdf.dragandarius731.workers.dev';
 
 let currentLanguage = localStorage.getItem('site_language') || 'ro';
 let expertMode = false;
@@ -380,16 +282,11 @@ let expertHistory = [];
 let expertBusy = false;
 
 document.addEventListener('DOMContentLoaded', function() {
-  applyLanguage(currentLanguage);
-  updateLanguageSelector(currentLanguage);
-
   let v = parseInt(localStorage.getItem('site_views') || '0') + 1;
   localStorage.setItem('site_views', v);
   document.getElementById('views').textContent = v;
-
   window.addEventListener('scroll', checkReveal);
   checkReveal();
-
   document.querySelector('.lang-current').addEventListener('click', function(e) {
     e.stopPropagation();
     document.querySelector('.language-selector').classList.toggle('active');
@@ -397,7 +294,6 @@ document.addEventListener('DOMContentLoaded', function() {
   document.addEventListener('click', function(e) {
     if (!e.target.closest('.language-selector')) document.querySelector('.language-selector').classList.remove('active');
   });
-
   document.getElementById('chatbot-btn').addEventListener('click', toggleChat);
   document.getElementById('close-chat').addEventListener('click', closeChat);
   document.getElementById('expert-send').addEventListener('click', sendExpert);
@@ -408,221 +304,127 @@ document.addEventListener('DOMContentLoaded', function() {
     this.style.height = 'auto';
     this.style.height = Math.min(this.scrollHeight, 80) + 'px';
   });
-
   showMainMenu();
 });
-
-function applyLanguage(lang) {
-  document.querySelectorAll('[data-i18n]').forEach(el => {
-    const key = el.getAttribute('data-i18n');
-    if (translations[lang][key] !== undefined) el.innerHTML = translations[lang][key];
-  });
-  document.documentElement.lang = lang;
-  document.getElementById('expert-input').placeholder = translations[lang].exp_ph;
-}
-
-function updateLanguageSelector(lang) {
-  document.getElementById('current-flag').textContent = lang === 'ro' ? '🇷🇴' : '🇬🇧';
-  document.getElementById('current-lang').textContent = lang === 'ro' ? 'RO' : 'EN';
-}
-
-function changeLanguage(lang) {
-  currentLanguage = lang;
-  localStorage.setItem('site_language', lang);
-  applyLanguage(lang);
-  updateLanguageSelector(lang);
-  document.querySelector('.language-selector').classList.remove('active');
-  const box = document.getElementById('chatbot-box');
-  if (box.style.display === 'flex') {
-    document.getElementById('chatbot-messages').innerHTML = `<div class="msg bot">${translations[lang].chatbot_welcome}</div>`;
-    if (expertMode) exitExpertMode();
-    showMainMenu();
-  }
-}
 
 function checkReveal() {
   document.querySelectorAll('.reveal').forEach(r => {
     if (r.getBoundingClientRect().top < window.innerHeight - 100) r.classList.add('active');
   });
 }
-
 function toggleChat() {
   const box = document.getElementById('chatbot-box');
   if (box.style.display === 'flex') { box.style.display = 'none'; }
   else { box.style.display = 'flex'; showMainMenu(); }
 }
-
 function closeChat() {
   document.getElementById('chatbot-box').style.display = 'none';
   exitExpertMode();
-  document.getElementById('chatbot-messages').innerHTML = `<div class="msg bot">${translations[currentLanguage].chatbot_welcome}</div>`;
+  document.getElementById('chatbot-messages').innerHTML = '<div class="msg bot">Buna! Sunt asistentul virtual d4rius 😊<br><br>Alege una dintre optiuni pentru a afla mai multe:</div>';
 }
-
-function addMessage(text, type = 'bot') {
+function addMessage(text, type) {
   const div = document.createElement('div');
-  div.className = 'msg ' + type;
+  div.className = 'msg ' + (type || 'bot');
   div.innerHTML = text;
   const msgs = document.getElementById('chatbot-messages');
   msgs.appendChild(div);
   msgs.scrollTop = msgs.scrollHeight;
 }
-
 function showMainMenu() {
-  const t = translations[currentLanguage];
   exitExpertMode();
   document.getElementById('chatbot-options').innerHTML = `
-    <button class="option-btn" onclick="showServicii()"><span class="option-icon">📊</span><span>${t.chatbot_services}</span></button>
-    <button class="option-btn" onclick="showPreturi()"><span class="option-icon">💰</span><span>${t.chatbot_pricing}</span></button>
-    <button class="option-btn" onclick="showProgram()"><span class="option-icon">🕐</span><span>${t.chatbot_schedule}</span></button>
-    <button class="option-btn" onclick="showInfiintare()"><span class="option-icon">🏢</span><span>${t.chatbot_incorporation}</span></button>
-    <button class="option-btn" onclick="showDocumente()"><span class="option-icon">📄</span><span>${t.chatbot_documents}</span></button>
-    <button class="option-btn" onclick="showFiscalitate()"><span class="option-icon">📋</span><span>${t.chatbot_fiscal}</span></button>
-    <button class="option-btn" onclick="showOptimizare()"><span class="option-icon">💡</span><span>${t.chatbot_optimization}</span></button>
-    <button class="option-btn" onclick="showDespre()"><span class="option-icon">👥</span><span>${t.chatbot_about}</span></button>
-    <button class="option-btn" onclick="showIntrebari()"><span class="option-icon">❓</span><span>${t.chatbot_faq}</span></button>
-    <button class="option-btn expert-option" onclick="openExpert()"><span class="option-icon">🧑‍💼</span><span>${t.chatbot_expert}</span></button>
-    <button class="option-btn contact-option" onclick="showContact()"><span class="option-icon">📞</span><span>${t.chatbot_contact}</span></button>
+    <button class="option-btn" onclick="showServicii()"><span class="option-icon">📊</span><span>Servicii oferite</span></button>
+    <button class="option-btn" onclick="showPreturi()"><span class="option-icon">💰</span><span>Preturi si pachete</span></button>
+    <button class="option-btn" onclick="showProgram()"><span class="option-icon">🕐</span><span>Program de lucru</span></button>
+    <button class="option-btn" onclick="showInfiintare()"><span class="option-icon">🏢</span><span>Infiintare firma</span></button>
+    <button class="option-btn" onclick="showDocumente()"><span class="option-icon">📄</span><span>Documente necesare</span></button>
+    <button class="option-btn" onclick="showFiscalitate()"><span class="option-icon">📋</span><span>Fiscalitate si declaratii</span></button>
+    <button class="option-btn" onclick="showOptimizare()"><span class="option-icon">💡</span><span>Optimizare fiscala</span></button>
+    <button class="option-btn" onclick="showDespre()"><span class="option-icon">👥</span><span>Despre noi</span></button>
+    <button class="option-btn" onclick="showIntrebari()"><span class="option-icon">❓</span><span>Intrebari frecvente</span></button>
+    <button class="option-btn expert-option" onclick="openExpert()"><span class="option-icon">🧑‍💼</span><span>Discuta cu un Expert AI</span></button>
+    <button class="option-btn contact-option" onclick="showContact()"><span class="option-icon">📞</span><span>Contacteaza-ne acum</span></button>
   `;
 }
-
 function showBackButton() {
-  const t = translations[currentLanguage];
   document.getElementById('chatbot-options').innerHTML = `
-    <button class="option-btn back-btn" onclick="goBack()"><span class="option-icon">⬅️</span><span>${t.chatbot_back}</span></button>
-    <button class="option-btn contact-option" onclick="showContact()"><span class="option-icon">📞</span><span>${t.chatbot_contact_us}</span></button>
+    <button class="option-btn back-btn" onclick="goBack()"><span class="option-icon">⬅️</span><span>Inapoi la meniu</span></button>
+    <button class="option-btn contact-option" onclick="showContact()"><span class="option-icon">📞</span><span>Contacteaza-ne</span></button>
   `;
 }
-
-function goBack() { addMessage(translations[currentLanguage].chatbot_back_msg, 'user'); showMainMenu(); }
-
+function goBack() { addMessage('Inapoi la meniu principal', 'user'); showMainMenu(); }
 function showServicii() {
-  const t = translations[currentLanguage];
-  addMessage(`${t.chatbot_chose} <strong>${t.chatbot_services}</strong>`, 'user');
-  addMessage(currentLanguage==='ro'
-    ?`Oferim următoarele servicii profesionale:<br><br>✅ <strong>Contabilitate primară</strong> - organizare și verificare documente lunare<br>✅ <strong>Salarizare completă</strong> - state de plată și Reges online<br>✅ <strong>Consultanță financiară</strong> - suport decizional pentru afacerea ta<br>✅ <strong>Înființare firme</strong> - SRL, PFA, ONG (3-5 zile)<br>📋 <strong>Toate serviciile includ:</strong><br>• Monitorizare termene fiscale<br>• Consultanță permanentă<br><br>Alege o altă opțiune sau contactează-ne pentru detalii!`
-    :`We offer the following professional services:<br><br>✅ <strong>Primary Accounting</strong> - monthly document organization and verification<br>✅ <strong>Complete Payroll</strong> - payroll statements and online Reges<br>✅ <strong>Financial Consulting</strong> - decision support for your business<br>✅ <strong>Company Incorporation</strong> - SRL, PFA, NGO (3-5 days)<br>📋 <strong>All services include:</strong><br>• Tax deadline monitoring<br>• Permanent consulting<br><br>Choose another option or contact us for details!`
-  );
+  addMessage('Ai ales: <strong>Servicii oferite</strong>', 'user');
+  addMessage('Oferim urmatoarele servicii profesionale:<br><br>✅ <strong>Contabilitate primara</strong> - organizare si verificare documente lunare<br>✅ <strong>Salarizare completa</strong> - state de plata si Reges online<br>✅ <strong>Consultanta financiara</strong> - suport decizional pentru afacerea ta<br>✅ <strong>Infiintare firme</strong> - SRL, PFA, ONG (3-5 zile)<br><br>Contacteaza-ne pentru detalii!');
   showBackButton();
 }
-
 function showPreturi() {
-  const t = translations[currentLanguage];
-  addMessage(`${t.chatbot_chose} <strong>${t.chatbot_pricing}</strong>`, 'user');
-  addMessage(currentLanguage==='ro'
-    ?`Prețurile noastre sunt personalizate în funcție de:<br><br>📌 Numărul de documente lunare<br>📌 Tipul de activitate (SRL, PFA, ONG)<br>📌 Numărul de salariați<br>📌 Complexitatea contabilității<br><br><strong>Tarife orientative:</strong><br>• PFA simplu: de la 150 RON/lună<br>• SRL micro: de la 300 RON/lună<br>• Salarizare: de la 50 RON/salariat<br><br>💬 <strong>Mai multe detalii se discută la fața locului!</strong><br><br>📞 Contactează-ne pentru o ofertă personalizată!`
-    :`Our prices are customized based on:<br><br>📌 Number of monthly documents<br>📌 Type of activity (SRL, PFA, NGO)<br>📌 Number of employees<br>📌 Accounting complexity<br><br><strong>Indicative rates:</strong><br>• Simple PFA: from 150 RON/month<br>• Micro SRL: from 300 RON/month<br>• Payroll: from 50 RON/employee<br><br>💬 <strong>More details discussed in person!</strong><br><br>📞 Contact us for a personalized quote!`
-  );
+  addMessage('Ai ales: <strong>Preturi si pachete</strong>', 'user');
+  addMessage('<strong>Tarife orientative:</strong><br><br>• PFA simplu: de la 150 RON/luna<br>• SRL micro: de la 300 RON/luna<br>• Salarizare: de la 50 RON/salariat<br><br>💬 <strong>Mai multe detalii la fata locului!</strong><br><br>📞 Contacteaza-ne pentru o oferta personalizata!');
   showBackButton();
 }
-
 function showProgram() {
-  const t = translations[currentLanguage];
-  addMessage(`${t.chatbot_chose} <strong>${t.chatbot_schedule}</strong>`, 'user');
-  addMessage(currentLanguage==='ro'
-    ?`📅 <strong>Programul nostru:</strong><br><br>🕐 Luni - Vineri: 10:00 - 18:00<br>🕐 Sâmbătă - Duminică: 11:00 - 18:00<br><br>📧 Email: d4riusconsulting.contact@gmail.com<br>📞 Telefon: +40 770 430 731<br><br>Te așteptăm cu drag! 😊`
-    :`📅 <strong>Our schedule:</strong><br><br>🕐 Monday - Friday: 10:00 AM - 6:00 PM<br>🕐 Saturday - Sunday: 11:00 AM - 6:00 PM<br><br>📧 Email: d4riusconsulting.contact@gmail.com<br>📞 Phone: +40 770 430 731<br><br>We look forward to seeing you! 😊`
-  );
+  addMessage('Ai ales: <strong>Program de lucru</strong>', 'user');
+  addMessage('📅 <strong>Programul nostru:</strong><br><br>🕐 Luni - Vineri: 10:00 - 18:00<br>🕐 Sambata - Duminica: 11:00 - 18:00<br><br>📧 d4riusconsulting.contact@gmail.com<br>📞 +40 770 430 731');
   showBackButton();
 }
-
 function showInfiintare() {
-  const t = translations[currentLanguage];
-  addMessage(`${t.chatbot_chose} <strong>${t.chatbot_incorporation}</strong>`, 'user');
-  addMessage(currentLanguage==='ro'
-    ?`Te ajutăm să înființezi:<br><br>🏢 <strong>SRL</strong> - Societate cu Răspundere Limitată<br>👤 <strong>PFA</strong> - Persoană Fizică Autorizată<br>🤝 <strong>ONG</strong> - Organizație Non-Guvernamentală<br><br><strong>Servicii incluse:</strong><br>✓ Pregătire acte necesare<br>✓ Înregistrare la Registrul Comerțului<br>✓ Înregistrare fiscală ANAF<br>✓ Consultanță cod CAEN<br>✓ Deschidere cont bancar (asistență)<br><br>📞 Sună-ne pentru mai multe detalii!`
-    :`We help you establish:<br><br>🏢 <strong>SRL</strong> - Limited Liability Company<br>👤 <strong>PFA</strong> - Authorized Natural Person<br>🤝 <strong>NGO</strong> - Non-Governmental Organization<br><br><strong>Services included:</strong><br>✓ Preparation of necessary documents<br>✓ Registration at the Trade Registry<br>✓ ANAF tax registration<br>✓ CAEN code consulting<br>✓ Bank account opening (assistance)<br><br>📞 Call us for more details!`
-  );
+  addMessage('Ai ales: <strong>Infiintare firma</strong>', 'user');
+  addMessage('Te ajutam sa infiintezi:<br><br>🏢 <strong>SRL</strong> - Societate cu Raspundere Limitata<br>👤 <strong>PFA</strong> - Persoana Fizica Autorizata<br>🤝 <strong>ONG</strong> - Organizatie Non-Guvernamentala<br><br>✓ Pregatire acte necesare<br>✓ Inregistrare Registrul Comertului<br>✓ Inregistrare fiscala ANAF<br>✓ Consultanta cod CAEN');
   showBackButton();
 }
-
 function showDocumente() {
-  const t = translations[currentLanguage];
-  addMessage(`${t.chatbot_chose} <strong>${t.chatbot_documents}</strong>`, 'user');
-  addMessage(currentLanguage==='ro'
-    ?`📄 <strong>Pentru contabilitate lunară:</strong><br>• Facturi emise și primite<br>• Extrase bancare<br>• Chitanțe și bonuri fiscale<br>• Contracte de colaborare<br>• NIR-uri și avize<br><br>📄 <strong>Pentru salarizare:</strong><br>• Pontaje lunare<br>• Concedii medicale<br>• Adeverințe și documente justificative<br><br>📩 Poți trimite documentele și prin email!`
-    :`📄 <strong>For monthly accounting:</strong><br>• Issued and received invoices<br>• Bank statements<br>• Receipts and fiscal receipts<br>• Collaboration contracts<br>• Receipt notes and notices<br><br>📄 <strong>For payroll:</strong><br>• Monthly timesheets<br>• Medical leave<br>• Certificates and supporting documents<br><br>📩 You can also send documents by email!`
-  );
+  addMessage('Ai ales: <strong>Documente necesare</strong>', 'user');
+  addMessage('📄 <strong>Pentru contabilitate lunara:</strong><br>• Facturi emise si primite<br>• Extrase bancare<br>• Chitante si bonuri fiscale<br><br>📄 <strong>Pentru salarizare:</strong><br>• Pontaje lunare<br>• Concedii medicale<br><br>📩 Poti trimite documentele si prin email!');
   showBackButton();
 }
-
 function showFiscalitate() {
-  const t = translations[currentLanguage];
-  addMessage(`${t.chatbot_chose} <strong>${t.chatbot_fiscal}</strong>`, 'user');
-  addMessage(currentLanguage==='ro'
-    ?`📋 <strong>Te ajutăm cu:</strong><br><br>✅ Declarații fiscale lunare și anuale<br>✅ TVA, CAS, CASS<br>✅ Declarația unică (D112)<br>✅ Impozit profit și venit<br>✅ Verificare conformitate ANAF<br>✅ Consultanță fiscală personalizată<br><br>📅 <strong>Termene importante:</strong><br>• TVA: 25 ale lunii următoare<br>• Declarație unică: 25 mai (anual)<br>• Salarii: cel târziu data de 15<br><br>⏰ Nu ratezi niciun termen cu noi!`
-    :`📋 <strong>We help you with:</strong><br><br>✅ Monthly and annual tax declarations<br>✅ VAT, CAS, CASS<br>✅ Single declaration (D112)<br>✅ Profit and income tax<br>✅ ANAF compliance verification<br>✅ Personalized tax consulting<br><br>📅 <strong>Important deadlines:</strong><br>• VAT: 25th of the following month<br>• Single declaration: May 25th (annual)<br>• Salaries: latest by the 15th<br><br>⏰ Don't miss any deadline with us!`
-  );
+  addMessage('Ai ales: <strong>Fiscalitate si declaratii</strong>', 'user');
+  addMessage('✅ Declaratii fiscale lunare si anuale<br>✅ TVA, CAS, CASS, D112<br>✅ Impozit profit si venit<br>✅ Verificare conformitate ANAF<br><br>📅 <strong>Termene importante:</strong><br>• TVA: 25 ale lunii urmatoare<br>• Declaratie unica: 25 mai (anual)<br><br>⏰ Nu ratezi niciun termen cu noi!');
   showBackButton();
 }
-
 function showOptimizare() {
-  const t = translations[currentLanguage];
-  addMessage(`${t.chatbot_chose} <strong>${t.chatbot_optimization}</strong>`, 'user');
-  addMessage(currentLanguage==='ro'
-    ?`💡 <strong>Soluții legale de optimizare:</strong><br><br>✅ Analiza structurii fiscale actuale<br>✅ Recomandări personalizate pentru reducerea taxelor<br>✅ Planificare fiscală pe termen lung<br>✅ Deduceri și scutiri fiscale aplicabile<br>✅ Alegerea celui mai avantajos regim fiscal<br>✅ Consultanță pentru dividend vs salariu<br><br><strong>Peste 15 ani experiență</strong> în optimizare fiscală legală!<br><br>📞 Sună-ne pentru o consultație!`
-    :`💡 <strong>Legal optimization solutions:</strong><br><br>✅ Analysis of current tax structure<br>✅ Personalized recommendations for tax reduction<br>✅ Long-term tax planning<br>✅ Applicable tax deductions and exemptions<br>✅ Choosing the most advantageous tax regime<br>✅ Dividend vs salary consulting<br><br><strong>Over 15 years of experience</strong> in legal tax optimization!<br><br>📞 Call us for a consultation!`
-  );
+  addMessage('Ai ales: <strong>Optimizare fiscala</strong>', 'user');
+  addMessage('💡 <strong>Solutii legale de optimizare:</strong><br><br>✅ Analiza structurii fiscale actuale<br>✅ Reducerea taxelor in mod legal<br>✅ Planificare fiscala pe termen lung<br>✅ Deduceri si scutiri fiscale aplicabile<br>✅ Consultanta pentru dividend vs salariu<br><br><strong>Peste 15 ani experienta</strong> in optimizare fiscala legala!');
   showBackButton();
 }
-
 function showDespre() {
-  const t = translations[currentLanguage];
-  addMessage(`${t.chatbot_chose} <strong>${t.chatbot_about}</strong>`, 'user');
-  addMessage(currentLanguage==='ro'
-    ?`👥 <strong>d4riusTAX ADVICE S.R.L</strong><br><br>Suntem o firmă <strong>nou-înființată</strong> cu o bază solidă de experiență profesională.<br><br>🎯 <strong>Contabilul coordonator:</strong><br>• Peste <strong>15 ani de experiență</strong> în domeniul financiar-contabil<br>• Specializat în consultanță fiscală și optimizare<br>• Expert în relația cu ANAF și rezolvarea situațiilor complexe<br><br>💼 <strong>Valori fundamentale:</strong><br>✓ Profesionalism și dedicare totală<br>✓ Transparență în comunicare<br>✓ Soluții personalizate pentru fiecare client<br>✓ Conformitate 100% cu legislația<br><br>📍 <strong>Sediu:</strong> Târgoviște, Dâmbovița`
-    :`👥 <strong>d4riusTAX ADVICE S.R.L</strong><br><br>We are a <strong>newly established</strong> company with a solid foundation of professional experience.<br><br>🎯 <strong>Coordinating accountant:</strong><br>• Over <strong>15 years of experience</strong> in financial-accounting<br>• Specialized in tax consulting and optimization<br>• Expert in ANAF relations and complex situation resolution<br><br>💼 <strong>Core values:</strong><br>✓ Professionalism and total dedication<br>✓ Transparency in communication<br>✓ Personalized solutions for each client<br>✓ 100% compliance with legislation<br><br>📍 <strong>Office:</strong> Târgoviște, Dâmbovița`
-  );
+  addMessage('Ai ales: <strong>Despre noi</strong>', 'user');
+  addMessage('👥 <strong>d4riusTAX ADVICE S.R.L</strong><br><br>• Peste <strong>15 ani de experienta</strong> in domeniul financiar-contabil<br>• Specializati in consultanta fiscala si optimizare<br>• Experti in relatia cu ANAF<br>• 100% conformitate cu legislatia<br><br>📍 <strong>Sediu:</strong> Targoviste, Dambovita');
   showBackButton();
 }
-
 function showIntrebari() {
-  const t = translations[currentLanguage];
-  addMessage(`${t.chatbot_chose} <strong>${t.chatbot_faq}</strong>`, 'user');
-  addMessage(currentLanguage==='ro'
-    ?`❓ <strong>Răspunsuri la cele mai comune întrebări:</strong><br><br><strong>📌 Cât durează înființarea unei firme?</strong><br>De obicei 3-5 zile lucrătoare pentru SRL și 1-2 zile pentru PFA.<br><br><strong>📌 Ce documente trebuie să vă trimit lunar?</strong><br>Facturi, extrase bancare, chitanțe, bonuri fiscale și pontaje pentru salariați.<br><br><strong>📌 Oferiți consultanță gratuită inițială?</strong><br>Da! Prima discuție este gratuită pentru a înțelege nevoile tale.<br><br><strong>📌 Lucrați și cu firme din alte județe?</strong><br>Da, lucrăm cu clienți din toată România, comunicarea se poate face online.<br><br><strong>📌 Pot schimba contabilul oricând?</strong><br>Da, transferul se face simplu, ne ocupăm de toată documentația necesară.<br><br>💬 Mai ai întrebări? Contactează-ne oricând!`
-    :`❓ <strong>Answers to the most common questions:</strong><br><br><strong>📌 How long does company incorporation take?</strong><br>Usually 3-5 business days for SRL and 1-2 days for PFA.<br><br><strong>📌 What documents should I send you monthly?</strong><br>Invoices, bank statements, receipts, fiscal receipts and timesheets for employees.<br><br><strong>📌 Do you offer free initial consultation?</strong><br>Yes! The first discussion is free to understand your needs.<br><br><strong>📌 Do you work with companies from other counties?</strong><br>Yes, we work with clients from all over Romania, communication can be done online.<br><br><strong>📌 Can I change accountants at any time?</strong><br>Yes, the transfer is simple, we handle all the necessary documentation.<br><br>💬 More questions? Contact us anytime!`
-  );
+  addMessage('Ai ales: <strong>Intrebari frecvente</strong>', 'user');
+  addMessage('<strong>📌 Cat dureaza infiintarea unei firme?</strong><br>3-5 zile lucratoare SRL, 1-2 zile PFA.<br><br><strong>📌 Oferiti consultanta gratuita?</strong><br>Da! Prima discutie este gratuita.<br><br><strong>📌 Lucrati si cu firme din alte judete?</strong><br>Da, comunicarea se poate face online.<br><br><strong>📌 Pot schimba contabilul oricand?</strong><br>Da, ne ocupam de toata documentatia.');
   showBackButton();
 }
-
 function showContact() {
-  const t = translations[currentLanguage];
-  addMessage(`${t.chatbot_chose} <strong>${t.chatbot_contact}</strong>`, 'user');
-  addMessage(currentLanguage==='ro'
-    ?`📞 <strong>Modalități de contact:</strong><br><br>📧 Email: <a href="mailto:d4riusconsulting.contact@gmail.com" style="color:#ff7a18;font-weight:600;">d4riusconsulting.contact@gmail.com</a><br>📞 Telefon: <a href="tel:+40770430731" style="color:#ff7a18;font-weight:600;">+40 770 430 731</a><br>📍 Sediu: Târgoviște, Dâmbovița<br><br>🕐 Program: Luni-Vineri 10:00-18:00<br><br>Te așteptăm cu drag! 😊`
-    :`📞 <strong>Contact methods:</strong><br><br>📧 Email: <a href="mailto:d4riusconsulting.contact@gmail.com" style="color:#ff7a18;font-weight:600;">d4riusconsulting.contact@gmail.com</a><br>📞 Phone: <a href="tel:+40770430731" style="color:#ff7a18;font-weight:600;">+40 770 430 731</a><br>📍 Office: Târgoviște, Dâmbovița<br><br>🕐 Schedule: Mon-Fri 10:00 AM-6:00 PM<br><br>We look forward to hearing from you! 😊`
-  );
+  addMessage('Ai ales: <strong>Contact</strong>', 'user');
+  addMessage('📧 <a href="mailto:d4riusconsulting.contact@gmail.com" style="color:#ff7a18;font-weight:600;">d4riusconsulting.contact@gmail.com</a><br>📞 <a href="tel:+40770430731" style="color:#ff7a18;font-weight:600;">+40 770 430 731</a><br>📍 Targoviste, Dambovita<br><br>🕐 Luni-Vineri 10:00-18:00');
   showBackButton();
 }
-
-// ═══ EXPERT AI ═══
 function openExpert() {
   expertMode = true;
   expertHistory = [];
   document.getElementById('expert-input-row').style.display = 'flex';
-  document.getElementById('chatTitleEl').textContent = currentLanguage === 'ro' ? '🧑‍💼 Expert d4riusTAX' : '🧑‍💼 d4riusTAX Expert';
+  document.getElementById('chatTitleEl').textContent = '🧑‍💼 Expert d4riusTAX';
   document.getElementById('chatbot-options').innerHTML = `
     <button class="option-btn back-btn" onclick="exitExpertAndGoBack()">
-      <span class="option-icon">⬅️</span>
-      <span>${translations[currentLanguage].exp_back}</span>
-    </button>
-  `;
-  addMessage(translations[currentLanguage].exp_welcome.replace(/\n/g,'<br>'), 'bot');
+      <span class="option-icon">⬅️</span><span>Inapoi la meniu</span>
+    </button>`;
+  addMessage('Buna ziua! Sunt expertul virtual d4riusTAX 🧑‍💼<br><br>Poti sa ma intrebi orice despre contabilitate, fiscalitate, infiintare de firme sau consultanta financiara. Sunt aici sa te ajut!');
   document.getElementById('expert-input').focus();
 }
-
 function exitExpertMode() {
   expertMode = false;
   document.getElementById('expert-input-row').style.display = 'none';
-  document.getElementById('chatTitleEl').textContent = translations[currentLanguage].chatbot_title;
+  document.getElementById('chatTitleEl').textContent = '🤖 Asistent d4rius';
 }
-
 function exitExpertAndGoBack() {
   exitExpertMode();
-  addMessage(translations[currentLanguage].chatbot_back_msg, 'user');
+  addMessage('Inapoi la meniu principal', 'user');
   showMainMenu();
 }
-
 function showTyping() {
   const d = document.createElement('div');
   d.id = 'typingEl';
@@ -632,18 +434,15 @@ function showTyping() {
   msgs.appendChild(d);
   msgs.scrollTop = msgs.scrollHeight;
 }
-
 function hideTyping() {
   const t = document.getElementById('typingEl');
   if (t) t.remove();
 }
-
 async function sendExpert() {
   if (!expertMode) return;
   const inp = document.getElementById('expert-input');
   const txt = inp.value.trim();
   if (!txt || expertBusy) return;
-
   addMessage(txt, 'user');
   inp.value = '';
   inp.style.height = 'auto';
@@ -651,23 +450,14 @@ async function sendExpert() {
   document.getElementById('expert-send').disabled = true;
   showTyping();
   expertHistory.push({ role: 'user', content: txt });
-
-  const SYS_RO = 'Ești expertul virtual al firmei d4riusTAX ADVICE S.R.L din Târgoviște, România. Firma oferă contabilitate și consultanță financiară cu peste 15 ani experiență. RĂSPUNZI LA ORICE ÎNTREBARE, nu doar cele contabile. Ești prietenos, profesional, concis. Specializare principală: contabilitate, TVA, CAS, CASS, ANAF, D112, D300, SRL, PFA, ONG, salarizare, optimizare fiscală legală. La întrebări simple răspunzi scurt și natural. La întrebări complexe dai răspunsuri structurate. NICIODATĂ nu refuzi să răspunzi. Contact firmă: +40 770 430 731.';
-  const SYS_EN = 'You are the virtual expert of d4riusTAX ADVICE S.R.L from Targoviste, Romania. Accounting and financial consulting firm with over 15 years experience. YOU ANSWER ANY QUESTION. Friendly, professional, concise. Specialization: accounting, VAT, CAS, CASS, ANAF, D112, D300, SRL, PFA, NGO, payroll, tax optimization. For simple questions answer briefly. For complex ones give structured answers. NEVER refuse. Contact: +40 770 430 731.';
-
   try {
-    const resp = await fetch('https://api.anthropic.com/v1/messages', {
+    const resp = await fetch(WORKER_URL, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'x-api-key': API_KEY,
-        'anthropic-version': '2023-06-01',
-        'anthropic-dangerous-direct-browser-access': 'true'
-      },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         model: 'claude-sonnet-4-20250514',
         max_tokens: 1024,
-        system: currentLanguage === 'ro' ? SYS_RO : SYS_EN,
+        system: 'Esti expertul virtual al firmei d4riusTAX ADVICE S.R.L din Targoviste, Romania. Firma ofera contabilitate si consultanta financiara cu peste 15 ani experienta. Esti prietenos, profesional, concis. Specializare: contabilitate, TVA, CAS, CASS, ANAF, D112, D300, SRL, PFA, ONG, salarizare, optimizare fiscala legala. Contact firma: +40 770 430 731.',
         messages: expertHistory
       })
     });
@@ -685,10 +475,7 @@ async function sendExpert() {
     msgs.scrollTop = msgs.scrollHeight;
   } catch(err) {
     hideTyping();
-    addMessage(currentLanguage==='ro'
-      ?'⚠️ Eroare conexiune. Verifică internetul sau contactează-ne la <a href="tel:+40770430731" style="color:#6366f1">+40 770 430 731</a>'
-      :'⚠️ Connection error. Check internet or contact us at <a href="tel:+40770430731" style="color:#6366f1">+40 770 430 731</a>'
-    );
+    addMessage('⚠️ Eroare conexiune. Contacteaza-ne la <a href="tel:+40770430731" style="color:#6366f1">+40 770 430 731</a>');
   }
   expertBusy = false;
   document.getElementById('expert-send').disabled = false;
