@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<title>404 – Pagina nu a fost găsită | d4riusTAX ADVICE S.R.L</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/png" href="D4RIUS TAX.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --primary:#14314d;
+  --secondary:#ff7a18;
+  --dark:#0b1b2b;
+  --light:#f5f7fb;
+  --text:#333;
+  --radius:20px;
+}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif;}
+html{scroll-behavior:smooth}
+body{background:#fff;color:var(--text);line-height:1.7;display:flex;flex-direction:column;min-height:100vh;}
+.container{width:90%;max-width:1200px;margin:auto;}
+img{max-width:100%;display:block}
+
+header{background:linear-gradient(135deg,var(--primary),var(--dark));padding:16px 0;box-shadow:0 15px 40px rgba(0,0,0,.25);}
+.nav{display:flex;align-items:center;justify-content:space-between;}
+.brand{color:#fff;font-size:22px;font-weight:800;text-decoration:none;}
+.brand span{color:var(--secondary)}
+.logo-box img{height:65px}
+nav ul{display:flex;list-style:none;gap:26px;align-items:center;}
+nav a{color:#fff;text-decoration:none;font-weight:500;position:relative;}
+nav a::after{content:"";position:absolute;bottom:-6px;left:0;width:0;height:2px;background:var(--secondary);transition:.3s;}
+nav a:hover::after{width:100%}
+
+.error-section{flex:1;display:flex;align-items:center;justify-content:center;padding:80px 0;background:linear-gradient(135deg,#f5f7fb,#fff);position:relative;overflow:hidden;}
+.error-section::before{content:'404';position:absolute;font-size:clamp(200px,30vw,400px);font-weight:800;color:rgba(20,49,77,.04);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;user-select:none;white-space:nowrap;}
+
+.error-content{text-align:center;position:relative;z-index:1;max-width:600px;}
+.error-logo{margin:0 auto 30px;width:110px;}
+.error-code{font-size:clamp(80px,15vw,140px);font-weight:800;background:linear-gradient(135deg,var(--primary),var(--secondary));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;margin-bottom:16px;}
+.error-title{font-size:clamp(22px,4vw,32px);color:var(--primary);margin-bottom:16px;font-weight:700;}
+.error-desc{font-size:17px;color:#666;margin-bottom:40px;line-height:1.8;}
+.error-actions{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
+
+.btn{display:inline-block;background:linear-gradient(135deg,var(--secondary),#ff9a3c);color:#fff;padding:15px 36px;border-radius:50px;font-weight:600;text-decoration:none;transition:.35s;box-shadow:0 15px 30px rgba(255,122,24,.4);}
+.btn:hover{transform:translateY(-4px) scale(1.03);box-shadow:0 25px 45px rgba(255,122,24,.6);}
+.btn-outline{display:inline-block;background:transparent;color:var(--primary);padding:13px 34px;border-radius:50px;font-weight:600;text-decoration:none;transition:.35s;border:2px solid var(--primary);}
+.btn-outline:hover{background:var(--primary);color:#fff;transform:translateY(-4px);}
+
+.quick-links{margin-top:50px;padding-top:40px;border-top:2px solid #f0f0f0;}
+.quick-links h3{color:var(--primary);margin-bottom:20px;font-size:18px;font-weight:700;}
+.links-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;max-width:500px;margin:0 auto;}
+.quick-link{display:block;padding:12px 16px;background:linear-gradient(180deg,#fff,var(--light));border-radius:12px;text-decoration:none;color:var(--primary);font-weight:600;font-size:14px;box-shadow:0 4px 15px rgba(0,0,0,.07);transition:.3s;text-align:center;}
+.quick-link:hover{transform:translateY(-4px);box-shadow:0 8px 25px rgba(255,122,24,.2);color:var(--secondary);}
+
+footer{background:linear-gradient(135deg,var(--dark),#000);color:#fff;padding:60px 0 25px;}
+.footer-grid{display:grid;grid-template-columns:1fr 1.5fr 1fr 1fr;gap:40px;}
+.footer-logo img{height:70px}
+footer h4{font-size:15px;font-weight:700;margin-bottom:16px;color:#fff;}
+footer a{color:#ccc;text-decoration:none;margin-bottom:8px;display:block;font-size:14px;transition:.2s;}
+footer a:hover{color:var(--secondary)}
+.footer-desc{color:#aaa;font-size:14px;margin-top:10px;line-height:1.7;}
+.footer-divider{border:none;border-top:1px solid rgba(255,255,255,.1);margin:30px 0 0;}
+.copyright{text-align:center;margin-top:20px;font-size:13px;opacity:.5;}
+
+@media(max-width:900px){.nav{flex-direction:column;gap:16px;text-align:center;}nav ul{flex-wrap:wrap;justify-content:center;}.footer-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:500px){.footer-grid{grid-template-columns:1fr;}.error-actions{flex-direction:column;align-items:center;}}
+</style>
+</head>
+<body>
+
+<header>
+<div class="container nav">
+  <a href="index.html" class="brand">d4riusfn<span>TAX ADVICE S.R.L</span></a>
+  <nav>
+    <ul>
+      <li><a href="index.html#servicii">Servicii</a></li>
+      <li><a href="index.html#despre">Despre</a></li>
+      <li><a href="index.html#blog">Blog</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+  </nav>
+  <div class="logo-box"><img src="D4RIUS TAX.png" alt="Logo d4riusTAX"></div>
+</div>
+</header>
+
+<section class="error-section">
+  <div class="error-content">
+    <img src="D4RIUS TAX.png" alt="d4riusTAX Logo" class="error-logo">
+    <div class="error-code">404</div>
+    <h1 class="error-title">Pagina nu a fost găsită</h1>
+    <p class="error-desc">
+      Ne pare rău! Pagina pe care o cauți nu există sau a fost mutată.<br>
+      Verifică adresa sau întoarce-te la pagina principală.
+    </p>
+    <div class="error-actions">
+      <a href="index.html" class="btn">🏠 Pagina Principală</a>
+      <a href="index.html#contact" class="btn-outline">📞 Contactează-ne</a>
+    </div>
+    <div class="quick-links">
+      <h3>Poate cauți una dintre acestea?</h3>
+      <div class="links-grid">
+        <a href="index.html#servicii" class="quick-link">📊 Servicii</a>
+        <a href="index.html#despre" class="quick-link">👥 Despre noi</a>
+        <a href="index.html#blog" class="quick-link">📝 Blog</a>
+        <a href="index.html#contact" class="quick-link">📞 Contact</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+<div class="container">
+  <div class="footer-grid">
+    <div>
+      <div class="footer-logo"><img src="D4RIUS TAX.png" alt="Logo d4riusTAX"></div>
+      <p class="footer-desc">Contabilitate și consultanță financiară.</p>
+    </div>
+    <div>
+      <h4>d4riusfnTAX ADVICE S.R.L</h4>
+      <p class="footer-desc">Firmă cu experiență de peste 15 ani în domeniul financiar-contabil. Oferim servicii complete, profesionale și personalizate pentru afacerea ta.</p>
+    </div>
+    <div>
+      <h4>Navigare</h4>
+      <a href="index.html">Pagina Principală</a>
+      <a href="index.html#servicii">Servicii</a>
+      <a href="index.html#despre">Despre</a>
+      <a href="index.html#blog">Blog</a>
+      <a href="index.html#contact">Contact</a>
+    </div>
+    <div>
+      <h4>Sitemap</h4>
+      <a href="index.html">🏠 Pagina Principală</a>
+      <a href="index.html#servicii">📊 Servicii</a>
+      <a href="index.html#despre">👥 Despre Noi</a>
+      <a href="index.html#blog">📝 Blog</a>
+      <a href="index.html#contact">📞 Contact</a>
+      <a href="404.html">🔗 Pagina 404</a>
+    </div>
+  </div>
+  <hr class="footer-divider">
+  <div class="copyright">© 2026 d4riusfnTAX ADVICE S.R.L – Toate drepturile rezervate</div>
+</div>
+</footer>
+
+</body>
+</html>
