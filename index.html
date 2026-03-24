@@ -31,6 +31,9 @@ nav ul{display:flex;list-style:none;gap:26px;align-items:center;}
 nav a{color:#fff;text-decoration:none;font-weight:500;position:relative;}
 nav a::after{content:"";position:absolute;bottom:-6px;left:0;width:0;height:2px;background:var(--secondary);transition:.3s;}
 nav a:hover::after{width:100%}
+nav a.nav-prog{background:linear-gradient(135deg,var(--secondary),#ff9a3c);padding:8px 18px;border-radius:50px;font-weight:700;transition:.3s;}
+nav a.nav-prog::after{display:none;}
+nav a.nav-prog:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(255,122,24,.5);}
 .hero{background:linear-gradient(135deg,var(--primary),var(--dark));padding:110px 0;color:#fff;overflow:hidden;}
 .hero-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:70px;align-items:center;}
 h1{font-size:46px;margin-bottom:22px;}
@@ -109,19 +112,9 @@ footer a:hover{color:var(--secondary)}
 .expert-option:hover{background:linear-gradient(135deg,#4f46e5,#7c3aed);transform:scale(1.02);}
 
 /* ══ EXPERT HEADER ══ */
-#expert-header-bar{
-  display:none;background:linear-gradient(135deg,#075e54,#128c7e);
-  padding:10px 16px;align-items:center;gap:12px;flex-shrink:0;
-  border-bottom:1px solid rgba(255,255,255,.1);
-}
+#expert-header-bar{display:none;background:linear-gradient(135deg,#075e54,#128c7e);padding:10px 16px;align-items:center;gap:12px;flex-shrink:0;border-bottom:1px solid rgba(255,255,255,.1);}
 #expert-header-bar.visible{display:flex;}
-.exp-logo-circle{
-  width:44px;height:44px;border-radius:50%;
-  background:linear-gradient(135deg,#ff7a18,#ff9a3c);
-  display:flex;align-items:center;justify-content:center;
-  overflow:hidden;flex-shrink:0;
-  box-shadow:0 3px 10px rgba(0,0,0,.3);
-}
+.exp-logo-circle{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,#ff7a18,#ff9a3c);display:flex;align-items:center;justify-content:center;overflow:hidden;flex-shrink:0;box-shadow:0 3px 10px rgba(0,0,0,.3);}
 .exp-logo-circle img{width:100%;height:100%;object-fit:cover;border-radius:50%;}
 .exp-logo-circle span{font-size:20px;}
 .exp-hinfo{flex:1;}
@@ -156,15 +149,8 @@ footer a:hover{color:var(--secondary)}
 @keyframes typingBounce{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-6px)}}
 
 /* ══ INPUT ROW EXPERT ══ */
-#expert-input-row{
-  display:none;flex-direction:column;gap:8px;
-  padding:10px 12px;background:#f0f0f0;
-  border-top:1px solid #ddd;flex-shrink:0;
-}
-#file-preview-strip{
-  display:none;background:#fff;border:2px dashed #6366f1;
-  border-radius:12px;padding:10px;align-items:center;gap:10px;position:relative;
-}
+#expert-input-row{display:none;flex-direction:column;gap:8px;padding:10px 12px;background:#f0f0f0;border-top:1px solid #ddd;flex-shrink:0;}
+#file-preview-strip{display:none;background:#fff;border:2px dashed #6366f1;border-radius:12px;padding:10px;align-items:center;gap:10px;position:relative;}
 #file-preview-strip.visible{display:flex;}
 .fp-thumb{width:50px;height:50px;border-radius:8px;object-fit:cover;border:2px solid #6366f1;}
 .fp-icon{width:50px;height:50px;border-radius:8px;background:#ede9fe;display:flex;align-items:center;justify-content:center;font-size:24px;border:2px solid #6366f1;}
@@ -174,44 +160,19 @@ footer a:hover{color:var(--secondary)}
 .fp-remove{position:absolute;top:5px;right:7px;background:#ef4444;color:#fff;border:none;border-radius:50%;width:20px;height:20px;cursor:pointer;font-size:12px;display:flex;align-items:center;justify-content:center;transition:.2s;}
 .fp-remove:hover{background:#dc2626;transform:scale(1.1);}
 .input-toolbar{display:flex;gap:8px;align-items:flex-end;}
-#expert-input{
-  flex:1;padding:10px 14px;border:none;border-radius:20px;
-  font-size:14px;outline:none;font-family:'Inter',sans-serif;
-  resize:none;max-height:80px;background:#fff;
-  box-shadow:0 1px 4px rgba(0,0,0,.1);transition:.3s;
-}
+#expert-input{flex:1;padding:10px 14px;border:none;border-radius:20px;font-size:14px;outline:none;font-family:'Inter',sans-serif;resize:none;max-height:80px;background:#fff;box-shadow:0 1px 4px rgba(0,0,0,.1);transition:.3s;}
 #expert-input:focus{box-shadow:0 0 0 2px #6366f1;}
-#attach-btn{
-  width:40px;height:40px;border-radius:50%;border:none;
-  background:#fff;cursor:pointer;display:flex;align-items:center;
-  justify-content:center;font-size:20px;transition:.3s;flex-shrink:0;
-  box-shadow:0 1px 4px rgba(0,0,0,.1);
-}
+#attach-btn{width:40px;height:40px;border-radius:50%;border:none;background:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:20px;transition:.3s;flex-shrink:0;box-shadow:0 1px 4px rgba(0,0,0,.1);}
 #attach-btn:hover{background:#e0e0e0;transform:scale(1.05);}
 #file-input{display:none;}
-#expert-send{
-  width:40px;height:40px;border-radius:50%;
-  background:linear-gradient(135deg,#075e54,#128c7e);
-  color:#fff;border:none;cursor:pointer;font-size:18px;
-  transition:.3s;flex-shrink:0;
-  display:flex;align-items:center;justify-content:center;
-  box-shadow:0 2px 8px rgba(0,0,0,.2);
-}
+#expert-send{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#075e54,#128c7e);color:#fff;border:none;cursor:pointer;font-size:18px;transition:.3s;flex-shrink:0;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,.2);}
 #expert-send:hover{transform:scale(1.1);}
 #expert-send:disabled{opacity:.5;cursor:not-allowed;transform:none;}
 
 /* ══ CONFIRM DIALOG ══ */
-#confirm-overlay{
-  display:none;position:fixed;inset:0;background:rgba(0,0,0,.75);
-  z-index:99999;align-items:center;justify-content:center;
-  padding:20px;backdrop-filter:blur(6px);
-}
+#confirm-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:99999;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(6px);}
 #confirm-overlay.visible{display:flex;}
-.confirm-box{
-  background:#fff;border-radius:20px;padding:24px;
-  width:100%;max-width:320px;text-align:center;
-  animation:slideUpModal .3s;box-shadow:0 20px 60px rgba(0,0,0,.4);
-}
+.confirm-box{background:#fff;border-radius:20px;padding:24px;width:100%;max-width:320px;text-align:center;animation:slideUpModal .3s;box-shadow:0 20px 60px rgba(0,0,0,.4);}
 .confirm-prev-img{width:100%;max-height:180px;object-fit:contain;border-radius:10px;margin-bottom:14px;border:2px solid #e0e0e0;}
 .confirm-file-icon{font-size:52px;margin-bottom:10px;}
 .confirm-title{font-weight:700;font-size:16px;color:#1e1b4b;margin-bottom:6px;}
@@ -222,14 +183,320 @@ footer a:hover{color:var(--secondary)}
 .confirm-yes:hover{transform:scale(1.03);box-shadow:0 4px 12px rgba(99,102,241,.4);}
 .confirm-no{flex:1;background:#f0f0f0;color:#333;border:none;border-radius:12px;padding:12px;font-weight:700;cursor:pointer;font-size:14px;transition:.2s;font-family:'Inter',sans-serif;}
 .confirm-no:hover{background:#e0e0e0;}
-
-/* Image in bubble */
-.bubble-img{max-width:180px;border-radius:10px;margin-top:6px;display:block;cursor:pointer;}
+.bubble-img{max-width:180px;border-radius:10px;margin-top:6px;display:block;cursor:zoom-in;transition:transform .2s,box-shadow .2s;box-shadow:0 2px 8px rgba(0,0,0,.15);}
+.bubble-img:hover{transform:scale(1.03);box-shadow:0 4px 16px rgba(0,0,0,.25);}
 .bubble-file-row{display:flex;align-items:center;gap:8px;margin-top:6px;padding:8px 10px;background:rgba(0,0,0,.06);border-radius:8px;}
 .bubble-file-icon{font-size:22px;}
 .bubble-file-info{font-size:12px;font-weight:600;}
 
-/* ══ TABLET ══ */
+/* ══ IMAGE LIGHTBOX ══ */
+#img-lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,.95);z-index:999999;align-items:center;justify-content:center;animation:fadeInOverlay .2s;touch-action:none;}
+#img-lightbox.open{display:flex;}
+#lb-topbar{position:absolute;top:0;left:0;right:0;height:56px;background:linear-gradient(180deg,rgba(0,0,0,.7) 0%,transparent 100%);display:flex;align-items:center;justify-content:flex-end;padding:0 16px;z-index:10;}
+#lb-close{width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.15);border:none;color:#fff;font-size:22px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:.25s;backdrop-filter:blur(4px);font-family:'Inter',sans-serif;line-height:1;}
+#lb-close:hover{background:rgba(255,255,255,.3);transform:rotate(90deg) scale(1.1);}
+#lb-img-wrap{position:relative;display:flex;align-items:center;justify-content:center;width:100%;height:100%;overflow:hidden;}
+#lb-img{max-width:90vw;max-height:88vh;object-fit:contain;border-radius:4px;user-select:none;-webkit-user-drag:none;transform-origin:center center;transition:transform .25s cubic-bezier(.25,.46,.45,.94);cursor:zoom-in;display:block;}
+#lb-img.zoomed{cursor:zoom-out;}
+#lb-hint{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,.5);color:#fff;font-size:12px;padding:6px 14px;border-radius:20px;pointer-events:none;opacity:1;transition:opacity 1s;white-space:nowrap;}
+#lb-hint.hidden{opacity:0;}
+
+/* ══════════════════════════════════
+   PROGRAMARI — SECTIUNE NOUA PREMIUM
+   ══════════════════════════════════ */
+#programari {
+  background: linear-gradient(160deg, #f8faff 0%, #eef2ff 50%, #fdf4ef 100%);
+  position: relative;
+  overflow: hidden;
+}
+#programari::before {
+  content: '';
+  position: absolute;
+  top: -120px; right: -120px;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(255,122,24,.08) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+#programari::after {
+  content: '';
+  position: absolute;
+  bottom: -80px; left: -80px;
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(99,102,241,.06) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+.prog-wrap {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 70px;
+  align-items: start;
+  position: relative;
+  z-index: 1;
+}
+.prog-info { padding-top: 10px; }
+.prog-info h3 {
+  color: var(--primary);
+  font-size: 26px;
+  font-weight: 800;
+  margin-bottom: 16px;
+  line-height: 1.3;
+}
+.prog-info > p {
+  color: #5a6a7a;
+  margin-bottom: 30px;
+  font-size: 16px;
+  line-height: 1.8;
+}
+.prog-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, rgba(255,122,24,.12), rgba(255,122,24,.06));
+  border: 1.5px solid rgba(255,122,24,.25);
+  color: var(--secondary);
+  font-size: 13px;
+  font-weight: 700;
+  padding: 8px 18px;
+  border-radius: 50px;
+  margin-bottom: 28px;
+  letter-spacing: .3px;
+}
+.prog-features {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.prog-feature-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(20,49,77,.07);
+}
+.prog-feature-item:last-child { border-bottom: none; }
+.prog-feat-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--secondary), #ff9a3c);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+  box-shadow: 0 6px 16px rgba(255,122,24,.25);
+}
+.prog-feat-text h4 {
+  color: var(--primary);
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 3px;
+}
+.prog-feat-text p {
+  color: #6b7a8d;
+  font-size: 13px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* CARD FORMULAR */
+.prog-form-card {
+  background: #fff;
+  border-radius: 28px;
+  padding: 44px;
+  box-shadow: 0 30px 80px rgba(20,49,77,.14);
+  position: relative;
+  overflow: hidden;
+}
+.prog-form-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 6px;
+  background: linear-gradient(90deg, var(--secondary), #f59e0b, #6366f1);
+}
+.prog-form-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 32px;
+  padding-bottom: 24px;
+  border-bottom: 2px solid #f0f4ff;
+}
+.prog-form-icon {
+  width: 56px; height: 56px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #eef2ff, #e0e7ff);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 26px;
+  flex-shrink: 0;
+}
+.prog-form-header-text h3 {
+  color: var(--primary);
+  font-size: 20px;
+  font-weight: 800;
+  margin-bottom: 4px;
+}
+.prog-form-header-text p {
+  color: #6b7a8d;
+  font-size: 13px;
+  margin: 0;
+}
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  margin-bottom: 18px;
+}
+.form-group label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--primary);
+  letter-spacing: .5px;
+  text-transform: uppercase;
+}
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 13px 16px;
+  border: 2px solid #e8ecf4;
+  border-radius: 14px;
+  font-size: 14px;
+  font-family: 'Inter', sans-serif;
+  outline: none;
+  transition: .3s;
+  background: #fafbfe;
+  color: #333;
+  -webkit-appearance: none;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--secondary);
+  background: #fff;
+  box-shadow: 0 0 0 4px rgba(255,122,24,.1);
+}
+.form-group input.error,
+.form-group select.error { border-color: #ef4444; box-shadow: 0 0 0 4px rgba(239,68,68,.1); }
+.form-group textarea { resize: vertical; min-height: 90px; }
+.form-group select { cursor: pointer; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23999' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 16px center; padding-right: 40px; }
+.field-error { font-size: 12px; color: #ef4444; font-weight: 600; display: none; margin-top: -4px; }
+.field-error.visible { display: block; }
+.prog-submit {
+  width: 100%;
+  padding: 17px;
+  border: none;
+  border-radius: 16px;
+  background: linear-gradient(135deg, var(--secondary), #ff9a3c);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: .35s;
+  box-shadow: 0 10px 30px rgba(255,122,24,.4);
+  font-family: 'Inter', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 6px;
+  position: relative;
+  overflow: hidden;
+}
+.prog-submit::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,.2), transparent);
+  opacity: 0;
+  transition: .3s;
+}
+.prog-submit:hover { transform: translateY(-3px); box-shadow: 0 18px 40px rgba(255,122,24,.55); }
+.prog-submit:hover::after { opacity: 1; }
+.prog-submit:active { transform: translateY(0); }
+.prog-submit:disabled { opacity: .6; cursor: not-allowed; transform: none; }
+.prog-privacy {
+  text-align: center;
+  font-size: 12px;
+  color: #9aa5b4;
+  margin-top: 14px;
+  line-height: 1.6;
+}
+.prog-privacy a { color: var(--secondary); text-decoration: none; font-weight: 600; }
+
+/* Success state */
+.prog-success {
+  display: none;
+  text-align: center;
+  padding: 40px 20px;
+  animation: slideUpModal .4s;
+}
+.prog-success-icon {
+  width: 80px; height: 80px;
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 36px;
+  margin: 0 auto 20px;
+  box-shadow: 0 15px 35px rgba(34,197,94,.35);
+  animation: bounceIn .5s;
+}
+@keyframes bounceIn {
+  0% { transform: scale(0); opacity: 0; }
+  60% { transform: scale(1.15); }
+  100% { transform: scale(1); opacity: 1; }
+}
+.prog-success h3 { color: var(--primary); font-size: 22px; margin-bottom: 10px; }
+.prog-success p { color: #6b7a8d; font-size: 15px; line-height: 1.7; }
+.prog-success-ref {
+  display: inline-block;
+  background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+  border: 2px solid #7dd3fc;
+  border-radius: 12px;
+  padding: 12px 24px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #0369a1;
+  margin: 16px 0;
+  letter-spacing: 1px;
+}
+.prog-new-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+  padding: 12px 26px;
+  background: linear-gradient(135deg, var(--primary), var(--dark));
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  transition: .3s;
+}
+.prog-new-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(20,49,77,.35); }
+
+/* Toast */
+#prog-toast {
+  position: fixed; bottom: 30px; left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  color: #fff; padding: 16px 28px; border-radius: 16px;
+  font-weight: 600; font-size: 15px;
+  box-shadow: 0 10px 30px rgba(34,197,94,.4);
+  z-index: 99990; transition: .5s cubic-bezier(.25,.46,.45,.94);
+  white-space: nowrap; display: flex; align-items: center; gap: 10px;
+  pointer-events: none;
+}
+#prog-toast.error { background: linear-gradient(135deg, #ef4444, #dc2626); box-shadow: 0 10px 30px rgba(239,68,68,.4); }
+#prog-toast.show { transform: translateX(-50%) translateY(0); }
+
+/* ══ TABLET + MOBIL ══ */
 @media(max-width:900px){
   body{padding-top:80px;}
   .nav{flex-wrap:wrap;gap:12px;padding:12px 0;}
@@ -246,8 +513,8 @@ footer a:hover{color:var(--secondary)}
   .stats{grid-template-columns:repeat(3,1fr);}
   .footer-grid{grid-template-columns:1fr 1fr;gap:30px;}
   section{padding:60px 0;}
+  .prog-wrap{grid-template-columns:1fr;gap:40px;}
 }
-/* ══ MOBIL ══ */
 @media(max-width:600px){
   html,body{max-width:100%;overflow-x:hidden;}
   body{padding-top:70px;}
@@ -259,6 +526,7 @@ footer a:hover{color:var(--secondary)}
   nav{order:3;width:100%;}
   nav ul{flex-wrap:wrap;justify-content:center;gap:10px;padding:6px 0;}
   nav a{font-size:13px;}
+  nav a.nav-prog{padding:6px 14px;font-size:13px;}
   .hero{padding:50px 0 40px;}
   h1{font-size:24px;line-height:1.3;}
   .hero p{font-size:14px;}
@@ -289,6 +557,10 @@ footer a:hover{color:var(--secondary)}
   #blog-modal-footer{padding:0 20px 24px;}
   .wa-bbl{max-width:84%;font-size:13px;}
   .confirm-box{max-width:290px;padding:18px;}
+  #lb-img{max-width:95vw;max-height:80vh;}
+  .prog-form-card{padding:24px;}
+  .form-row{grid-template-columns:1fr;}
+  .prog-form-header{flex-direction:column;text-align:center;gap:10px;}
 }
 </style>
 </head>
@@ -302,6 +574,7 @@ footer a:hover{color:var(--secondary)}
       <li><a href="#despre">Despre</a></li>
       <li><a href="#blog">Blog</a></li>
       <li><a href="#contact">Contact</a></li>
+      <li><a href="#programari" class="nav-prog">📅 Programeaza-te</a></li>
     </ul>
   </nav>
   <div class="logo-box">
@@ -315,7 +588,7 @@ footer a:hover{color:var(--secondary)}
   <div>
     <h1>CONSULTANTA ANALIZA RESURSE UMANE</h1>
     <p>Experienta in domeniul financiar contabil de peste 15 ani.</p>
-    <a href="#contact" class="btn">Solicita oferta</a>
+    <a href="#programari" class="btn">📅 Programeaza o Consultatie Gratuita</a>
   </div>
   <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&q=80" style="border-radius:var(--radius)" alt="Contabilitate">
 </div>
@@ -409,7 +682,7 @@ footer a:hover{color:var(--secondary)}
     </div>
     <div id="blog-modal-body"></div>
     <div id="blog-modal-footer">
-      <a href="#contact" onclick="closeModal()" class="btn">📞 Contacteaza-ne pentru mai multe detalii</a>
+      <a href="#programari" onclick="closeModal()" class="btn">📅 Programeaza o consultatie gratuita</a>
     </div>
   </div>
 </div>
@@ -444,6 +717,169 @@ footer a:hover{color:var(--secondary)}
 </div>
 </section>
 
+<!-- ═══════════════════════════════════════════════ -->
+<!--           SECTIUNEA PROGRAMARI                  -->
+<!-- ═══════════════════════════════════════════════ -->
+<section id="programari" class="reveal">
+  <div class="container">
+    <div class="section-title">
+      <h2>📅 Programeaza-te</h2>
+      <p style="max-width:620px;margin:20px auto 0;color:#666;font-size:16px;">
+        Solicita o consultatie — complet <strong style="color:var(--secondary)">gratuita</strong> la prima intalnire. Completezi formularul, noi te confirmam!
+      </p>
+    </div>
+    <div class="prog-wrap">
+
+      <!-- STANGA: beneficii -->
+      <div class="prog-info">
+        <div class="prog-badge">🎁 Prima consultatie 100% GRATUITA</div>
+        <h3>De ce sa alegi o programare?</h3>
+        <p>Beneficiezi de timp dedicat exclusiv situatiei tale, fara graba. Expertul nostru analizeaza afacerea ta si ofera solutii concrete.</p>
+        <div class="prog-features">
+          <div class="prog-feature-item">
+            <div class="prog-feat-icon">⏱️</div>
+            <div class="prog-feat-text">
+              <h4>30–60 minute dedicate tie</h4>
+              <p>Analiza completa a situatiei financiare si fiscale</p>
+            </div>
+          </div>
+          <div class="prog-feature-item">
+            <div class="prog-feat-icon">📍</div>
+            <div class="prog-feat-text">
+              <h4>La sediu sau online</h4>
+              <p>Targoviste, Dambovita — sau video call dupa preferinta</p>
+            </div>
+          </div>
+          <div class="prog-feature-item">
+            <div class="prog-feat-icon">💡</div>
+            <div class="prog-feat-text">
+              <h4>Recomandari personalizate</h4>
+              <p>Nu sabloane generice — solutii concrete pentru afacerea ta</p>
+            </div>
+          </div>
+          <div class="prog-feature-item">
+            <div class="prog-feat-icon">🔒</div>
+            <div class="prog-feat-text">
+              <h4>Confidentialitate garantata</h4>
+              <p>Datele tale sunt protejate conform GDPR</p>
+            </div>
+          </div>
+          <div class="prog-feature-item">
+            <div class="prog-feat-icon">✅</div>
+            <div class="prog-feat-text">
+              <h4>Confirmare rapida</h4>
+              <p>Te contactam in maxim 24 ore pentru confirmare</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DREAPTA: formular -->
+      <div class="prog-form-card">
+        <!-- Starea initiala: formular -->
+        <div id="prog-form-content">
+          <div class="prog-form-header">
+            <div class="prog-form-icon">📝</div>
+            <div class="prog-form-header-text">
+              <h3>Formular de programare</h3>
+              <p>Completeaza datele de mai jos — dureaza 1 minut</p>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="prog-nume">Nume *</label>
+              <input type="text" id="prog-nume" placeholder="ex: Popescu" autocomplete="family-name">
+              <span class="field-error" id="err-nume">Introdu numele tau</span>
+            </div>
+            <div class="form-group">
+              <label for="prog-prenume">Prenume *</label>
+              <input type="text" id="prog-prenume" placeholder="ex: Ion" autocomplete="given-name">
+              <span class="field-error" id="err-prenume">Introdu prenumele tau</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="prog-email">Adresa de email *</label>
+            <input type="email" id="prog-email" placeholder="email@exemplu.ro" autocomplete="email">
+            <span class="field-error" id="err-email">Introdu un email valid</span>
+          </div>
+
+          <div class="form-group">
+            <label for="prog-tel">Numar de telefon *</label>
+            <input type="tel" id="prog-tel" placeholder="07XX XXX XXX" autocomplete="tel">
+            <span class="field-error" id="err-tel">Introdu un numar de telefon valid</span>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="prog-data">Data preferata *</label>
+              <input type="date" id="prog-data">
+              <span class="field-error" id="err-data">Alege o data valida (nu in trecut)</span>
+            </div>
+            <div class="form-group">
+              <label for="prog-ora">Ora preferata</label>
+              <select id="prog-ora">
+                <option value="10:00">10:00</option>
+                <option value="11:00">11:00</option>
+                <option value="12:00">12:00</option>
+                <option value="13:00">13:00</option>
+                <option value="14:00" selected>14:00</option>
+                <option value="15:00">15:00</option>
+                <option value="16:00">16:00</option>
+                <option value="17:00">17:00</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="prog-serviciu">Serviciu dorit *</label>
+            <select id="prog-serviciu">
+              <option value="">-- Alege serviciul --</option>
+              <option value="Contabilitate primara">Contabilitate primara</option>
+              <option value="Salarizare & Pontaje">Salarizare &amp; Pontaje</option>
+              <option value="Consultanta in afaceri">Consultanta in afaceri</option>
+              <option value="Infiintare firma SRL">Infiintare firma SRL</option>
+              <option value="Infiintare firma PFA">Infiintare firma PFA</option>
+              <option value="Infiintare ONG">Infiintare ONG</option>
+              <option value="Optimizare fiscala">Optimizare fiscala</option>
+              <option value="Consultanta TVA">Consultanta TVA</option>
+              <option value="Alta / Nu stiu inca">Alta / Nu stiu inca</option>
+            </select>
+            <span class="field-error" id="err-serviciu">Alege serviciul dorit</span>
+          </div>
+
+          <div class="form-group">
+            <label for="prog-mesaj">Mesaj optional</label>
+            <textarea id="prog-mesaj" placeholder="Descrie pe scurt situatia ta sau intrebarile pe care le ai..."></textarea>
+          </div>
+
+          <button class="prog-submit" onclick="submitProgramare()" id="prog-btn">
+            <span id="prog-btn-text">📅 Trimite Programarea</span>
+          </button>
+          <p class="prog-privacy">
+            🔒 Datele tale sunt protejate conform <a href="#">GDPR</a>. Nu trimitem spam. Esti contactat doar pentru confirmare.
+          </p>
+        </div>
+
+        <!-- Starea de succes -->
+        <div class="prog-success" id="prog-success">
+          <div class="prog-success-icon">✓</div>
+          <h3>Programare trimisa cu succes!</h3>
+          <p>Am primit solicitarea ta. Vei fi contactat in maxim <strong>24 ore</strong> pentru confirmare.</p>
+          <div class="prog-success-ref" id="prog-ref-code">REF: #D4TAX-0000</div>
+          <p style="font-size:13px;color:#9aa5b4;">Pastreaza codul de referinta pentru urmarire</p>
+          <button class="prog-new-btn" onclick="resetForm()">➕ Alta programare</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Toast notification -->
+<div id="prog-toast"></div>
+
 <footer>
 <div class="container">
   <div class="footer-grid">
@@ -466,6 +902,7 @@ footer a:hover{color:var(--secondary)}
       <a href="#despre">Despre</a>
       <a href="#blog">Blog</a>
       <a href="#contact">Contact</a>
+      <a href="#programari">Programari</a>
     </div>
     <div>
       <h4>Sitemap</h4>
@@ -474,6 +911,8 @@ footer a:hover{color:var(--secondary)}
       <a href="#despre">👥 Despre Noi</a>
       <a href="#blog">📝 Blog</a>
       <a href="#contact">📞 Contact</a>
+      <a href="#programari">📅 Programari</a>
+      <a href="programari.html">🔐 Admin Programari</a>
       <a href="404.html">🔗 Pagina 404</a>
     </div>
   </div>
@@ -523,7 +962,7 @@ footer a:hover{color:var(--secondary)}
   </div>
 </div>
 
-<!-- ══ CONFIRM OVERLAY ══ -->
+<!-- ══ CONFIRM DIALOG ══ -->
 <div id="confirm-overlay">
   <div class="confirm-box">
     <div id="confirm-visual"></div>
@@ -536,39 +975,26 @@ footer a:hover{color:var(--secondary)}
   </div>
 </div>
 
+<!-- ══ IMAGE LIGHTBOX ══ -->
+<div id="img-lightbox">
+  <div id="lb-topbar">
+    <button id="lb-close" title="Închide (Esc)" onclick="closeLightbox()">✕</button>
+  </div>
+  <div id="lb-img-wrap">
+    <img id="lb-img" src="" alt="Previzualizare imagine" draggable="false">
+  </div>
+  <div id="lb-hint">Apasă dublu-click sau atinge de 2x pentru zoom 🔍</div>
+</div>
+
 <script>
 // ══ BLOG MODAL DATA ══
 const blogPosts = [
-  {
-    tag: 'Ghid antreprenori',
-    title: 'Cand ai nevoie de consultanta in afaceri',
-    body: `<p>Multi antreprenori se intreaba cand este momentul potrivit sa apeleze la un consultant financiar. Raspunsul este: <strong>mai devreme decat crezi.</strong></p><h4>Semne clare ca ai nevoie de consultanta:</h4><ul><li>Afacerea ta creste rapid si nu mai poti tine evidentele singur</li><li>Ai primit o notificare sau un control de la ANAF</li><li>Vrei sa angajezi primii salariati si nu stii de unde sa incepi</li><li>Nu intelegi situatiile financiare ale firmei tale</li><li>Vrei sa optimizezi taxele in mod legal</li><li>Planifici o investitie majora sau un imprumut bancar</li></ul><h4>De ce sa nu astepti?</h4><p>Greselile financiare sunt costisitoare si greu de corectat retroactiv. Un consultant te ajuta sa iei decizii informate inca din start, economisind timp, bani si stres pe termen lung.</p><h4>Cum te ajutam noi?</h4><p>La d4riusTAX ADVICE oferim <strong>prima consultatie gratuita</strong>. Analizam situatia ta si iti recomandam solutiile potrivite, fara obligatii.</p>`
-  },
-  {
-    tag: 'Clarificari utile',
-    title: 'Diferenta dintre contabilitate si consultanta financiara',
-    body: `<p>Adesea, oamenii confunda contabilitatea cu consultanta financiara. Desi sunt complementare, ele servesc scopuri diferite.</p><h4>Ce este contabilitatea?</h4><p>Contabilitatea se ocupa cu <strong>inregistrarea si raportarea</strong> tranzactiilor financiare ale firmei: facturi, cheltuieli, salarii, declaratii fiscale. Este obligatorie prin lege si asigura conformitatea cu ANAF.</p><h4>Ce este consultanta financiara?</h4><p>Consultanta financiara merge un pas mai departe — te ajuta sa <strong>iei decizii strategice</strong> bazate pe datele financiare: cum sa reduci taxele legal, cum sa structurezi afacerea eficient, ce forma juridica ti se potriveste.</p><h4>De ce ai nevoie de ambele?</h4><ul><li>Contabilitatea iti tine afacerea in ordine si conformitate legala</li><li>Consultanta te ajuta sa cresti profitabil si sa eviti capcane fiscale</li><li>Impreuna, reprezinta fundatia unei afaceri sanatoase</li></ul><p>La d4riusTAX ADVICE oferim ambele servicii sub acelasi acoperis, pentru o abordare integrata a afacerii tale.</p>`
-  },
-  {
-    tag: 'Experienta practica',
-    title: 'Greseli frecvente la firmele mici',
-    body: `<p>Dupa peste <strong>15 ani de activitate contabila</strong>, am vazut aceleasi greseli repetandu-se la firmele mici. Iata care sunt cele mai frecvente:</p><h4>1. Amestecarea banilor personali cu cei ai firmei</h4><p>Aceasta este probabil cea mai comuna greseala. Fara o separare clara a conturilor, este imposibil sa stii daca firma ta este profitabila.</p><h4>2. Pastrarea bonurilor si facturilor la intamplare</h4><p>Documentele pierdute inseamna cheltuieli nedeductibile si probleme la un eventual control ANAF.</p><h4>3. Ignorarea termenelor fiscale</h4><p>Penalitatile si dobanzile de intarziere se acumuleaza rapid. Un singur termen ratat poate costa sute de lei.</p><h4>4. Lipsa unui plan financiar</h4><p>Multe firme mici functioneaza fara un buget sau proiectii financiare, ceea ce face imposibila planificarea pe termen lung.</p><h4>5. Neapelarea la un specialist la timp</h4><p>Asteptarea pana la primul control ANAF pentru a angaja un contabil este o greseala costisitoare. Preventia este intotdeauna mai ieftina decat corectarea.</p>`
-  },
-  {
-    tag: 'Fiscalitate',
-    title: 'Ce este TVA-ul si cum functioneaza',
-    body: `<p>TVA-ul (Taxa pe Valoarea Adaugata) este unul dintre cele mai intalnite impozite, dar si cel mai putin inteles de antreprenorii la inceput de drum.</p><h4>Ce este TVA-ul?</h4><p>TVA este un impozit indirect aplicat la fiecare etapa a lantului de productie si distributie. In Romania, cota standard este de <strong>19%</strong>, cu cote reduse de 9% si 5% pentru anumite categorii.</p><h4>Cand devii platitor de TVA?</h4><ul><li><strong>Obligatoriu:</strong> cand depasesti plafonul de 300.000 lei cifra de afaceri anuala</li><li><strong>Optional:</strong> te poti inregistra voluntar oricand, chiar si la infiintare</li></ul><h4>Cum functioneaza practic?</h4><p>Colectezi TVA de la clienti, platesti TVA catre furnizori, si diferenta o virezi la stat lunar sau trimestrial prin Declaratia D300.</p><h4>Avantaje si dezavantaje:</h4><ul><li>✅ Poti deduce TVA-ul platit la achizitii</li><li>✅ Crediblitate crescuta fata de parteneri de afaceri platitori de TVA</li><li>❌ Obliga la mai multa birocratie si declaratii lunare</li><li>❌ Preturi mai mari pentru clientii neinregistrati in scop de TVA</li></ul>`
-  },
-  {
-    tag: 'Salarizare',
-    title: 'Tot ce trebuie sa stii despre salarizare',
-    body: `<p>Salarizarea este unul dintre cele mai complexe domenii din administratia unei firme. Iata un ghid complet pentru angajatori.</p><h4>Elementele unui stat de plata:</h4><ul><li><strong>Salariul brut</strong> — suma convenita in contractul de munca</li><li><strong>CAS (25%)</strong> — contributia la pensie, suportata de angajat</li><li><strong>CASS (10%)</strong> — contributia la sanatate, suportata de angajat</li><li><strong>Impozit pe venit (10%)</strong> — aplicat dupa deduceri</li><li><strong>Salariul net</strong> — suma pe care o primeste efectiv angajatul</li></ul><h4>Obligatiile angajatorului:</h4><ul><li>Depunerea Declaratiei D112 pana pe 25 ale lunii urmatoare</li><li>Inregistrarea contractelor in REVISAL in termen de 24h de la semnare</li><li>Intocmirea si pastrarea pontajelor lunare</li><li>Eliberarea fluturasului de salariu</li></ul><h4>Salariul minim brut in 2025:</h4><p>Salariul minim brut pe economie este de <strong>4.050 lei</strong>, cu exceptii pentru constructii si agricultura.</p>`
-  },
-  {
-    tag: 'Infiintare firma',
-    title: 'SRL sau PFA? Cum alegi forma juridica potrivita',
-    body: `<p>Una dintre primele decizii pe care trebuie sa o iei ca antreprenor este alegerea formei juridice. Cele mai populare sunt SRL-ul si PFA-ul.</p><h4>PFA — Persoana Fizica Autorizata</h4><ul><li>✅ Infiintare rapida (1-2 zile) si costuri mici</li><li>✅ Contabilitate simplificata (in partida simpla)</li><li>✅ Retragerea banilor este mai simpla</li><li>❌ Raspundere nelimitata cu bunurile personale</li><li>❌ Imagine mai putin profesionala fata de clientii corporativi</li><li>❌ Impozit pe venit 10% + CAS si CASS obligatorii</li></ul><h4>SRL — Societate cu Raspundere Limitata</h4><ul><li>✅ Raspundere limitata la capitalul social (minim 1 leu)</li><li>✅ Imagine profesionala si credibilitate mai mare</li><li>✅ Impozit micro de 1% sau 3% (pentru CA sub 500.000 euro)</li><li>❌ Costuri de infiintare mai mari si durata 3-5 zile</li><li>❌ Contabilitate in partida dubla, obligatorie</li><li>❌ Retragerea profitului se face prin dividend (impozit 8%)</li></ul><h4>Concluzie:</h4><p>Alegerea depinde de volumul de activitate, tipul clientilor si nivelul de risc acceptat. <strong>Consultati-ne</strong> si va ajutam sa luati decizia corecta pentru situatia dvs specifica.</p>`
-  }
+  {tag:'Ghid antreprenori',title:'Cand ai nevoie de consultanta in afaceri',body:`<p>Multi antreprenori se intreaba cand este momentul potrivit sa apeleze la un consultant financiar. Raspunsul este: <strong>mai devreme decat crezi.</strong></p><h4>Semne clare ca ai nevoie de consultanta:</h4><ul><li>Afacerea ta creste rapid si nu mai poti tine evidentele singur</li><li>Ai primit o notificare sau un control de la ANAF</li><li>Vrei sa angajezi primii salariati si nu stii de unde sa incepi</li><li>Nu intelegi situatiile financiare ale firmei tale</li><li>Vrei sa optimizezi taxele in mod legal</li><li>Planifici o investitie majora sau un imprumut bancar</li></ul><h4>De ce sa nu astepti?</h4><p>Greselile financiare sunt costisitoare si greu de corectat retroactiv. Un consultant te ajuta sa iei decizii informate inca din start, economisind timp, bani si stres pe termen lung.</p><h4>Cum te ajutam noi?</h4><p>La d4riusTAX ADVICE oferim <strong>prima consultatie gratuita</strong>. Analizam situatia ta si iti recomandam solutiile potrivite, fara obligatii.</p>`},
+  {tag:'Clarificari utile',title:'Diferenta dintre contabilitate si consultanta financiara',body:`<p>Adesea, oamenii confunda contabilitatea cu consultanta financiara. Desi sunt complementare, ele servesc scopuri diferite.</p><h4>Ce este contabilitatea?</h4><p>Contabilitatea se ocupa cu <strong>inregistrarea si raportarea</strong> tranzactiilor financiare ale firmei: facturi, cheltuieli, salarii, declaratii fiscale. Este obligatorie prin lege si asigura conformitatea cu ANAF.</p><h4>Ce este consultanta financiara?</h4><p>Consultanta financiara merge un pas mai departe — te ajuta sa <strong>iei decizii strategice</strong> bazate pe datele financiare: cum sa reduci taxele legal, cum sa structurezi afacerea eficient, ce forma juridica ti se potriveste.</p><h4>De ce ai nevoie de ambele?</h4><ul><li>Contabilitatea iti tine afacerea in ordine si conformitate legala</li><li>Consultanta te ajuta sa cresti profitabil si sa eviti capcane fiscale</li><li>Impreuna, reprezinta fundatia unei afaceri sanatoase</li></ul><p>La d4riusTAX ADVICE oferim ambele servicii sub acelasi acoperis, pentru o abordare integrata a afacerii tale.</p>`},
+  {tag:'Experienta practica',title:'Greseli frecvente la firmele mici',body:`<p>Dupa peste <strong>15 ani de activitate contabila</strong>, am vazut aceleasi greseli repetandu-se la firmele mici. Iata care sunt cele mai frecvente:</p><h4>1. Amestecarea banilor personali cu cei ai firmei</h4><p>Aceasta este probabil cea mai comuna greseala. Fara o separare clara a conturilor, este imposibil sa stii daca firma ta este profitabila.</p><h4>2. Pastrarea bonurilor si facturilor la intamplare</h4><p>Documentele pierdute inseamna cheltuieli nedeductibile si probleme la un eventual control ANAF.</p><h4>3. Ignorarea termenelor fiscale</h4><p>Penalitatile si dobanzile de intarziere se acumuleaza rapid. Un singur termen ratat poate costa sute de lei.</p><h4>4. Lipsa unui plan financiar</h4><p>Multe firme mici functioneaza fara un buget sau proiectii financiare, ceea ce face imposibila planificarea pe termen lung.</p><h4>5. Neapelarea la un specialist la timp</h4><p>Asteptarea pana la primul control ANAF pentru a angaja un contabil este o greseala costisitoare. Preventia este intotdeauna mai ieftina decat corectarea.</p>`},
+  {tag:'Fiscalitate',title:'Ce este TVA-ul si cum functioneaza',body:`<p>TVA-ul (Taxa pe Valoarea Adaugata) este unul dintre cele mai intalnite impozite, dar si cel mai putin inteles de antreprenorii la inceput de drum.</p><h4>Ce este TVA-ul?</h4><p>TVA este un impozit indirect aplicat la fiecare etapa a lantului de productie si distributie. In Romania, cota standard este de <strong>19%</strong>, cu cote reduse de 9% si 5% pentru anumite categorii.</p><h4>Cand devii platitor de TVA?</h4><ul><li><strong>Obligatoriu:</strong> cand depasesti plafonul de 300.000 lei cifra de afaceri anuala</li><li><strong>Optional:</strong> te poti inregistra voluntar oricand, chiar si la infiintare</li></ul><h4>Cum functioneaza practic?</h4><p>Colectezi TVA de la clienti, platesti TVA catre furnizori, si diferenta o virezi la stat lunar sau trimestrial prin Declaratia D300.</p><h4>Avantaje si dezavantaje:</h4><ul><li>✅ Poti deduce TVA-ul platit la achizitii</li><li>✅ Crediblitate crescuta fata de parteneri de afaceri platitori de TVA</li><li>❌ Obliga la mai multa birocratie si declaratii lunare</li><li>❌ Preturi mai mari pentru clientii neinregistrati in scop de TVA</li></ul>`},
+  {tag:'Salarizare',title:'Tot ce trebuie sa stii despre salarizare',body:`<p>Salarizarea este unul dintre cele mai complexe domenii din administratia unei firme. Iata un ghid complet pentru angajatori.</p><h4>Elementele unui stat de plata:</h4><ul><li><strong>Salariul brut</strong> — suma convenita in contractul de munca</li><li><strong>CAS (25%)</strong> — contributia la pensie, suportata de angajat</li><li><strong>CASS (10%)</strong> — contributia la sanatate, suportata de angajat</li><li><strong>Impozit pe venit (10%)</strong> — aplicat dupa deduceri</li><li><strong>Salariul net</strong> — suma pe care o primeste efectiv angajatul</li></ul><h4>Obligatiile angajatorului:</h4><ul><li>Depunerea Declaratiei D112 pana pe 25 ale lunii urmatoare</li><li>Inregistrarea contractelor in REVISAL in termen de 24h de la semnare</li><li>Intocmirea si pastrarea pontajelor lunare</li><li>Eliberarea fluturasului de salariu</li></ul><h4>Salariul minim brut in 2025:</h4><p>Salariul minim brut pe economie este de <strong>4.050 lei</strong>, cu exceptii pentru constructii si agricultura.</p>`},
+  {tag:'Infiintare firma',title:'SRL sau PFA? Cum alegi forma juridica potrivita',body:`<p>Una dintre primele decizii pe care trebuie sa o iei ca antreprenor este alegerea formei juridice. Cele mai populare sunt SRL-ul si PFA-ul.</p><h4>PFA — Persoana Fizica Autorizata</h4><ul><li>✅ Infiintare rapida (1-2 zile) si costuri mici</li><li>✅ Contabilitate simplificata (in partida simpla)</li><li>✅ Retragerea banilor este mai simpla</li><li>❌ Raspundere nelimitata cu bunurile personale</li><li>❌ Imagine mai putin profesionala fata de clientii corporativi</li><li>❌ Impozit pe venit 10% + CAS si CASS obligatorii</li></ul><h4>SRL — Societate cu Raspundere Limitata</h4><ul><li>✅ Raspundere limitata la capitalul social (minim 1 leu)</li><li>✅ Imagine profesionala si credibilitate mai mare</li><li>✅ Impozit micro de 1% sau 3% (pentru CA sub 500.000 euro)</li><li>❌ Costuri de infiintare mai mari si durata 3-5 zile</li><li>❌ Contabilitate in partida dubla, obligatorie</li><li>❌ Retragerea profitului se face prin dividend (impozit 8%)</li></ul><h4>Concluzie:</h4><p>Alegerea depinde de volumul de activitate, tipul clientilor si nivelul de risc acceptat. <strong>Consultati-ne</strong> si va ajutam sa luati decizia corecta pentru situatia dvs specifica.</p>`}
 ];
 
 function openModal(index) {
@@ -583,384 +1009,230 @@ function closeModal() {
   document.getElementById('blog-modal-overlay').style.display = 'none';
   document.body.style.overflow = '';
 }
-document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModal(); });
-
-// ══ GLOBALS ══
-const WORKER_URL = 'https://lucky-water-3cdf.dragandarius731.workers.dev';
-let expertMode = false;
-let expertHistory = [];
-let expertBusy = false;
-let pendingFile = null;
-let attachedFile = null;
-const CHAT_KEY = 'chatbot_session';
-
-// ══ SESSION SAVE/LOAD ══
-function saveChatState() {
-  const msgs = document.getElementById('chatbot-messages').innerHTML;
-  const opts = document.getElementById('chatbot-options').innerHTML;
-  const isOpen = document.getElementById('chatbot-box').style.display==='flex';
-  const inputVisible = document.getElementById('expert-input-row').style.display==='flex';
-  const titleText = document.getElementById('chatTitleEl').textContent;
-  const expHeaderVisible = document.getElementById('expert-header-bar').classList.contains('visible');
-  sessionStorage.setItem(CHAT_KEY, JSON.stringify({msgs,opts,isOpen,isExpert:expertMode,inputVisible,titleText,expertHistory,expHeaderVisible}));
-}
-function loadChatState() {
-  const raw = sessionStorage.getItem(CHAT_KEY);
-  if (!raw) return false;
-  try {
-    const s = JSON.parse(raw);
-    document.getElementById('chatbot-messages').innerHTML = s.msgs||'';
-    document.getElementById('chatbot-options').innerHTML = s.opts||'';
-    document.getElementById('chatbot-box').style.display = s.isOpen?'flex':'none';
-    expertMode = s.isExpert||false;
-    expertHistory = s.expertHistory||[];
-    document.getElementById('expert-input-row').style.display = s.inputVisible?'flex':'none';
-    document.getElementById('chatTitleEl').textContent = s.titleText||'🤖 Asistent d4rius';
-    if (s.expHeaderVisible) {
-      document.getElementById('expert-header-bar').classList.add('visible');
-      document.getElementById('chatbot-header').style.display = 'none';
-    }
-    return true;
-  } catch(e) { return false; }
-}
-
-// ══ INIT ══
-document.addEventListener('DOMContentLoaded', function() {
-  let v = parseInt(localStorage.getItem('site_views')||'0') + 1;
-  localStorage.setItem('site_views', v);
-  document.getElementById('views').textContent = v;
-  window.addEventListener('scroll', checkReveal);
-  checkReveal();
-
-  document.getElementById('chatbot-btn').addEventListener('click', toggleChat);
-  document.getElementById('close-chat').addEventListener('click', closeChat);
-  document.getElementById('close-chat-expert').addEventListener('click', closeChat);
-  document.getElementById('expert-send').addEventListener('click', sendExpert);
-  document.getElementById('attach-btn').addEventListener('click', function() {
-    document.getElementById('file-input').click();
-  });
-  document.getElementById('expert-input').addEventListener('keydown', function(e) {
-    if (e.key==='Enter' && !e.shiftKey) { e.preventDefault(); sendExpert(); }
-  });
-  document.getElementById('expert-input').addEventListener('input', function() {
-    this.style.height = 'auto';
-    this.style.height = Math.min(this.scrollHeight,80)+'px';
-  });
-
-  const restored = loadChatState();
-  if (!restored) {
-    document.getElementById('chatbot-messages').innerHTML = '<div class="msg bot">Buna! Sunt asistentul virtual d4rius 😊<br><br>Alege una dintre optiuni pentru a afla mai multe:</div>';
-    showMainMenu();
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    if (document.getElementById('img-lightbox').classList.contains('open')) closeLightbox();
+    else closeModal();
   }
 });
 
-function checkReveal() {
-  document.querySelectorAll('.reveal').forEach(r => {
-    if (r.getBoundingClientRect().top < window.innerHeight-100) r.classList.add('active');
+// ══════════════════════════════════
+// PROGRAMARI — LOGICA
+// ══════════════════════════════════
+const STORAGE_KEY = 'd4tax_programari';
+
+function getProgramari() {
+  try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]'); }
+  catch(e) { return []; }
+}
+function saveProgramari(list) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
+}
+
+function generateRef() {
+  const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+  let r = '';
+  for (let i = 0; i < 6; i++) r += chars[Math.floor(Math.random() * chars.length)];
+  return '#D4TAX-' + r;
+}
+
+function showProgToast(msg, isError) {
+  const t = document.getElementById('prog-toast');
+  t.textContent = (isError ? '❌ ' : '✅ ') + msg;
+  t.className = isError ? 'error show' : 'show';
+  setTimeout(() => t.classList.remove('show'), 3800);
+}
+
+function setFieldError(fieldId, errId, show) {
+  const f = document.getElementById(fieldId);
+  const e = document.getElementById(errId);
+  if (!f || !e) return;
+  if (show) { f.classList.add('error'); e.classList.add('visible'); }
+  else { f.classList.remove('error'); e.classList.remove('visible'); }
+}
+
+function validateEmail(email) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+function validatePhone(phone) {
+  return /^[0-9\s\+\-\(\)]{8,15}$/.test(phone.trim());
+}
+
+function submitProgramare() {
+  const nume    = document.getElementById('prog-nume').value.trim();
+  const prenume = document.getElementById('prog-prenume').value.trim();
+  const email   = document.getElementById('prog-email').value.trim();
+  const tel     = document.getElementById('prog-tel').value.trim();
+  const data    = document.getElementById('prog-data').value;
+  const ora     = document.getElementById('prog-ora').value;
+  const serviciu= document.getElementById('prog-serviciu').value;
+  const mesaj   = document.getElementById('prog-mesaj').value.trim();
+
+  let valid = true;
+  const today = new Date(); today.setHours(0,0,0,0);
+
+  setFieldError('prog-nume','err-nume', !nume);
+  setFieldError('prog-prenume','err-prenume', !prenume);
+  setFieldError('prog-email','err-email', !validateEmail(email));
+  setFieldError('prog-tel','err-tel', !validatePhone(tel));
+  setFieldError('prog-data','err-data', !data || new Date(data) < today);
+  setFieldError('prog-serviciu','err-serviciu', !serviciu);
+
+  if (!nume || !prenume || !validateEmail(email) || !validatePhone(tel) || !data || new Date(data) < today || !serviciu) {
+    valid = false;
+  }
+
+  if (!valid) {
+    showProgToast('Completeaza corect toate campurile obligatorii', true);
+    // scroll to first error
+    const firstErr = document.querySelector('#programari .form-group input.error, #programari .form-group select.error');
+    if (firstErr) firstErr.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    return;
+  }
+
+  // Salveaza in localStorage
+  const btn = document.getElementById('prog-btn');
+  const btnText = document.getElementById('prog-btn-text');
+  btn.disabled = true;
+  btnText.textContent = '⏳ Se trimite...';
+
+  setTimeout(() => {
+    const ref = generateRef();
+    const programare = {
+      id: Date.now(),
+      ref,
+      nume, prenume, email, tel, data, ora, serviciu, mesaj,
+      status: 'pending', // pending | approved | rejected
+      creat: new Date().toISOString()
+    };
+
+    const list = getProgramari();
+    list.unshift(programare);
+    saveProgramari(list);
+
+    // Arata success
+    document.getElementById('prog-form-content').style.display = 'none';
+    const suc = document.getElementById('prog-success');
+    suc.style.display = 'block';
+    document.getElementById('prog-ref-code').textContent = 'REF: ' + ref;
+
+    btn.disabled = false;
+    btnText.textContent = '📅 Trimite Programarea';
+    showProgToast('Programare inregistrata cu succes!');
+  }, 1000);
+}
+
+function resetForm() {
+  document.getElementById('prog-form-content').style.display = 'block';
+  document.getElementById('prog-success').style.display = 'none';
+  document.getElementById('prog-nume').value = '';
+  document.getElementById('prog-prenume').value = '';
+  document.getElementById('prog-email').value = '';
+  document.getElementById('prog-tel').value = '';
+  document.getElementById('prog-data').value = '';
+  document.getElementById('prog-serviciu').value = '';
+  document.getElementById('prog-mesaj').value = '';
+  // clear errors
+  ['prog-nume','prog-prenume','prog-email','prog-tel','prog-data','prog-serviciu'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.classList.remove('error');
+  });
+  ['err-nume','err-prenume','err-email','err-tel','err-data','err-serviciu'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.classList.remove('visible');
   });
 }
 
-function toggleChat() {
-  const box = document.getElementById('chatbot-box');
-  if (box.style.display==='flex') { box.style.display='none'; }
-  else { box.style.display='flex'; if (!sessionStorage.getItem(CHAT_KEY)) showMainMenu(); }
-  saveChatState();
-}
+// Set min date = today
+document.addEventListener('DOMContentLoaded', function() {
+  const today = new Date().toISOString().split('T')[0];
+  document.getElementById('prog-data').min = today;
+});
 
-function closeChat() {
-  document.getElementById('chatbot-box').style.display = 'none';
-  exitExpertMode();
-  document.getElementById('chatbot-messages').innerHTML = '<div class="msg bot">Buna! Sunt asistentul virtual d4rius 😊<br><br>Alege una dintre optiuni pentru a afla mai multe:</div>';
-  showMainMenu();
-  sessionStorage.removeItem(CHAT_KEY);
-}
+// ══ IMAGE LIGHTBOX ══
+let lbScale=1,lbIsDragging=false,lbDragStartX=0,lbDragStartY=0,lbTranslateX=0,lbTranslateY=0,lbLastTap=0,lbPinchDist=0;
+function openLightbox(src){const lb=document.getElementById('img-lightbox'),img=document.getElementById('lb-img');lbScale=1;lbTranslateX=0;lbTranslateY=0;img.src=src;img.style.transform='scale(1) translate(0,0)';img.classList.remove('zoomed');lb.classList.add('open');document.body.style.overflow='hidden';const hint=document.getElementById('lb-hint');hint.classList.remove('hidden');setTimeout(()=>hint.classList.add('hidden'),2500);}
+function closeLightbox(){document.getElementById('img-lightbox').classList.remove('open');document.body.style.overflow='';lbScale=1;lbTranslateX=0;lbTranslateY=0;}
+function applyLbTransform(){const img=document.getElementById('lb-img');img.style.transition='none';img.style.transform=`scale(${lbScale}) translate(${lbTranslateX/lbScale}px,${lbTranslateY/lbScale}px)`;}
+function lbAnimate(){const img=document.getElementById('lb-img');img.style.transition='transform .25s cubic-bezier(.25,.46,.45,.94)';img.style.transform=`scale(${lbScale}) translate(${lbTranslateX/lbScale}px,${lbTranslateY/lbScale}px)`;}
+document.getElementById('lb-img').addEventListener('dblclick',function(e){e.preventDefault();if(lbScale>1){lbScale=1;lbTranslateX=0;lbTranslateY=0;this.classList.remove('zoomed');}else{lbScale=2.5;const rect=this.getBoundingClientRect();lbTranslateX=(e.clientX-rect.left-rect.width/2)*(lbScale-1)/lbScale;lbTranslateY=(e.clientY-rect.top-rect.height/2)*(lbScale-1)/lbScale;this.classList.add('zoomed');}lbAnimate();});
+document.getElementById('lb-img').addEventListener('mousedown',function(e){if(lbScale<=1)return;lbIsDragging=true;lbDragStartX=e.clientX-lbTranslateX;lbDragStartY=e.clientY-lbTranslateY;this.style.cursor='grabbing';e.preventDefault();});
+document.addEventListener('mousemove',function(e){if(!lbIsDragging)return;lbTranslateX=e.clientX-lbDragStartX;lbTranslateY=e.clientY-lbDragStartY;applyLbTransform();});
+document.addEventListener('mouseup',function(){if(!lbIsDragging)return;lbIsDragging=false;document.getElementById('lb-img').style.cursor=lbScale>1?'zoom-out':'zoom-in';});
+document.getElementById('img-lightbox').addEventListener('click',function(e){if(e.target===this||e.target===document.getElementById('lb-img-wrap'))closeLightbox();});
+document.getElementById('lb-img').addEventListener('touchstart',function(e){if(e.touches.length===2){lbPinchDist=Math.hypot(e.touches[0].clientX-e.touches[1].clientX,e.touches[0].clientY-e.touches[1].clientY);}else if(e.touches.length===1){const now=Date.now();if(now-lbLastTap<300){e.preventDefault();if(lbScale>1){lbScale=1;lbTranslateX=0;lbTranslateY=0;this.classList.remove('zoomed');}else{lbScale=2.5;this.classList.add('zoomed');}lbAnimate();}lbLastTap=now;if(lbScale>1){lbDragStartX=e.touches[0].clientX-lbTranslateX;lbDragStartY=e.touches[0].clientY-lbTranslateY;}}},{passive:false});
+document.getElementById('lb-img').addEventListener('touchmove',function(e){e.preventDefault();if(e.touches.length===2){const dist=Math.hypot(e.touches[0].clientX-e.touches[1].clientX,e.touches[0].clientY-e.touches[1].clientY);const delta=dist/lbPinchDist;lbPinchDist=dist;lbScale=Math.min(4,Math.max(1,lbScale*delta));if(lbScale>1)this.classList.add('zoomed');else{this.classList.remove('zoomed');lbTranslateX=0;lbTranslateY=0;}applyLbTransform();}else if(e.touches.length===1&&lbScale>1){lbTranslateX=e.touches[0].clientX-lbDragStartX;lbTranslateY=e.touches[0].clientY-lbDragStartY;applyLbTransform();}},{passive:false});
+document.getElementById('lb-img').addEventListener('touchend',function(){if(lbScale<1){lbScale=1;lbAnimate();}});
+document.getElementById('lb-img-wrap').addEventListener('wheel',function(e){e.preventDefault();const delta=e.deltaY>0?.85:1.18;lbScale=Math.min(4,Math.max(1,lbScale*delta));if(lbScale<=1){lbTranslateX=0;lbTranslateY=0;document.getElementById('lb-img').classList.remove('zoomed');}else document.getElementById('lb-img').classList.add('zoomed');lbAnimate();},{passive:false});
 
-function getTime() {
-  const now = new Date();
-  return now.getHours().toString().padStart(2,'0')+':'+now.getMinutes().toString().padStart(2,'0');
-}
+// ══ CHATBOT GLOBALS ══
+const WORKER_URL='https://lucky-water-3cdf.dragandarius731.workers.dev';
+let expertMode=false,expertHistory=[],expertBusy=false,pendingFile=null,attachedFile=null;
+const CHAT_KEY='chatbot_session';
 
-const userAvatarSVG = `<svg viewBox="0 0 24 24" fill="#fff" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" fill="#fff"/></svg>`;
+function saveChatState(){const msgs=document.getElementById('chatbot-messages').innerHTML;const opts=document.getElementById('chatbot-options').innerHTML;const isOpen=document.getElementById('chatbot-box').style.display==='flex';const inputVisible=document.getElementById('expert-input-row').style.display==='flex';const titleText=document.getElementById('chatTitleEl').textContent;const expHeaderVisible=document.getElementById('expert-header-bar').classList.contains('visible');sessionStorage.setItem(CHAT_KEY,JSON.stringify({msgs,opts,isOpen,isExpert:expertMode,inputVisible,titleText,expertHistory,expHeaderVisible}));}
+function loadChatState(){const raw=sessionStorage.getItem(CHAT_KEY);if(!raw)return false;try{const s=JSON.parse(raw);document.getElementById('chatbot-messages').innerHTML=s.msgs||'';document.getElementById('chatbot-options').innerHTML=s.opts||'';document.getElementById('chatbot-box').style.display=s.isOpen?'flex':'none';expertMode=s.isExpert||false;expertHistory=s.expertHistory||[];document.getElementById('expert-input-row').style.display=s.inputVisible?'flex':'none';document.getElementById('chatTitleEl').textContent=s.titleText||'🤖 Asistent d4rius';if(s.expHeaderVisible){document.getElementById('expert-header-bar').classList.add('visible');document.getElementById('chatbot-header').style.display='none';}rebindBubbleImages();return true;}catch(e){return false;}}
+function rebindBubbleImages(){document.querySelectorAll('#chatbot-messages .bubble-img').forEach(function(img){img.onclick=function(){openLightbox(this.src);};});}
 
-function addWaMessage(html, type) {
-  const msgs = document.getElementById('chatbot-messages');
-  const row = document.createElement('div');
-  row.className = 'wa-row ' + (type==='user' ? 'user-row' : 'bot-row');
-  const av = document.createElement('div');
-  av.className = 'wa-av ' + (type==='user' ? 'user-av' : 'bot-av');
-  if (type==='user') {
-    av.innerHTML = userAvatarSVG;
-  } else {
-    av.innerHTML = `<img src="D4RIUS TAX.png" alt="logo" onerror="this.style.display='none';this.parentElement.innerHTML='🏢'">`;
-  }
-  const bbl = document.createElement('div');
-  bbl.className = 'wa-bbl ' + (type==='user' ? 'user-bbl' : 'bot-bbl') + (expertMode && type==='bot' ? ' expert-bbl' : '');
-  bbl.innerHTML = html + `<span class="wa-time">${getTime()}</span>`;
-  if (type==='user') { row.appendChild(bbl); row.appendChild(av); }
-  else { row.appendChild(av); row.appendChild(bbl); }
-  msgs.appendChild(row);
-  msgs.scrollTop = msgs.scrollHeight;
-  saveChatState();
-}
+document.addEventListener('DOMContentLoaded',function(){
+  let v=parseInt(localStorage.getItem('site_views')||'0')+1;
+  localStorage.setItem('site_views',v);
+  document.getElementById('views').textContent=v;
+  window.addEventListener('scroll',checkReveal);
+  checkReveal();
+  document.getElementById('chatbot-btn').addEventListener('click',toggleChat);
+  document.getElementById('close-chat').addEventListener('click',closeChat);
+  document.getElementById('close-chat-expert').addEventListener('click',closeChat);
+  document.getElementById('expert-send').addEventListener('click',sendExpert);
+  document.getElementById('attach-btn').addEventListener('click',function(){document.getElementById('file-input').click();});
+  document.getElementById('expert-input').addEventListener('keydown',function(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendExpert();}});
+  document.getElementById('expert-input').addEventListener('input',function(){this.style.height='auto';this.style.height=Math.min(this.scrollHeight,80)+'px';});
+  const restored=loadChatState();
+  if(!restored){document.getElementById('chatbot-messages').innerHTML='<div class="msg bot">Buna! Sunt asistentul virtual d4rius 😊<br><br>Alege una dintre optiuni pentru a afla mai multe:</div>';showMainMenu();}
+  // Set min date pe data
+  const today=new Date().toISOString().split('T')[0];
+  const dataEl=document.getElementById('prog-data');
+  if(dataEl)dataEl.min=today;
+});
 
-function addMessage(text, type) {
-  if (expertMode) { addWaMessage(text, type||'bot'); return; }
-  const div = document.createElement('div');
-  div.className = 'msg ' + (type||'bot');
-  div.innerHTML = text;
-  const msgs = document.getElementById('chatbot-messages');
-  msgs.appendChild(div);
-  msgs.scrollTop = msgs.scrollHeight;
-  saveChatState();
-}
+function checkReveal(){document.querySelectorAll('.reveal').forEach(r=>{if(r.getBoundingClientRect().top<window.innerHeight-100)r.classList.add('active');});}
+function toggleChat(){const box=document.getElementById('chatbot-box');if(box.style.display==='flex'){box.style.display='none';}else{box.style.display='flex';if(!sessionStorage.getItem(CHAT_KEY))showMainMenu();}saveChatState();}
+function closeChat(){document.getElementById('chatbot-box').style.display='none';exitExpertMode();document.getElementById('chatbot-messages').innerHTML='<div class="msg bot">Buna! Sunt asistentul virtual d4rius 😊<br><br>Alege una dintre optiuni pentru a afla mai multe:</div>';showMainMenu();sessionStorage.removeItem(CHAT_KEY);}
+function getTime(){const now=new Date();return now.getHours().toString().padStart(2,'0')+':'+now.getMinutes().toString().padStart(2,'0');}
+const userAvatarSVG=`<svg viewBox="0 0 24 24" fill="#fff" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" fill="#fff"/></svg>`;
 
-// ══ MENIU PRINCIPAL ══
-function showMainMenu() {
-  exitExpertMode();
-  document.getElementById('chatbot-options').innerHTML = `
-  <button class="option-btn expert-option" onclick="openExpert()"><span class="option-icon">🧑‍💼</span><span>Discuta cu un Expert AI</span></button>
-    <button class="option-btn" onclick="showServicii()"><span class="option-icon">📊</span><span>Servicii oferite</span></button>
-    <button class="option-btn" onclick="showProgram()"><span class="option-icon">🕐</span><span>Program de lucru</span></button>
-    <button class="option-btn" onclick="showInfiintare()"><span class="option-icon">🏢</span><span>Infiintare firma</span></button>
-    <button class="option-btn" onclick="showDocumente()"><span class="option-icon">📄</span><span>Documente necesare</span></button>
-    <button class="option-btn" onclick="showFiscalitate()"><span class="option-icon">📋</span><span>Fiscalitate si declaratii</span></button>
-    <button class="option-btn" onclick="showOptimizare()"><span class="option-icon">💡</span><span>Optimizare fiscala</span></button>
-    <button class="option-btn" onclick="showDespre()"><span class="option-icon">👥</span><span>Despre noi</span></button>
-    <button class="option-btn" onclick="showIntrebari()"><span class="option-icon">❓</span><span>Intrebari frecvente</span></button>
-    <button class="option-btn contact-option" onclick="showContact()"><span class="option-icon">📞</span><span>Contacteaza-ne acum</span></button>`;
-  saveChatState();
-}
-function showBackButton() {
-  document.getElementById('chatbot-options').innerHTML = `
-    <button class="option-btn back-btn" onclick="goBack()"><span class="option-icon">⬅️</span><span>Inapoi la meniu</span></button>
-    <button class="option-btn contact-option" onclick="showContact()"><span class="option-icon">📞</span><span>Contacteaza-ne</span></button>`;
-  saveChatState();
-}
-function goBack() { addMessage('Inapoi la meniu principal','user'); showMainMenu(); }
-function showServicii() { addMessage('Ai ales: <strong>Servicii oferite</strong>','user'); addMessage('Oferim urmatoarele servicii profesionale:<br><br>✅ <strong>Contabilitate primara</strong> - organizare si verificare documente lunare<br>✅ <strong>Salarizare completa</strong> - state de plata si Reges online<br>✅ <strong>Consultanta financiara</strong> - suport decizional pentru afacerea ta<br>✅ <strong>Infiintare firme</strong> - SRL, PFA, ONG (3-5 zile)<br><br>Contacteaza-ne pentru detalii!'); showBackButton(); }
-function showPreturi() { addMessage('Ai ales: <strong>Preturi si pachete</strong>','user'); addMessage('<strong>Tarife orientative:</strong><br><br>• PFA simplu: de la 150 RON/luna<br>• SRL micro: de la 300 RON/luna<br>• Salarizare: de la 50 RON/salariat<br><br>💬 <strong>Mai multe detalii la fata locului!</strong><br><br>📞 Contacteaza-ne pentru o oferta personalizata!'); showBackButton(); }
-function showProgram() { addMessage('Ai ales: <strong>Program de lucru</strong>','user'); addMessage('📅 <strong>Programul nostru:</strong><br><br>🕐 Luni - Vineri: 10:00 - 18:00<br>🕐 Sambata - Duminica: 11:00 - 18:00<br><br>📧 contact@d4riustax.advice.uetcompany.ro<br>📞 +40 770 430 731'); showBackButton(); }
-function showInfiintare() { addMessage('Ai ales: <strong>Infiintare firma</strong>','user'); addMessage('Te ajutam sa infiintezi:<br><br>🏢 <strong>SRL</strong> - Societate cu Raspundere Limitata<br>👤 <strong>PFA</strong> - Persoana Fizica Autorizata<br>🤝 <strong>ONG</strong> - Organizatie Non-Guvernamentala<br><br>✓ Pregatire acte necesare<br>✓ Inregistrare Registrul Comertului<br>✓ Inregistrare fiscala ANAF<br>✓ Consultanta cod CAEN'); showBackButton(); }
-function showDocumente() { addMessage('Ai ales: <strong>Documente necesare</strong>','user'); addMessage('📄 <strong>Pentru contabilitate lunara:</strong><br>• Facturi emise si primite<br>• Extrase bancare<br>• Chitante si bonuri fiscale<br><br>📄 <strong>Pentru salarizare:</strong><br>• Pontaje lunare<br>• Concedii medicale<br><br>📩 Poti trimite documentele si prin email!'); showBackButton(); }
-function showFiscalitate() { addMessage('Ai ales: <strong>Fiscalitate si declaratii</strong>','user'); addMessage('✅ Declaratii fiscale lunare si anuale<br>✅ TVA, CAS, CASS, D112<br>✅ Impozit profit si venit<br>✅ Verificare conformitate ANAF<br><br>📅 <strong>Termene importante:</strong><br>• TVA: 25 ale lunii urmatoare<br>• Declaratie unica: 25 mai (anual)<br><br>⏰ Nu ratezi niciun termen cu noi!'); showBackButton(); }
-function showOptimizare() { addMessage('Ai ales: <strong>Optimizare fiscala</strong>','user'); addMessage('💡 <strong>Solutii legale de optimizare:</strong><br><br>✅ Analiza structurii fiscale actuale<br>✅ Reducerea taxelor in mod legal<br>✅ Planificare fiscala pe termen lung<br>✅ Deduceri si scutiri fiscale aplicabile<br>✅ Consultanta pentru dividend vs salariu<br><br><strong>Peste 15 ani experienta</strong> in optimizare fiscala legala!'); showBackButton(); }
-function showDespre() { addMessage('Ai ales: <strong>Despre noi</strong>','user'); addMessage('👥 <strong>d4riusTAX ADVICE S.R.L</strong><br><br>• Peste <strong>15 ani de experienta</strong> in domeniul financiar-contabil<br>• Specializati in consultanta fiscala si optimizare<br>• Experti in relatia cu ANAF<br>• 100% conformitate cu legislatia<br><br>📍 <strong>Sediu:</strong> Targoviste, Dambovita'); showBackButton(); }
-function showIntrebari() { addMessage('Ai ales: <strong>Intrebari frecvente</strong>','user'); addMessage('<strong>📌 Cat dureaza infiintarea unei firme?</strong><br>3-5 zile lucratoare SRL, 1-2 zile PFA.<br><br><strong>📌 Oferiti consultanta gratuita?</strong><br>Da! Prima discutie este gratuita.<br><br><strong>📌 Lucrati si cu firme din alte judete?</strong><br>Da, comunicarea se poate face online.<br><br><strong>📌 Pot schimba contabilul oricand?</strong><br>Da, ne ocupam de toata documentatia.'); showBackButton(); }
-function showContact() { addMessage('Ai ales: <strong>Contact</strong>','user'); addMessage('📧 <a href="mailto:contact@d4riustax.advice.uetcompany.ro" style="color:#ff7a18;font-weight:600;">contact@d4riustax.advice.uetcompany.ro</a><br>📞 <a href="tel:+40770430731" style="color:#ff7a18;font-weight:600;">+40 770 430 731</a><br>📍 Targoviste, Dambovita<br><br>🕐 Luni-Vineri 10:00-18:00'); showBackButton(); }
+function addWaMessage(html,type){const msgs=document.getElementById('chatbot-messages');const row=document.createElement('div');row.className='wa-row '+(type==='user'?'user-row':'bot-row');const av=document.createElement('div');av.className='wa-av '+(type==='user'?'user-av':'bot-av');if(type==='user'){av.innerHTML=userAvatarSVG;}else{av.innerHTML=`<img src="D4RIUS TAX.png" alt="logo" onerror="this.style.display='none';this.parentElement.innerHTML='🏢'">`;}const bbl=document.createElement('div');bbl.className='wa-bbl '+(type==='user'?'user-bbl':'bot-bbl')+(expertMode&&type==='bot'?' expert-bbl':'');bbl.innerHTML=html+`<span class="wa-time">${getTime()}</span>`;bbl.querySelectorAll('.bubble-img').forEach(function(img){img.onclick=function(){openLightbox(this.src);};});if(type==='user'){row.appendChild(bbl);row.appendChild(av);}else{row.appendChild(av);row.appendChild(bbl);}msgs.appendChild(row);msgs.scrollTop=msgs.scrollHeight;saveChatState();}
+function addMessage(text,type){if(expertMode){addWaMessage(text,type||'bot');return;}const div=document.createElement('div');div.className='msg '+(type||'bot');div.innerHTML=text;const msgs=document.getElementById('chatbot-messages');msgs.appendChild(div);msgs.scrollTop=msgs.scrollHeight;saveChatState();}
 
-// ══ EXPERT MODE ══
-function openExpert() {
-  expertMode = true;
-  expertHistory = [];
-  document.getElementById('chatbot-header').style.display = 'none';
-  document.getElementById('expert-header-bar').classList.add('visible');
-  document.getElementById('chatbot-messages').style.background = 'linear-gradient(180deg,#ece5dd,#ddd6cc)';
-  document.getElementById('expert-input-row').style.display = 'flex';
-  document.getElementById('chatbot-options').innerHTML = `<button class="option-btn back-btn" onclick="exitExpertAndGoBack()"><span class="option-icon">⬅️</span><span>Inapoi la meniu</span></button>`;
-  addWaMessage('Buna ziua! Sunt expertul virtual d4riusTAX 🧑‍💼<br><br>Poti sa ma intrebi orice despre contabilitate, fiscalitate, infiintare de firme sau consultanta financiara.<br><br>📎 Poti atasa si documente sau imagini!', 'bot');
-  document.getElementById('expert-input').focus();
-  saveChatState();
-}
+function showMainMenu(){exitExpertMode();document.getElementById('chatbot-options').innerHTML=`<button class="option-btn expert-option" onclick="openExpert()"><span class="option-icon">🧑‍💼</span><span>Discuta cu un Expert AI</span></button><button class="option-btn" onclick="showServicii()"><span class="option-icon">📊</span><span>Servicii oferite</span></button><button class="option-btn" onclick="showProgram()"><span class="option-icon">🕐</span><span>Program de lucru</span></button><button class="option-btn" onclick="showInfiintare()"><span class="option-icon">🏢</span><span>Infiintare firma</span></button><button class="option-btn" onclick="showDocumente()"><span class="option-icon">📄</span><span>Documente necesare</span></button><button class="option-btn" onclick="showFiscalitate()"><span class="option-icon">📋</span><span>Fiscalitate si declaratii</span></button><button class="option-btn" onclick="showOptimizare()"><span class="option-icon">💡</span><span>Optimizare fiscala</span></button><button class="option-btn" onclick="showDespre()"><span class="option-icon">👥</span><span>Despre noi</span></button><button class="option-btn" onclick="showIntrebari()"><span class="option-icon">❓</span><span>Intrebari frecvente</span></button><button class="option-btn contact-option" onclick="showContact()"><span class="option-icon">📞</span><span>Contacteaza-ne acum</span></button>`;saveChatState();}
+function showBackButton(){document.getElementById('chatbot-options').innerHTML=`<button class="option-btn back-btn" onclick="goBack()"><span class="option-icon">⬅️</span><span>Inapoi la meniu</span></button><button class="option-btn contact-option" onclick="showContact()"><span class="option-icon">📞</span><span>Contacteaza-ne</span></button>`;saveChatState();}
+function goBack(){addMessage('Inapoi la meniu principal','user');showMainMenu();}
+function showServicii(){addMessage('Ai ales: <strong>Servicii oferite</strong>','user');addMessage('Oferim urmatoarele servicii profesionale:<br><br>✅ <strong>Contabilitate primara</strong> - organizare si verificare documente lunare<br>✅ <strong>Salarizare completa</strong> - state de plata si Reges online<br>✅ <strong>Consultanta financiara</strong> - suport decizional pentru afacerea ta<br>✅ <strong>Infiintare firme</strong> - SRL, PFA, ONG (3-5 zile)<br><br>Contacteaza-ne pentru detalii!');showBackButton();}
+function showProgram(){addMessage('Ai ales: <strong>Program de lucru</strong>','user');addMessage('📅 <strong>Programul nostru:</strong><br><br>🕐 Luni - Vineri: 10:00 - 18:00<br>🕐 Sambata - Duminica: 11:00 - 18:00<br><br>📧 contact@d4riustax.advice.uetcompany.ro<br>📞 +40 770 430 731');showBackButton();}
+function showInfiintare(){addMessage('Ai ales: <strong>Infiintare firma</strong>','user');addMessage('Te ajutam sa infiintezi:<br><br>🏢 <strong>SRL</strong> - Societate cu Raspundere Limitata<br>👤 <strong>PFA</strong> - Persoana Fizica Autorizata<br>🤝 <strong>ONG</strong> - Organizatie Non-Guvernamentala<br><br>✓ Pregatire acte necesare<br>✓ Inregistrare Registrul Comertului<br>✓ Inregistrare fiscala ANAF<br>✓ Consultanta cod CAEN');showBackButton();}
+function showDocumente(){addMessage('Ai ales: <strong>Documente necesare</strong>','user');addMessage('📄 <strong>Pentru contabilitate lunara:</strong><br>• Facturi emise si primite<br>• Extrase bancare<br>• Chitante si bonuri fiscale<br><br>📄 <strong>Pentru salarizare:</strong><br>• Pontaje lunare<br>• Concedii medicale<br><br>📩 Poti trimite documentele si prin email!');showBackButton();}
+function showFiscalitate(){addMessage('Ai ales: <strong>Fiscalitate si declaratii</strong>','user');addMessage('✅ Declaratii fiscale lunare si anuale<br>✅ TVA, CAS, CASS, D112<br>✅ Impozit profit si venit<br>✅ Verificare conformitate ANAF<br><br>📅 <strong>Termene importante:</strong><br>• TVA: 25 ale lunii urmatoare<br>• Declaratie unica: 25 mai (anual)<br><br>⏰ Nu ratezi niciun termen cu noi!');showBackButton();}
+function showOptimizare(){addMessage('Ai ales: <strong>Optimizare fiscala</strong>','user');addMessage('💡 <strong>Solutii legale de optimizare:</strong><br><br>✅ Analiza structurii fiscale actuale<br>✅ Reducerea taxelor in mod legal<br>✅ Planificare fiscala pe termen lung<br>✅ Deduceri si scutiri fiscale aplicabile<br>✅ Consultanta pentru dividend vs salariu<br><br><strong>Peste 15 ani experienta</strong> in optimizare fiscala legala!');showBackButton();}
+function showDespre(){addMessage('Ai ales: <strong>Despre noi</strong>','user');addMessage('👥 <strong>d4riusTAX ADVICE S.R.L</strong><br><br>• Peste <strong>15 ani de experienta</strong> in domeniul financiar-contabil<br>• Specializati in consultanta fiscala si optimizare<br>• Experti in relatia cu ANAF<br>• 100% conformitate cu legislatia<br><br>📍 <strong>Sediu:</strong> Targoviste, Dambovita');showBackButton();}
+function showIntrebari(){addMessage('Ai ales: <strong>Intrebari frecvente</strong>','user');addMessage('<strong>📌 Cat dureaza infiintarea unei firme?</strong><br>3-5 zile lucratoare SRL, 1-2 zile PFA.<br><br><strong>📌 Oferiti consultanta gratuita?</strong><br>Da! Prima discutie este gratuita.<br><br><strong>📌 Lucrati si cu firme din alte judete?</strong><br>Da, comunicarea se poate face online.<br><br><strong>📌 Pot schimba contabilul oricand?</strong><br>Da, ne ocupam de toata documentatia.');showBackButton();}
+function showContact(){addMessage('Ai ales: <strong>Contact</strong>','user');addMessage('📧 <a href="mailto:contact@d4riustax.advice.uetcompany.ro" style="color:#ff7a18;font-weight:600;">contact@d4riustax.advice.uetcompany.ro</a><br>📞 <a href="tel:+40770430731" style="color:#ff7a18;font-weight:600;">+40 770 430 731</a><br>📍 Targoviste, Dambovita<br>🕐 Luni-Vineri 10:00-18:00');showBackButton();}
 
-function exitExpertMode() {
-  expertMode = false;
-  attachedFile = null;
-  pendingFile = null;
-  document.getElementById('expert-input-row').style.display = 'none';
-  document.getElementById('expert-header-bar').classList.remove('visible');
-  document.getElementById('chatbot-header').style.display = 'flex';
-  document.getElementById('chatbot-messages').style.background = 'linear-gradient(180deg,#f9fafb,#fff)';
-  clearFile();
-}
+function openExpert(){expertMode=true;expertHistory=[];document.getElementById('chatbot-header').style.display='none';document.getElementById('expert-header-bar').classList.add('visible');document.getElementById('chatbot-messages').style.background='linear-gradient(180deg,#ece5dd,#ddd6cc)';document.getElementById('expert-input-row').style.display='flex';document.getElementById('chatbot-options').innerHTML=`<button class="option-btn back-btn" onclick="exitExpertAndGoBack()"><span class="option-icon">⬅️</span><span>Inapoi la meniu</span></button>`;addWaMessage('Buna ziua! Sunt expertul virtual d4riusTAX 🧑‍💼<br><br>Poti sa ma intrebi orice despre contabilitate, fiscalitate, infiintare de firme sau consultanta financiara.<br><br>📎 Poti atasa si documente sau imagini!','bot');document.getElementById('expert-input').focus();saveChatState();}
+function exitExpertMode(){expertMode=false;attachedFile=null;pendingFile=null;document.getElementById('expert-input-row').style.display='none';document.getElementById('expert-header-bar').classList.remove('visible');document.getElementById('chatbot-header').style.display='flex';document.getElementById('chatbot-messages').style.background='linear-gradient(180deg,#f9fafb,#fff)';clearFile();}
+function exitExpertAndGoBack(){exitExpertMode();addMessage('Inapoi la meniu principal','user');showMainMenu();}
 
-function exitExpertAndGoBack() {
-  exitExpertMode();
-  addMessage('Inapoi la meniu principal','user');
-  showMainMenu();
-}
+function handleFileSelect(input){const file=input.files[0];if(!file)return;pendingFile=file;showConfirmDialog(file);input.value='';}
+function showConfirmDialog(file){const overlay=document.getElementById('confirm-overlay');const visual=document.getElementById('confirm-visual');const title=document.getElementById('confirm-title');const sub=document.getElementById('confirm-sub');const isImg=file.type.startsWith('image/');const sizeKB=(file.size/1024).toFixed(1);if(isImg){const reader=new FileReader();reader.onload=function(e){visual.innerHTML=`<img src="${e.target.result}" class="confirm-prev-img" alt="preview">`;};reader.readAsDataURL(file);title.textContent='Ești sigur că vrei să trimiți această poză?';}else{const ext=file.name.split('.').pop().toUpperCase();const icons={PDF:'📄',DOC:'📝',DOCX:'📝',XLS:'📊',XLSX:'📊',TXT:'📃'};visual.innerHTML=`<div class="confirm-file-icon">${icons[ext]||'📎'}</div>`;title.textContent='Ești sigur că vrei să trimiți acest fișier?';}sub.innerHTML=`Fișier: <span class="confirm-fname">${file.name}</span><br>${sizeKB} KB`;overlay.classList.add('visible');}
+function cancelConfirm(){pendingFile=null;document.getElementById('confirm-overlay').classList.remove('visible');document.getElementById('confirm-visual').innerHTML='';}
+function confirmSend(){attachedFile=pendingFile;pendingFile=null;document.getElementById('confirm-overlay').classList.remove('visible');document.getElementById('confirm-visual').innerHTML='';showFilePreviewStrip(attachedFile);}
+function showFilePreviewStrip(file){const strip=document.getElementById('file-preview-strip');const visual=document.getElementById('fp-visual');const nameEl=document.getElementById('fp-name-el');const sizeEl=document.getElementById('fp-size-el');nameEl.textContent=file.name;sizeEl.textContent=(file.size/1024).toFixed(1)+' KB';const isImg=file.type.startsWith('image/');if(isImg){const reader=new FileReader();reader.onload=function(e){visual.innerHTML=`<img src="${e.target.result}" class="fp-thumb" alt="preview">`;};reader.readAsDataURL(file);}else{const ext=file.name.split('.').pop().toUpperCase();const icons={PDF:'📄',DOC:'📝',DOCX:'📝',XLS:'📊',XLSX:'📊',TXT:'📃'};visual.innerHTML=`<div class="fp-icon">${icons[ext]||'📎'}</div>`;}strip.classList.add('visible');}
+function clearFile(){attachedFile=null;pendingFile=null;const strip=document.getElementById('file-preview-strip');strip.classList.remove('visible');document.getElementById('fp-visual').innerHTML='';document.getElementById('file-input').value='';}
 
-// ══ FILE HANDLING ══
-function handleFileSelect(input) {
-  const file = input.files[0];
-  if (!file) return;
-  pendingFile = file;
-  showConfirmDialog(file);
-  input.value = '';
-}
+function showTyping(){const msgs=document.getElementById('chatbot-messages');const row=document.createElement('div');row.className='wa-typing-row';row.id='typingEl';const av=document.createElement('div');av.className='wa-av bot-av';av.innerHTML=`<img src="D4RIUS TAX.png" alt="logo" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none';this.parentElement.innerHTML='🏢'">`;const bbl=document.createElement('div');bbl.className='typing-bbl';bbl.innerHTML='<div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div>';row.appendChild(av);row.appendChild(bbl);msgs.appendChild(row);msgs.scrollTop=msgs.scrollHeight;}
+function hideTyping(){const t=document.getElementById('typingEl');if(t)t.remove();}
 
-function showConfirmDialog(file) {
-  const overlay = document.getElementById('confirm-overlay');
-  const visual = document.getElementById('confirm-visual');
-  const title = document.getElementById('confirm-title');
-  const sub = document.getElementById('confirm-sub');
-  const isImg = file.type.startsWith('image/');
-  const sizeKB = (file.size/1024).toFixed(1);
-  if (isImg) {
-    const reader = new FileReader();
-    reader.onload = function(e) {
-      visual.innerHTML = `<img src="${e.target.result}" class="confirm-prev-img" alt="preview">`;
-    };
-    reader.readAsDataURL(file);
-    title.textContent = 'Ești sigur că vrei să trimiți această poză?';
-  } else {
-    const ext = file.name.split('.').pop().toUpperCase();
-    const icons = {PDF:'📄',DOC:'📝',DOCX:'📝',XLS:'📊',XLSX:'📊',TXT:'📃'};
-    visual.innerHTML = `<div class="confirm-file-icon">${icons[ext]||'📎'}</div>`;
-    title.textContent = 'Ești sigur că vrei să trimiți acest fișier?';
-  }
-  sub.innerHTML = `Fișier: <span class="confirm-fname">${file.name}</span><br>${sizeKB} KB`;
-  overlay.classList.add('visible');
-}
-
-function cancelConfirm() {
-  pendingFile = null;
-  document.getElementById('confirm-overlay').classList.remove('visible');
-  document.getElementById('confirm-visual').innerHTML = '';
-}
-
-function confirmSend() {
-  attachedFile = pendingFile;
-  pendingFile = null;
-  document.getElementById('confirm-overlay').classList.remove('visible');
-  document.getElementById('confirm-visual').innerHTML = '';
-  showFilePreviewStrip(attachedFile);
-}
-
-function showFilePreviewStrip(file) {
-  const strip = document.getElementById('file-preview-strip');
-  const visual = document.getElementById('fp-visual');
-  const nameEl = document.getElementById('fp-name-el');
-  const sizeEl = document.getElementById('fp-size-el');
-  nameEl.textContent = file.name;
-  sizeEl.textContent = (file.size/1024).toFixed(1)+' KB';
-  const isImg = file.type.startsWith('image/');
-  if (isImg) {
-    const reader = new FileReader();
-    reader.onload = function(e) {
-      visual.innerHTML = `<img src="${e.target.result}" class="fp-thumb" alt="preview">`;
-    };
-    reader.readAsDataURL(file);
-  } else {
-    const ext = file.name.split('.').pop().toUpperCase();
-    const icons = {PDF:'📄',DOC:'📝',DOCX:'📝',XLS:'📊',XLSX:'📊',TXT:'📃'};
-    visual.innerHTML = `<div class="fp-icon">${icons[ext]||'📎'}</div>`;
-  }
-  strip.classList.add('visible');
-}
-
-function clearFile() {
-  attachedFile = null;
-  pendingFile = null;
-  const strip = document.getElementById('file-preview-strip');
-  strip.classList.remove('visible');
-  document.getElementById('fp-visual').innerHTML = '';
-  document.getElementById('file-input').value = '';
-}
-
-// ══ TYPING INDICATOR ══
-function showTyping() {
-  const msgs = document.getElementById('chatbot-messages');
-  const row = document.createElement('div');
-  row.className = 'wa-typing-row';
-  row.id = 'typingEl';
-  const av = document.createElement('div');
-  av.className = 'wa-av bot-av';
-  av.innerHTML = `<img src="D4RIUS TAX.png" alt="logo" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none';this.parentElement.innerHTML='🏢'">`;
-  const bbl = document.createElement('div');
-  bbl.className = 'typing-bbl';
-  bbl.innerHTML = '<div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div>';
-  row.appendChild(av);
-  row.appendChild(bbl);
-  msgs.appendChild(row);
-  msgs.scrollTop = msgs.scrollHeight;
-}
-function hideTyping() {
-  const t = document.getElementById('typingEl');
-  if (t) t.remove();
-}
-
-// ══ SEND EXPERT ══
-async function sendExpert() {
-  if (!expertMode) return;
-  const inp = document.getElementById('expert-input');
-  const txt = inp.value.trim();
-  if ((!txt && !attachedFile) || expertBusy) return;
-
-  let displayHtml = '';
-  let apiContent = [];
-
-  if (attachedFile) {
-    const file = attachedFile;
-    const isImg = file.type.startsWith('image/');
-    const b64 = await fileToBase64(file);
-    if (isImg) {
-      displayHtml += `<img src="${b64}" class="bubble-img" alt="${file.name}" onclick="window.open(this.src,'_blank')">`;
-      apiContent.push({ type:'image', source:{ type:'base64', media_type: file.type, data: b64.split(',')[1] } });
-    } else {
-      const ext = file.name.split('.').pop().toUpperCase();
-      const icons = {PDF:'📄',DOC:'📝',DOCX:'📝',XLS:'📊',XLSX:'📊',TXT:'📃'};
-      displayHtml += `<div class="bubble-file-row"><span class="bubble-file-icon">${icons[ext]||'📎'}</span><span class="bubble-file-info">${file.name}</span></div>`;
-      if (file.type==='application/pdf') {
-        apiContent.push({ type:'document', source:{ type:'base64', media_type:'application/pdf', data: b64.split(',')[1] } });
-      } else {
-        apiContent.push({ type:'text', text:`[Utilizatorul a atasat fisierul: ${file.name}]` });
-      }
-    }
-  }
-
-  if (txt) {
-    displayHtml += (displayHtml ? '<br>' : '') + txt;
-    apiContent.push({ type:'text', text: txt });
-  }
-  if (!apiContent.length) return;
-
-  addWaMessage(displayHtml, 'user');
-  inp.value = '';
-  inp.style.height = 'auto';
-  clearFile();
-
-  expertBusy = true;
-  document.getElementById('expert-send').disabled = true;
-  showTyping();
-
-  expertHistory.push({ role:'user', content: apiContent.length===1 && apiContent[0].type==='text' ? apiContent[0].text : apiContent });
-
-  try {
-    const resp = await fetch(WORKER_URL, {
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({
-        model:'claude-sonnet-4-20250514',
-        max_tokens:1024,
-        system:'Esti expertul virtual al firmei d4riusTAX ADVICE S.R.L din Targoviste, Romania. Firma ofera contabilitate si consultanta financiara cu peste 15 ani experienta. Esti prietenos, profesional, concis. Specializare: contabilitate, TVA, CAS, CASS, ANAF, D112, D300, SRL, PFA, ONG, salarizare, optimizare fiscala legala. Daca utilizatorul trimite imagini sau documente, analizeaza-le si raspunde relevant. Contact firma: +40 770 430 731.',
-        messages: expertHistory
-      })
-    });
-    if (!resp.ok) throw new Error('HTTP '+resp.status);
-    const data = await resp.json();
-    hideTyping();
-    let reply = '';
-    for (const block of data.content) { if (block.type==='text') reply += block.text; }
-    expertHistory.push({ role:'assistant', content: reply });
-    addWaMessage(reply.replace(/\n/g,'<br>'), 'bot');
-  } catch(err) {
-    hideTyping();
-    addWaMessage('⚠️ Eroare conexiune. Contacteaza-ne la <a href="tel:+40770430731" style="color:#6366f1;font-weight:700">+40 770 430 731</a>', 'bot');
-  }
-
-  expertBusy = false;
-  document.getElementById('expert-send').disabled = false;
-  document.getElementById('expert-input').focus();
-}
-
-function fileToBase64(file) {
-  return new Promise((res, rej) => {
-    const r = new FileReader();
-    r.onload = () => res(r.result);
-    r.onerror = () => rej(new Error('Read failed'));
-    r.readAsDataURL(file);
-  });
-}
+async function sendExpert(){if(!expertMode)return;const inp=document.getElementById('expert-input');const txt=inp.value.trim();if((!txt&&!attachedFile)||expertBusy)return;let displayHtml='';let apiContent=[];if(attachedFile){const file=attachedFile;const isImg=file.type.startsWith('image/');const b64=await fileToBase64(file);if(isImg){displayHtml+=`<img src="${b64}" class="bubble-img" alt="${file.name}">`;apiContent.push({type:'image',source:{type:'base64',media_type:file.type,data:b64.split(',')[1]}});}else{const ext=file.name.split('.').pop().toUpperCase();const icons={PDF:'📄',DOC:'📝',DOCX:'📝',XLS:'📊',XLSX:'📊',TXT:'📃'};displayHtml+=`<div class="bubble-file-row"><span class="bubble-file-icon">${icons[ext]||'📎'}</span><span class="bubble-file-info">${file.name}</span></div>`;if(file.type==='application/pdf'){apiContent.push({type:'document',source:{type:'base64',media_type:'application/pdf',data:b64.split(',')[1]}});}else{apiContent.push({type:'text',text:`[Utilizatorul a atasat fisierul: ${file.name}]`});}}}if(txt){displayHtml+=(displayHtml?'<br>':'')+txt;apiContent.push({type:'text',text:txt});}if(!apiContent.length)return;addWaMessage(displayHtml,'user');inp.value='';inp.style.height='auto';clearFile();expertBusy=true;document.getElementById('expert-send').disabled=true;showTyping();expertHistory.push({role:'user',content:apiContent.length===1&&apiContent[0].type==='text'?apiContent[0].text:apiContent});try{const resp=await fetch(WORKER_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1024,system:'Esti expertul virtual al firmei d4riusTAX ADVICE S.R.L din Targoviste, Romania. Firma ofera contabilitate si consultanta financiara cu peste 15 ani experienta. Esti prietenos, profesional, concis. Specializare: contabilitate, TVA, CAS, CASS, ANAF, D112, D300, SRL, PFA, ONG, salarizare, optimizare fiscala legala. Daca utilizatorul trimite imagini sau documente, analizeaza-le si raspunde relevant. Contact firma: +40 770 430 731.',messages:expertHistory})});if(!resp.ok)throw new Error('HTTP '+resp.status);const data=await resp.json();hideTyping();let reply='';for(const block of data.content){if(block.type==='text')reply+=block.text;}expertHistory.push({role:'assistant',content:reply});addWaMessage(reply.replace(/\n/g,'<br>'),'bot');}catch(err){hideTyping();addWaMessage('⚠️ Eroare conexiune. Contacteaza-ne la <a href="tel:+40770430731" style="color:#6366f1;font-weight:700">+40 770 430 731</a>','bot');}expertBusy=false;document.getElementById('expert-send').disabled=false;document.getElementById('expert-input').focus();}
+function fileToBase64(file){return new Promise((res,rej)=>{const r=new FileReader();r.onload=()=>res(r.result);r.onerror=()=>rej(new Error('Read failed'));r.readAsDataURL(file);});}
 </script>
 </body>
 </html>

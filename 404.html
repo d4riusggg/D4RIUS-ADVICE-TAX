@@ -115,6 +115,8 @@ footer a:hover{color:var(--secondary)}
   #chatbot-messages{max-height:45vh;}
   #chatbot-options{max-height:200px;}
   .option-btn{padding:11px 14px;font-size:13px;}
+  /* FIX EMAIL mobil - nu se rupe pe 2 randuri */
+  .msg a[href^="mailto"]{font-size:11.5px;display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:220px;}
 }
 </style>
 </head>
@@ -289,8 +291,8 @@ function addMessage(text, type) {
 function showMainMenu() {
   exitExpertMode();
   document.getElementById('chatbot-options').innerHTML = `
+    <button class="option-btn expert-option" onclick="openExpert()"><span class="option-icon">🧑‍💼</span><span>Discuta cu un Expert AI</span></button>
     <button class="option-btn" onclick="showServicii()"><span class="option-icon">📊</span><span>Servicii oferite</span></button>
-    <button class="option-btn" onclick="showPreturi()"><span class="option-icon">💰</span><span>Preturi si pachete</span></button>
     <button class="option-btn" onclick="showProgram()"><span class="option-icon">🕐</span><span>Program de lucru</span></button>
     <button class="option-btn" onclick="showInfiintare()"><span class="option-icon">🏢</span><span>Infiintare firma</span></button>
     <button class="option-btn" onclick="showDocumente()"><span class="option-icon">📄</span><span>Documente necesare</span></button>
@@ -298,7 +300,6 @@ function showMainMenu() {
     <button class="option-btn" onclick="showOptimizare()"><span class="option-icon">💡</span><span>Optimizare fiscala</span></button>
     <button class="option-btn" onclick="showDespre()"><span class="option-icon">👥</span><span>Despre noi</span></button>
     <button class="option-btn" onclick="showIntrebari()"><span class="option-icon">❓</span><span>Intrebari frecvente</span></button>
-    <button class="option-btn expert-option" onclick="openExpert()"><span class="option-icon">🧑‍💼</span><span>Discuta cu un Expert AI</span></button>
     <button class="option-btn contact-option" onclick="showContact()"><span class="option-icon">📞</span><span>Contacteaza-ne acum</span></button>`;
   saveChatState();
 }
@@ -309,54 +310,18 @@ function showBackButton() {
   saveChatState();
 }
 function goBack() { addMessage('Inapoi la meniu principal', 'user'); showMainMenu(); }
-function showServicii() {
-  addMessage('Ai ales: <strong>Servicii oferite</strong>', 'user');
-  addMessage('Oferim urmatoarele servicii profesionale:<br><br>✅ <strong>Contabilitate primara</strong> - organizare si verificare documente lunare<br>✅ <strong>Salarizare completa</strong> - state de plata si Reges online<br>✅ <strong>Consultanta financiara</strong> - suport decizional pentru afacerea ta<br>✅ <strong>Infiintare firme</strong> - SRL, PFA, ONG (3-5 zile)<br><br>Contacteaza-ne pentru detalii!');
-  showBackButton();
-}
-function showPreturi() {
-  addMessage('Ai ales: <strong>Preturi si pachete</strong>', 'user');
-  addMessage('<strong>Tarife orientative:</strong><br><br>• PFA simplu: de la 150 RON/luna<br>• SRL micro: de la 300 RON/luna<br>• Salarizare: de la 50 RON/salariat<br><br>💬 <strong>Mai multe detalii la fata locului!</strong><br><br>📞 Contacteaza-ne pentru o oferta personalizata!');
-  showBackButton();
-}
-function showProgram() {
-  addMessage('Ai ales: <strong>Program de lucru</strong>', 'user');
-  addMessage('📅 <strong>Programul nostru:</strong><br><br>🕐 Luni - Vineri: 10:00 - 18:00<br>🕐 Sambata - Duminica: 11:00 - 18:00<br><br>📧 contact@d4riustax.advice.uetcompany.ro<br>📞 +40 770 430 731');
-  showBackButton();
-}
-function showInfiintare() {
-  addMessage('Ai ales: <strong>Infiintare firma</strong>', 'user');
-  addMessage('Te ajutam sa infiintezi:<br><br>🏢 <strong>SRL</strong> - Societate cu Raspundere Limitata<br>👤 <strong>PFA</strong> - Persoana Fizica Autorizata<br>🤝 <strong>ONG</strong> - Organizatie Non-Guvernamentala<br><br>✓ Pregatire acte necesare<br>✓ Inregistrare Registrul Comertului<br>✓ Inregistrare fiscala ANAF<br>✓ Consultanta cod CAEN');
-  showBackButton();
-}
-function showDocumente() {
-  addMessage('Ai ales: <strong>Documente necesare</strong>', 'user');
-  addMessage('📄 <strong>Pentru contabilitate lunara:</strong><br>• Facturi emise si primite<br>• Extrase bancare<br>• Chitante si bonuri fiscale<br><br>📄 <strong>Pentru salarizare:</strong><br>• Pontaje lunare<br>• Concedii medicale<br><br>📩 Poti trimite documentele si prin email!');
-  showBackButton();
-}
-function showFiscalitate() {
-  addMessage('Ai ales: <strong>Fiscalitate si declaratii</strong>', 'user');
-  addMessage('✅ Declaratii fiscale lunare si anuale<br>✅ TVA, CAS, CASS, D112<br>✅ Impozit profit si venit<br>✅ Verificare conformitate ANAF<br><br>📅 <strong>Termene importante:</strong><br>• TVA: 25 ale lunii urmatoare<br>• Declaratie unica: 25 mai (anual)<br><br>⏰ Nu ratezi niciun termen cu noi!');
-  showBackButton();
-}
-function showOptimizare() {
-  addMessage('Ai ales: <strong>Optimizare fiscala</strong>', 'user');
-  addMessage('💡 <strong>Solutii legale de optimizare:</strong><br><br>✅ Analiza structurii fiscale actuale<br>✅ Reducerea taxelor in mod legal<br>✅ Planificare fiscala pe termen lung<br>✅ Deduceri si scutiri fiscale aplicabile<br>✅ Consultanta pentru dividend vs salariu<br><br><strong>Peste 15 ani experienta</strong> in optimizare fiscala legala!');
-  showBackButton();
-}
-function showDespre() {
-  addMessage('Ai ales: <strong>Despre noi</strong>', 'user');
-  addMessage('👥 <strong>d4riusTAX ADVICE S.R.L</strong><br><br>• Peste <strong>15 ani de experienta</strong> in domeniul financiar-contabil<br>• Specializati in consultanta fiscala si optimizare<br>• Experti in relatia cu ANAF<br>• 100% conformitate cu legislatia<br><br>📍 <strong>Sediu:</strong> Targoviste, Dambovita');
-  showBackButton();
-}
-function showIntrebari() {
-  addMessage('Ai ales: <strong>Intrebari frecvente</strong>', 'user');
-  addMessage('<strong>📌 Cat dureaza infiintarea unei firme?</strong><br>3-5 zile lucratoare SRL, 1-2 zile PFA.<br><br><strong>📌 Oferiti consultanta gratuita?</strong><br>Da! Prima discutie este gratuita.<br><br><strong>📌 Lucrati si cu firme din alte judete?</strong><br>Da, comunicarea se poate face online.<br><br><strong>📌 Pot schimba contabilul oricand?</strong><br>Da, ne ocupam de toata documentatia.');
-  showBackButton();
-}
+function showServicii() { addMessage('Ai ales: <strong>Servicii oferite</strong>','user'); addMessage('Oferim urmatoarele servicii profesionale:<br><br>✅ <strong>Contabilitate primara</strong> - organizare si verificare documente lunare<br>✅ <strong>Salarizare completa</strong> - state de plata si Reges online<br>✅ <strong>Consultanta financiara</strong> - suport decizional pentru afacerea ta<br>✅ <strong>Infiintare firme</strong> - SRL, PFA, ONG (3-5 zile)<br><br>Contacteaza-ne pentru detalii!'); showBackButton(); }
+function showPreturi() { addMessage('Ai ales: <strong>Preturi si pachete</strong>','user'); addMessage('<strong>Tarife orientative:</strong><br><br>• PFA simplu: de la 150 RON/luna<br>• SRL micro: de la 300 RON/luna<br>• Salarizare: de la 50 RON/salariat<br><br>💬 <strong>Mai multe detalii la fata locului!</strong><br><br>📞 Contacteaza-ne pentru o oferta personalizata!'); showBackButton(); }
+function showProgram() { addMessage('Ai ales: <strong>Program de lucru</strong>','user'); addMessage('📅 <strong>Programul nostru:</strong><br><br>🕐 Luni - Vineri: 10:00 - 18:00<br>🕐 Sambata - Duminica: 11:00 - 18:00<br><br>📧 <a href="mailto:contact@d4riustax.advice.uetcompany.ro" style="color:#ff7a18;font-weight:600;font-size:12px;display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:240px;">contact@d4riustax.advice.uetcompany.ro</a>📞 +40 770 430 731'); showBackButton(); }
+function showInfiintare() { addMessage('Ai ales: <strong>Infiintare firma</strong>','user'); addMessage('Te ajutam sa infiintezi:<br><br>🏢 <strong>SRL</strong> - Societate cu Raspundere Limitata<br>👤 <strong>PFA</strong> - Persoana Fizica Autorizata<br>🤝 <strong>ONG</strong> - Organizatie Non-Guvernamentala<br><br>✓ Pregatire acte necesare<br>✓ Inregistrare Registrul Comertului<br>✓ Inregistrare fiscala ANAF<br>✓ Consultanta cod CAEN'); showBackButton(); }
+function showDocumente() { addMessage('Ai ales: <strong>Documente necesare</strong>','user'); addMessage('📄 <strong>Pentru contabilitate lunara:</strong><br>• Facturi emise si primite<br>• Extrase bancare<br>• Chitante si bonuri fiscale<br><br>📄 <strong>Pentru salarizare:</strong><br>• Pontaje lunare<br>• Concedii medicale<br><br>📩 Poti trimite documentele si prin email!'); showBackButton(); }
+function showFiscalitate() { addMessage('Ai ales: <strong>Fiscalitate si declaratii</strong>','user'); addMessage('✅ Declaratii fiscale lunare si anuale<br>✅ TVA, CAS, CASS, D112<br>✅ Impozit profit si venit<br>✅ Verificare conformitate ANAF<br><br>📅 <strong>Termene importante:</strong><br>• TVA: 25 ale lunii urmatoare<br>• Declaratie unica: 25 mai (anual)<br><br>⏰ Nu ratezi niciun termen cu noi!'); showBackButton(); }
+function showOptimizare() { addMessage('Ai ales: <strong>Optimizare fiscala</strong>','user'); addMessage('💡 <strong>Solutii legale de optimizare:</strong><br><br>✅ Analiza structurii fiscale actuale<br>✅ Reducerea taxelor in mod legal<br>✅ Planificare fiscala pe termen lung<br>✅ Deduceri si scutiri fiscale aplicabile<br>✅ Consultanta pentru dividend vs salariu<br><br><strong>Peste 15 ani experienta</strong> in optimizare fiscala legala!'); showBackButton(); }
+function showDespre() { addMessage('Ai ales: <strong>Despre noi</strong>','user'); addMessage('👥 <strong>d4riusTAX ADVICE S.R.L</strong><br><br>• Peste <strong>15 ani de experienta</strong> in domeniul financiar-contabil<br>• Specializati in consultanta fiscala si optimizare<br>• Experti in relatia cu ANAF<br>• 100% conformitate cu legislatia<br><br>📍 <strong>Sediu:</strong> Targoviste, Dambovita'); showBackButton(); }
+function showIntrebari() { addMessage('Ai ales: <strong>Intrebari frecvente</strong>','user'); addMessage('<strong>📌 Cat dureaza infiintarea unei firme?</strong><br>3-5 zile lucratoare SRL, 1-2 zile PFA.<br><br><strong>📌 Oferiti consultanta gratuita?</strong><br>Da! Prima discutie este gratuita.<br><br><strong>📌 Lucrati si cu firme din alte judete?</strong><br>Da, comunicarea se poate face online.<br><br><strong>📌 Pot schimba contabilul oricand?</strong><br>Da, ne ocupam de toata documentatia.'); showBackButton(); }
 function showContact() {
   addMessage('Ai ales: <strong>Contact</strong>', 'user');
-  addMessage('📧 <a href="mailto:contact@d4riustax.advice.uetcompany.ro" style="color:#ff7a18;font-weight:600;">contact@d4riustax.advice.uetcompany.ro</a><br>📞 <a href="tel:+40770430731" style="color:#ff7a18;font-weight:600;">+40 770 430 731</a><br>📍 Targoviste, Dambovita<br><br>🕐 Luni-Vineri 10:00-18:00');
+  addMessage('📧 <a href="mailto:contact@d4riustax.advice.uetcompany.ro" style="color:#ff7a18;font-weight:600;font-size:12px;display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:240px;">contact@d4riustax.advice.uetcompany.ro</a>📞 <a href="tel:+40770430731" style="color:#ff7a18;font-weight:600;">+40 770 430 731</a><br>📍 Targoviste, Dambovita<br><br>🕐 Luni-Vineri 10:00-18:00');
   showBackButton();
 }
 function openExpert() {
@@ -400,7 +365,7 @@ async function sendExpert() {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         model: 'claude-sonnet-4-20250514', max_tokens: 1024,
-        system: 'Esti expertul virtual al firmei d4riusTAX ADVICE S.R.L din Targoviste, Romania. Firma ofera contabilitate si consultanta financiara cu peste 15 ani experienta. Esti prietenos, profesional, concis. Specializare: contabilitate, TVA, CAS, CASS, ANAF, D112, D300, SRL, PFA, ONG, salarizare, optimizare fiscala legala. Contact firma: +40 770 430 731.',
+        system: 'Esti expertul virtual al firmei d4riusTAX ADVICE S.R.L din Targoviste, Romania. Firma ofera contabilitate si consultanta financiara cu peste 15 ani experienta. Esti prietenos, profesional, concis. Specializare: contabilitate, TVA, CAS, CASS, ANAF, D112, D300, SRL, PFA, ONG, salarizare, optimizare fiscala legala. Contact firma: +40 770 430 731, email: contact@d4riustax.advice.uetcompany.ro.',
         messages: expertHistory
       })
     });
@@ -418,7 +383,8 @@ async function sendExpert() {
     saveChatState();
   } catch(err) {
     hideTyping();
-    addMessage('⚠️ Eroare conexiune. Contacteaza-ne la <a href="tel:+40770430731" style="color:#6366f1">+40 770 430 731</a>');
+    // FIX: mesaj eroare cu telefon SI email pe un rand
+    addMessage('⚠️ Eroare conexiune. Ne puteti contacta direct:<br><br>📞 <a href="tel:+40770430731" style="color:#6366f1;font-weight:700;white-space:nowrap">+40 770 430 731</a><br>📧 <a href="mailto:contact@d4riustax.advice.uetcompany.ro" style="color:#6366f1;font-weight:700;font-size:11.5px;display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:220px;">contact@d4riustax.advice.uetcompany.ro</a>');
   }
   expertBusy = false;
   document.getElementById('expert-send').disabled = false;
