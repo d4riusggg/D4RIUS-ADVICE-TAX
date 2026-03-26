@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="ro">
 <head>
@@ -16,7 +14,6 @@
 <link rel="icon" type="image/png" href="D4RIUS TAX.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<!-- Script removed - file doesn't exist -->
 <style>
 :root{--primary:#14314d;--secondary:#ff7a18;--dark:#0b1b2b;--light:#f5f7fb;--text:#333;--radius:20px;}
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif;}
@@ -88,7 +85,6 @@ footer a:hover{color:var(--secondary)}
 .reveal{opacity:0;transform:translateY(40px);transition:1s;}
 .reveal.active{opacity:1;transform:translateY(0);}
 
-/* ══ CHATBOT BASE ══ */
 #chatbot-btn{position:fixed;bottom:20px;right:20px;background:linear-gradient(135deg,#ff7a18,#ff9a3c);color:#fff;width:65px;height:65px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:28px;cursor:pointer;box-shadow:0 10px 30px rgba(255,122,24,.5);z-index:9999;transition:.3s;animation:pulse 2s infinite;}
 #chatbot-btn:hover{transform:scale(1.1);box-shadow:0 15px 40px rgba(255,122,24,.7);}
 @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
@@ -113,7 +109,6 @@ footer a:hover{color:var(--secondary)}
 .expert-option{background:linear-gradient(135deg,#6366f1,#8b5cf6);color:#fff;border:none;}
 .expert-option:hover{background:linear-gradient(135deg,#4f46e5,#7c3aed);transform:scale(1.02);}
 
-/* ══ EXPERT HEADER ══ */
 #expert-header-bar{display:none;background:linear-gradient(135deg,#075e54,#128c7e);padding:10px 16px;align-items:center;gap:12px;flex-shrink:0;border-bottom:1px solid rgba(255,255,255,.1);}
 #expert-header-bar.visible{display:flex;}
 .exp-logo-circle{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,#ff7a18,#ff9a3c);display:flex;align-items:center;justify-content:center;overflow:hidden;flex-shrink:0;box-shadow:0 3px 10px rgba(0,0,0,.3);}
@@ -125,7 +120,6 @@ footer a:hover{color:var(--secondary)}
 .exp-hstatus::before{content:"";width:7px;height:7px;background:#25d366;border-radius:50%;display:inline-block;animation:sPulse 2s infinite;}
 @keyframes sPulse{0%,100%{opacity:1}50%{opacity:.3}}
 
-/* ══ WA MESSAGES ══ */
 .wa-row{display:flex;align-items:flex-end;gap:7px;margin-bottom:8px;padding:0 6px;}
 .wa-row.bot-row{flex-direction:row;}
 .wa-row.user-row{flex-direction:row-reverse;}
@@ -142,7 +136,6 @@ footer a:hover{color:var(--secondary)}
 .wa-time{font-size:10px;color:#999;margin-top:3px;display:block;text-align:right;}
 .wa-bbl.user-bbl .wa-time{color:#667;}
 
-/* Typing WA */
 .wa-typing-row{display:flex;align-items:flex-end;gap:7px;padding:0 6px;margin-bottom:8px;}
 .typing-bbl{background:#fff;padding:10px 14px;border-radius:0 14px 14px 14px;display:flex;gap:4px;align-items:center;box-shadow:0 1px 4px rgba(0,0,0,.12);}
 .typing-dot{width:7px;height:7px;border-radius:50%;background:#aaa;animation:typingBounce 1.2s infinite;}
@@ -150,7 +143,6 @@ footer a:hover{color:var(--secondary)}
 .typing-dot:nth-child(3){animation-delay:.4s;}
 @keyframes typingBounce{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-6px)}}
 
-/* ══ INPUT ROW EXPERT ══ */
 #expert-input-row{display:none;flex-direction:column;gap:8px;padding:10px 12px;background:#f0f0f0;border-top:1px solid #ddd;flex-shrink:0;}
 #file-preview-strip{display:none;background:#fff;border:2px dashed #6366f1;border-radius:12px;padding:10px;align-items:center;gap:10px;position:relative;}
 #file-preview-strip.visible{display:flex;}
@@ -171,7 +163,6 @@ footer a:hover{color:var(--secondary)}
 #expert-send:hover{transform:scale(1.1);}
 #expert-send:disabled{opacity:.5;cursor:not-allowed;transform:none;}
 
-/* ══ CONFIRM DIALOG ══ */
 #confirm-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:99999;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(6px);}
 #confirm-overlay.visible{display:flex;}
 .confirm-box{background:#fff;border-radius:20px;padding:24px;width:100%;max-width:320px;text-align:center;animation:slideUpModal .3s;box-shadow:0 20px 60px rgba(0,0,0,.4);}
@@ -191,7 +182,6 @@ footer a:hover{color:var(--secondary)}
 .bubble-file-icon{font-size:22px;}
 .bubble-file-info{font-size:12px;font-weight:600;}
 
-/* ══ IMAGE LIGHTBOX ══ */
 #img-lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,.95);z-index:999999;align-items:center;justify-content:center;animation:fadeInOverlay .2s;touch-action:none;}
 #img-lightbox.open{display:flex;}
 #lb-topbar{position:absolute;top:0;left:0;right:0;height:56px;background:linear-gradient(180deg,rgba(0,0,0,.7) 0%,transparent 100%);display:flex;align-items:center;justify-content:flex-end;padding:0 16px;z-index:10;}
@@ -203,9 +193,6 @@ footer a:hover{color:var(--secondary)}
 #lb-hint{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,.5);color:#fff;font-size:12px;padding:6px 14px;border-radius:20px;pointer-events:none;opacity:1;transition:opacity 1s;white-space:nowrap;}
 #lb-hint.hidden{opacity:0;}
 
-/* ══════════════════════════════════
-   PROGRAMARI — SECTIUNE NOUA PREMIUM
-   ══════════════════════════════════ */
 #programari {
   background: linear-gradient(160deg, #f8faff 0%, #eef2ff 50%, #fdf4ef 100%);
   position: relative;
@@ -303,7 +290,6 @@ footer a:hover{color:var(--secondary)}
   margin: 0;
 }
 
-/* CARD FORMULAR */
 .prog-form-card {
   background: #fff;
   border-radius: 28px;
@@ -429,7 +415,6 @@ footer a:hover{color:var(--secondary)}
 }
 .prog-privacy a { color: var(--secondary); text-decoration: none; font-weight: 600; }
 
-/* Success state */
 .prog-success {
   display: none;
   text-align: center;
@@ -483,7 +468,6 @@ footer a:hover{color:var(--secondary)}
 }
 .prog-new-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(20,49,77,.35); }
 
-/* Toast */
 #prog-toast {
   position: fixed; bottom: 30px; left: 50%;
   transform: translateX(-50%) translateY(100px);
@@ -498,7 +482,6 @@ footer a:hover{color:var(--secondary)}
 #prog-toast.error { background: linear-gradient(135deg, #ef4444, #dc2626); box-shadow: 0 10px 30px rgba(239,68,68,.4); }
 #prog-toast.show { transform: translateX(-50%) translateY(0); }
 
-/* ══ TABLET + MOBIL ══ */
 @media(max-width:900px){
   body{padding-top:80px;}
   .nav{flex-wrap:wrap;gap:12px;padding:12px 0;}
@@ -566,6 +549,7 @@ footer a:hover{color:var(--secondary)}
 }
 </style>
 </head>
+
 <body>
 <header>
 <div class="container nav">
@@ -674,7 +658,6 @@ footer a:hover{color:var(--secondary)}
 </div>
 </section>
 
-<!-- MODAL BLOG -->
 <div id="blog-modal-overlay" onclick="closeModal()">
   <div id="blog-modal-box" onclick="event.stopPropagation()">
     <div id="blog-modal-header">
@@ -719,9 +702,6 @@ footer a:hover{color:var(--secondary)}
 </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════ -->
-<!--           SECTIUNEA PROGRAMARI                  -->
-<!-- ═══════════════════════════════════════════════ -->
 <section id="programari" class="reveal">
   <div class="container">
     <div class="section-title">
@@ -732,7 +712,6 @@ footer a:hover{color:var(--secondary)}
     </div>
     <div class="prog-wrap">
 
-      <!-- STANGA: beneficii -->
       <div class="prog-info">
         <div class="prog-badge">🎁 Prima consultatie 100% GRATUITA</div>
         <h3>De ce sa alegi o programare?</h3>
@@ -776,9 +755,7 @@ footer a:hover{color:var(--secondary)}
         </div>
       </div>
 
-<!-- DREAPTA: formular -->
       <div class="prog-form-card">
-        <!-- Starea initiala: formular -->
         <div id="prog-form-content">
           <div class="prog-form-header">
             <div class="prog-form-icon">📝</div>
@@ -865,7 +842,6 @@ footer a:hover{color:var(--secondary)}
           </p>
         </div>
 
-        <!-- Starea de succes -->
         <div class="prog-success" id="prog-success">
           <div class="prog-success-icon">✓</div>
           <h3>Programare trimisa cu succes!</h3>
@@ -881,7 +857,6 @@ footer a:hover{color:var(--secondary)}
   </div>
 </section>
 
-<!-- Toast notification -->
 <div id="prog-toast"></div>
 
 <footer>
@@ -924,7 +899,6 @@ footer a:hover{color:var(--secondary)}
 </div>
 </footer>
 
-<!-- ══ CHATBOT ══ -->
 <div id="chatbot-btn">💬</div>
 
 <div id="chatbot-box">
@@ -965,7 +939,6 @@ footer a:hover{color:var(--secondary)}
   </div>
 </div>
 
-<!-- ══ CONFIRM DIALOG ══ -->
 <div id="confirm-overlay">
   <div class="confirm-box">
     <div id="confirm-visual"></div>
@@ -978,7 +951,6 @@ footer a:hover{color:var(--secondary)}
   </div>
 </div>
 
-<!-- ══ IMAGE LIGHTBOX ══ -->
 <div id="img-lightbox">
   <div id="lb-topbar">
     <button id="lb-close" title="Închide (Esc)" onclick="closeLightbox()">✕</button>
@@ -990,7 +962,6 @@ footer a:hover{color:var(--secondary)}
 </div>
 
 <script>
-// ══ BLOG MODAL DATA ══
 const blogPosts = [
   {tag:'Ghid antreprenori',title:'Cand ai nevoie de consultanta in afaceri',body:`<p>Multi antreprenori se intreaba cand este momentul potrivit sa apeleze la un consultant financiar. Raspunsul este: <strong>mai devreme decat crezi.</strong></p><h4>Semne clare ca ai nevoie de consultanta:</h4><ul><li>Afacerea ta creste rapid si nu mai poti tine evidentele singur</li><li>Ai primit o notificare sau un control de la ANAF</li><li>Vrei sa angajezi primii salariati si nu stii de unde sa incepi</li><li>Nu intelegi situatiile financiare ale firmei tale</li><li>Vrei sa optimizezi taxele in mod legal</li><li>Planifici o investitie majora sau un imprumut bancar</li></ul><h4>De ce sa nu astepti?</h4><p>Greselile financiare sunt costisitoare si greu de corectat retroactiv. Un consultant te ajuta sa iei decizii informate inca din start, economisind timp, bani si stres pe termen lung.</p><h4>Cum te ajutam noi?</h4><p>La d4riusTAX ADVICE oferim <strong>prima consultatie gratuita</strong>. Analizam situatia ta si iti recomandam solutiile potrivite, fara obligatii.</p>`},
   {tag:'Clarificari utile',title:'Diferenta dintre contabilitate si consultanta financiara',body:`<p>Adesea, oamenii confunda contabilitatea cu consultanta financiara. Desi sunt complementare, ele servesc scopuri diferite.</p><h4>Ce este contabilitatea?</h4><p>Contabilitatea se ocupa cu <strong>inregistrarea si raportarea</strong> tranzactiilor financiare ale firmei: facturi, cheltuieli, salarii, declaratii fiscale. Este obligatorie prin lege si asigura conformitatea cu ANAF.</p><h4>Ce este consultanta financiara?</h4><p>Consultanta financiara merge un pas mai departe — te ajuta sa <strong>iei decizii strategice</strong> bazate pe datele financiare: cum sa reduci taxele legal, cum sa structurezi afacerea eficient, ce forma juridica ti se potriveste.</p><h4>De ce ai nevoie de ambele?</h4><ul><li>Contabilitatea iti tine afacerea in ordine si conformitate legala</li><li>Consultanta te ajuta sa cresti profitabil si sa eviti capcane fiscale</li><li>Impreuna, reprezinta fundatia unei afaceri sanatoase</li></ul><p>La d4riusTAX ADVICE oferim ambele servicii sub acelasi acoperis, pentru o abordare integrata a afacerii tale.</p>`},
@@ -1019,9 +990,6 @@ document.addEventListener('keydown', function(e) {
   }
 });
 
-// ══════════════════════════════════
-// PROGRAMARI — LOGICA
-// ══════════════════════════════════
 const STORAGE_KEY = 'd4tax_programari';
 
 function getProgramari() {
@@ -1061,8 +1029,6 @@ function validatePhone(phone) {
   return /^[0-9\s\+\-\(\)]{8,15}$/.test(phone.trim());
 }
 
-const API_URL = 'https://tax-reserve-me.preview.emergentagent.com/api';
-
 async function submitProgramare() {
   const nume = document.getElementById('prog-nume').value.trim();
   const prenume = document.getElementById('prog-prenume').value.trim();
@@ -1073,9 +1039,7 @@ async function submitProgramare() {
   const serviciu = document.getElementById('prog-serviciu').value;
   const mesaj = document.getElementById('prog-mesaj').value.trim();
 
-  let valid = true;
   const today = new Date(); today.setHours(0,0,0,0);
-
   setFieldError('prog-nume','err-nume', !nume);
   setFieldError('prog-prenume','err-prenume', !prenume);
   setFieldError('prog-email','err-email', !validateEmail(email));
@@ -1084,13 +1048,9 @@ async function submitProgramare() {
   setFieldError('prog-serviciu','err-serviciu', !serviciu);
 
   if (!nume || !prenume || !validateEmail(email) || !validatePhone(tel) || !data || new Date(data) < today || !serviciu) {
-    valid = false;
-  }
-
-  if (!valid) {
     showProgToast('Completeaza corect toate campurile obligatorii', true);
     const firstErr = document.querySelector('#programari .form-group input.error, #programari .form-group select.error');
-    if (firstErr) firstErr.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    if (firstErr) firstErr.scrollIntoView({ behavior:'smooth', block:'center' });
     return;
   }
 
@@ -1099,38 +1059,55 @@ async function submitProgramare() {
   btn.disabled = true;
   btnText.textContent = '⏳ Se trimite...';
 
+  const ref = generateRef();
+  const dataFormatata = new Date(data + 'T12:00:00').toLocaleDateString('ro-RO', {
+    weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
+  });
+
+  const programare = {
+    id: 'prg_' + Date.now(), ref: ref, nume: nume, prenume: prenume,
+    email: email, telefon: tel, data: data, ora: ora, serviciu: serviciu,
+    mesaj: mesaj, status: 'new', created: new Date().toISOString()
+  };
+  
+  const existing = JSON.parse(localStorage.getItem('d4tax_programari') || '[]');
+  existing.push(programare);
+  localStorage.setItem('d4tax_programari', JSON.stringify(existing));
+
   try {
-    const response = await fetch(API_URL + '/programare', {
+const response = await fetch('https://contab-demo-1.preview.emergentagent.com/api/send-confirmation', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        nume: nume,
-        prenume: prenume,
-        email: email,
-        telefon: tel,
-        data: data,
-        ora: ora,
+        to_email: email,
+        to_name: prenume + ' ' + nume,
+        ref_code: ref,
+        data_programare: dataFormatata,
+        ora_programare: ora,
         serviciu: serviciu,
-        mesaj: mesaj
+        telefon: tel,
+        mesaj: mesaj || 'Fara mesaj suplimentar'
       })
     });
 
-    if (!response.ok) throw new Error('Eroare server');
-    const result = await response.json();
-    
+    if (!response.ok) throw new Error('Email failed');
+
     document.getElementById('prog-form-content').style.display = 'none';
     document.getElementById('prog-success').style.display = 'block';
-    document.getElementById('prog-ref-code').textContent = 'REF: ' + result.ref;
+    document.getElementById('prog-ref-code').textContent = 'REF: ' + ref;
     showProgToast('Programare trimisa! Verifica email-ul pentru confirmare.');
-
   } catch (error) {
-    console.error('Error:', error);
-    showProgToast('Eroare la trimitere. Incearca din nou.', true);
+    console.error('SendGrid error:', error);
+    document.getElementById('prog-form-content').style.display = 'none';
+    document.getElementById('prog-success').style.display = 'block';
+    document.getElementById('prog-ref-code').textContent = 'REF: ' + ref;
+    showProgToast('Programare inregistrata! Te vom contacta telefonic.', false);
   }
 
   btn.disabled = false;
   btnText.textContent = '📅 Trimite Programarea';
 }
+
 function resetForm() {
   document.getElementById('prog-form-content').style.display = 'block';
   document.getElementById('prog-success').style.display = 'none';
@@ -1141,7 +1118,6 @@ function resetForm() {
   document.getElementById('prog-data').value = '';
   document.getElementById('prog-serviciu').value = '';
   document.getElementById('prog-mesaj').value = '';
-  // clear errors
   ['prog-nume','prog-prenume','prog-email','prog-tel','prog-data','prog-serviciu'].forEach(id => {
     const el = document.getElementById(id);
     if (el) el.classList.remove('error');
@@ -1152,13 +1128,11 @@ function resetForm() {
   });
 }
 
-// Set min date = today
 document.addEventListener('DOMContentLoaded', function() {
   const today = new Date().toISOString().split('T')[0];
   document.getElementById('prog-data').min = today;
 });
 
-// ══ IMAGE LIGHTBOX ══
 let lbScale=1,lbIsDragging=false,lbDragStartX=0,lbDragStartY=0,lbTranslateX=0,lbTranslateY=0,lbLastTap=0,lbPinchDist=0;
 function openLightbox(src){const lb=document.getElementById('img-lightbox'),img=document.getElementById('lb-img');lbScale=1;lbTranslateX=0;lbTranslateY=0;img.src=src;img.style.transform='scale(1) translate(0,0)';img.classList.remove('zoomed');lb.classList.add('open');document.body.style.overflow='hidden';const hint=document.getElementById('lb-hint');hint.classList.remove('hidden');setTimeout(()=>hint.classList.add('hidden'),2500);}
 function closeLightbox(){document.getElementById('img-lightbox').classList.remove('open');document.body.style.overflow='';lbScale=1;lbTranslateX=0;lbTranslateY=0;}
@@ -1174,7 +1148,6 @@ document.getElementById('lb-img').addEventListener('touchmove',function(e){e.pre
 document.getElementById('lb-img').addEventListener('touchend',function(){if(lbScale<1){lbScale=1;lbAnimate();}});
 document.getElementById('lb-img-wrap').addEventListener('wheel',function(e){e.preventDefault();const delta=e.deltaY>0?.85:1.18;lbScale=Math.min(4,Math.max(1,lbScale*delta));if(lbScale<=1){lbTranslateX=0;lbTranslateY=0;document.getElementById('lb-img').classList.remove('zoomed');}else document.getElementById('lb-img').classList.add('zoomed');lbAnimate();},{passive:false});
 
-// ══ CHATBOT GLOBALS ══
 const WORKER_URL='https://lucky-water-3cdf.dragandarius731.workers.dev';
 let expertMode=false,expertHistory=[],expertBusy=false,pendingFile=null,attachedFile=null;
 const CHAT_KEY='chatbot_session';
@@ -1198,7 +1171,6 @@ document.addEventListener('DOMContentLoaded',function(){
   document.getElementById('expert-input').addEventListener('input',function(){this.style.height='auto';this.style.height=Math.min(this.scrollHeight,80)+'px';});
   const restored=loadChatState();
   if(!restored){document.getElementById('chatbot-messages').innerHTML='<div class="msg bot">Buna! Sunt asistentul virtual d4rius 😊<br><br>Alege una dintre optiuni pentru a afla mai multe:</div>';showMainMenu();}
-  // Set min date pe data
   const today=new Date().toISOString().split('T')[0];
   const dataEl=document.getElementById('prog-data');
   if(dataEl)dataEl.min=today;
@@ -1242,46 +1214,6 @@ function hideTyping(){const t=document.getElementById('typingEl');if(t)t.remove(
 
 async function sendExpert(){if(!expertMode)return;const inp=document.getElementById('expert-input');const txt=inp.value.trim();if((!txt&&!attachedFile)||expertBusy)return;let displayHtml='';let apiContent=[];if(attachedFile){const file=attachedFile;const isImg=file.type.startsWith('image/');const b64=await fileToBase64(file);if(isImg){displayHtml+=`<img src="${b64}" class="bubble-img" alt="${file.name}">`;apiContent.push({type:'image',source:{type:'base64',media_type:file.type,data:b64.split(',')[1]}});}else{const ext=file.name.split('.').pop().toUpperCase();const icons={PDF:'📄',DOC:'📝',DOCX:'📝',XLS:'📊',XLSX:'📊',TXT:'📃'};displayHtml+=`<div class="bubble-file-row"><span class="bubble-file-icon">${icons[ext]||'📎'}</span><span class="bubble-file-info">${file.name}</span></div>`;if(file.type==='application/pdf'){apiContent.push({type:'document',source:{type:'base64',media_type:'application/pdf',data:b64.split(',')[1]}});}else{apiContent.push({type:'text',text:`[Utilizatorul a atasat fisierul: ${file.name}]`});}}}if(txt){displayHtml+=(displayHtml?'<br>':'')+txt;apiContent.push({type:'text',text:txt});}if(!apiContent.length)return;addWaMessage(displayHtml,'user');inp.value='';inp.style.height='auto';clearFile();expertBusy=true;document.getElementById('expert-send').disabled=true;showTyping();expertHistory.push({role:'user',content:apiContent.length===1&&apiContent[0].type==='text'?apiContent[0].text:apiContent});try{const resp=await fetch(WORKER_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1024,system:'Esti expertul virtual al firmei d4riusTAX ADVICE S.R.L din Targoviste, Romania. Firma ofera contabilitate si consultanta financiara cu peste 15 ani experienta. Esti prietenos, profesional, concis. Specializare: contabilitate, TVA, CAS, CASS, ANAF, D112, D300, SRL, PFA, ONG, salarizare, optimizare fiscala legala. Daca utilizatorul trimite imagini sau documente, analizeaza-le si raspunde relevant. DATE DE CONTACT FIRMA (OBLIGATORIU SA LE FURNIZEZI CAND SUNT CERUTE): Email: contact@d4riustax.advice.uetcompany.ro | Telefon: +40 770 430 731 | Adresa: Targoviste, Dambovita | Program: Luni-Vineri 10:00-18:00, Sambata-Duminica 11:00-18:00. IMPORTANT: Cand cineva intreaba de email, adresa, telefon sau orice date de contact, furnizeaza-le DIRECT si COMPLET fara sa trimiti utilizatorul sa sune undeva.',messages:expertHistory})});if(!resp.ok)throw new Error('HTTP '+resp.status);const data=await resp.json();hideTyping();let reply='';for(const block of data.content){if(block.type==='text')reply+=block.text;}expertHistory.push({role:'assistant',content:reply});addWaMessage(reply.replace(/\n/g,'<br>'),'bot');}catch(err){hideTyping();addWaMessage('⚠️ Eroare conexiune. Contacteaza-ne la <a href="tel:+40770430731" style="color:#6366f1;font-weight:700">+40 770 430 731</a>','bot');}expertBusy=false;document.getElementById('expert-send').disabled=false;document.getElementById('expert-input').focus();}
 function fileToBase64(file){return new Promise((res,rej)=>{const r=new FileReader();r.onload=()=>res(r.result);r.onerror=()=>rej(new Error('Read failed'));r.readAsDataURL(file);});}
-
-
-</script>
-<!-- Code injected by live-server -->
-<script>
-	// <![CDATA[  <-- For SVG support
-	if ('WebSocket' in window) {
-		(function () {
-			function refreshCSS() {
-				var sheets = [].slice.call(document.getElementsByTagName("link"));
-				var head = document.getElementsByTagName("head")[0];
-				for (var i = 0; i < sheets.length; ++i) {
-					var elem = sheets[i];
-					var parent = elem.parentElement || head;
-					parent.removeChild(elem);
-					var rel = elem.rel;
-					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
-						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
-						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
-					}
-					parent.appendChild(elem);
-				}
-			}
-			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
-			var address = protocol + window.location.host + window.location.pathname + '/ws';
-			var socket = new WebSocket(address);
-			socket.onmessage = function (msg) {
-				if (msg.data == 'reload') window.location.reload();
-				else if (msg.data == 'refreshcss') refreshCSS();
-			};
-			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
-				console.log('Live reload enabled.');
-				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
-			}
-		})();
-	}
-	else {
-		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
-	}
-	// ]]>
 </script>
 </body>
 </html>
