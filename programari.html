@@ -1,20 +1,19 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ro">
 <head>
 <meta charset="UTF-8">
 <title>Admin d4riusTAX v4.0</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="https://fonts.googleapis.com" rel="stylesheet">
 <style>
 :root{--primary:#14314d;--secondary:#ff7a18;--dark:#0b1b2b;--green:#22c55e;--red:#ef4444;--yellow:#f59e0b;--blue:#3b82f6;}
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif;}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Arial,sans-serif;}
 body{background:#f0f2f5;min-height:100vh;color:#333;}
 
 /* LOGIN */
 #login-page{display:flex;align-items:center;justify-content:center;min-height:100vh;background:linear-gradient(135deg,var(--primary),var(--dark));}
 .login-box{background:#fff;padding:40px;border-radius:20px;box-shadow:0 20px 60px rgba(0,0,0,.3);width:100%;max-width:380px;text-align:center;}
 .login-box h1{color:var(--primary);font-size:24px;margin-bottom:20px;}
-.login-box input{width:100%;padding:14px;border:2px solid #e0e0e0;border-radius:12px;margin-bottom:14px;outline:none;}
+.login-box input{width:100%;padding:14px;border:2px solid #e0e0e0;border-radius:12px;margin-bottom:14px;outline:none;font-size:15px;}
 .login-box button{width:100%;padding:14px;background:var(--secondary);color:#fff;border:none;border-radius:12px;font-size:16px;font-weight:700;cursor:pointer;}
 
 /* ADMIN PANEL */
@@ -25,7 +24,7 @@ body{background:#f0f2f5;min-height:100vh;color:#333;}
 .logout-btn{background:rgba(255,255,255,0.1);color:#fff;border:none;padding:8px 16px;border-radius:8px;cursor:pointer;font-weight:600;}
 
 .tabs{display:flex;background:#fff;border-bottom:2px solid #e0e0e0;padding:0 24px;gap:4px;}
-.tab{padding:16px 24px;cursor:pointer;font-weight:600;color:#888;border-bottom:3px solid transparent;position:relative;}
+.tab{padding:16px 24px;cursor:pointer;font-weight:600;color:#888;border-bottom:3px solid transparent;position:relative;user-select:none;}
 .tab.active{color:var(--secondary);border-bottom-color:var(--secondary);}
 .tab .badge{position:absolute;top:8px;right:-5px;background:var(--secondary);color:#fff;font-size:11px;padding:2px 8px;border-radius:20px;font-weight:700;}
 
@@ -39,12 +38,13 @@ body{background:#f0f2f5;min-height:100vh;color:#333;}
 /* FORM */
 .add-form{background:#fff;border-radius:16px;padding:24px;margin-bottom:24px;box-shadow:0 4px 15px rgba(0,0,0,0.08);}
 .form-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;}
-.form-grid input, .form-grid select, .form-grid textarea{padding:12px;border:2px solid #e8ecf4;border-radius:10px;font-size:14px;outline:none;}
-.form-grid textarea{grid-column: span 2;}
+.form-grid input, .form-grid select, .form-grid textarea{padding:12px;border:2px solid #e8ecf4;border-radius:10px;font-size:14px;outline:none;transition:.2s;}
+.form-grid input:focus, .form-grid select:focus{border-color:var(--secondary);}
+.form-grid textarea{grid-column:span 2;}
 
 /* TOOLS */
 .tools{display:flex;justify-content:space-between;align-items:center;margin-bottom:15px;}
-.search-box{padding:12px 20px;border:2px solid #e8ecf4;border-radius:10px;width:300px;outline:none;background:#fff;}
+.search-box{padding:12px 20px;border:2px solid #e8ecf4;border-radius:10px;width:300px;outline:none;background:#fff;font-size:14px;}
 
 /* TABLE */
 .table-card{background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 4px 15px rgba(0,0,0,0.08);}
@@ -53,32 +53,98 @@ th{background:#f8faff;padding:14px 16px;text-align:left;font-size:11px;text-tran
 td{padding:16px;border-bottom:1px solid #f0f0f0;vertical-align:top;}
 
 /* STATUS TAGS */
-.status-tag {padding:4px 8px; border-radius:6px; font-size:10px; font-weight:800; text-transform:uppercase;}
-.st-active {background:#e0f2fe; color:#0369a1;}
-.st-done {background:#dcfce7; color:#16a34a;}
-.st-cancel {background:#fef3c7; color:#d97706;}
-.st-trash {background:#fee2e2; color:#dc2626;}
+.status-tag{padding:4px 8px;border-radius:6px;font-size:10px;font-weight:800;text-transform:uppercase;}
+.st-active{background:#e0f2fe;color:#0369a1;}
+.st-done{background:#dcfce7;color:#16a34a;}
+.st-cancel{background:#fef3c7;color:#d97706;}
+.st-trash{background:#fee2e2;color:#dc2626;}
 
-.actions{display:flex;gap:6px;}
-.actions button{padding:8px 12px;border:none;border-radius:8px;cursor:pointer;font-size:10px;font-weight:700; transition: 0.2s;}
-.btn-green{background:var(--green); color:#fff;}
-.btn-yellow{background:var(--yellow); color:#fff;}
-.btn-red{background:var(--red); color:#fff;}
-.btn-blue{background:var(--blue); color:#fff;}
-.btn-restore {background:#e2e8f0; color:#475569;}
+.actions{display:flex;gap:6px;flex-wrap:wrap;}
+.actions button{padding:8px 12px;border:none;border-radius:8px;cursor:pointer;font-size:10px;font-weight:700;transition:.2s;}
+.actions button:hover{opacity:.85;transform:translateY(-1px);}
+.btn-green{background:var(--green);color:#fff;}
+.btn-yellow{background:var(--yellow);color:#fff;}
+.btn-red{background:var(--red);color:#fff;}
+.btn-blue{background:var(--blue);color:#fff;}
+.btn-restore{background:#e2e8f0;color:#475569;}
+
+/* TOAST */
+#toast{position:fixed;bottom:30px;right:30px;background:#1e293b;color:#fff;padding:14px 22px;border-radius:12px;font-size:14px;font-weight:600;z-index:9999;display:none;box-shadow:0 8px 30px rgba(0,0,0,.3);border-left:4px solid var(--green);}
+#toast.error{border-left-color:var(--red);}
+
+/* MODAL */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:1000;align-items:center;justify-content:center;}
+.modal-overlay.open{display:flex;}
+.modal{background:#fff;border-radius:16px;padding:30px;width:100%;max-width:420px;box-shadow:0 20px 60px rgba(0,0,0,.3);}
+.modal h3{color:var(--primary);font-size:18px;margin-bottom:16px;}
+.modal input, .modal select, .modal textarea{width:100%;padding:12px;border:2px solid #e8ecf4;border-radius:10px;font-size:14px;outline:none;margin-bottom:14px;}
+.modal-btns{display:flex;gap:10px;justify-content:flex-end;}
+.modal-btns button{padding:10px 24px;border:none;border-radius:10px;font-weight:700;cursor:pointer;font-size:14px;}
+.modal-cancel-btn{background:#e2e8f0;color:#475569;}
+.modal-confirm-btn{background:var(--secondary);color:#fff;}
 </style>
 </head>
 <body>
 
+<!-- TOAST -->
+<div id="toast"></div>
+
+<!-- MODAL ANULARE -->
+<div class="modal-overlay" id="modal-cancel">
+  <div class="modal">
+    <h3>❌ Anulare Programare</h3>
+    <p style="color:#666;font-size:14px;margin-bottom:16px;">Introduceți motivul anulării. Se va trimite email automat clientului.</p>
+    <input type="text" id="modal-cancel-motiv" placeholder="Motiv anulare (ex: Nu a mai venit)" value="Nu a mai venit">
+    <div style="background:#fff3cd;border:1px solid #f59e0b;border-radius:8px;padding:10px 14px;margin-bottom:14px;font-size:13px;color:#92400e;">
+      📧 Email va fi trimis la: <strong id="modal-cancel-email-preview">-</strong>
+    </div>
+    <div class="modal-btns">
+      <button class="modal-cancel-btn" onclick="closeModal('modal-cancel')">Renunță</button>
+      <button class="modal-confirm-btn" onclick="confirmCancel()">ANULEAZĂ & TRIMITE EMAIL</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL FINALIZARE -->
+<div class="modal-overlay" id="modal-done">
+  <div class="modal">
+    <h3>✅ Finalizare Programare</h3>
+    <p style="color:#666;font-size:14px;margin-bottom:16px;">Introduceți ora de plecare. Se va trimite email automat clientului.</p>
+    <select id="modal-done-ora">
+      <option value="">Alege ora plecare</option>
+      <option value="08:00">08:00</option><option value="08:30">08:30</option>
+      <option value="09:00">09:00</option><option value="09:30">09:30</option>
+      <option value="10:00">10:00</option><option value="10:30">10:30</option>
+      <option value="11:00">11:00</option><option value="11:30">11:30</option>
+      <option value="12:00">12:00</option><option value="12:30">12:30</option>
+      <option value="13:00">13:00</option><option value="13:30">13:30</option>
+      <option value="14:00">14:00</option><option value="14:30">14:30</option>
+      <option value="15:00">15:00</option><option value="15:30">15:30</option>
+      <option value="16:00">16:00</option><option value="16:30">16:30</option>
+      <option value="17:00">17:00</option><option value="17:30">17:30</option>
+      <option value="18:00">18:00</option>
+    </select>
+    <div style="background:#dcfce7;border:1px solid #22c55e;border-radius:8px;padding:10px 14px;margin-bottom:14px;font-size:13px;color:#166534;">
+      📧 Email va fi trimis la: <strong id="modal-done-email-preview">-</strong>
+    </div>
+    <div class="modal-btns">
+      <button class="modal-cancel-btn" onclick="closeModal('modal-done')">Renunță</button>
+      <button class="modal-confirm-btn" style="background:var(--green)" onclick="confirmDone()">FINALIZEAZĂ & TRIMITE EMAIL</button>
+    </div>
+  </div>
+</div>
+
+<!-- LOGIN -->
 <div id="login-page">
   <div class="login-box">
     <h1>🔐 Admin d4riusTAX</h1>
-    <input type="text" id="log-user" placeholder="Utilizator">
-    <input type="password" id="log-pass" placeholder="Parolă">
+    <input type="text" id="log-user" placeholder="Utilizator" onkeydown="if(event.key==='Enter')checkAuth()">
+    <input type="password" id="log-pass" placeholder="Parolă" onkeydown="if(event.key==='Enter')checkAuth()">
     <button onclick="checkAuth()">AUTENTIFICARE</button>
   </div>
 </div>
 
+<!-- ADMIN PANEL -->
 <div id="admin-panel">
   <div class="topbar">
     <h1>📋 Admin <span>Panel v4.0</span></h1>
@@ -98,32 +164,32 @@ td{padding:16px;border-bottom:1px solid #f0f0f0;vertical-align:top;}
     </div>
 
     <div id="form-section" class="add-form">
-      <h3 style="margin-bottom:15px; color:var(--primary)">➕ Adăugare Programare</h3>
+      <h3 style="margin-bottom:15px;color:var(--primary)">➕ Adăugare Programare</h3>
       <div class="form-grid">
         <input type="text" id="in-nume" placeholder="Nume Client *">
         <input type="text" id="in-ref" value="D4TAX-" oninput="if(!this.value.startsWith('D4TAX-'))this.value='D4TAX-'">
-        <input type="email" id="in-email" placeholder="Email">
+        <input type="email" id="in-email" placeholder="Email Client">
         <input type="tel" id="in-tel" placeholder="Telefon">
         <input type="date" id="in-data">
         <select id="in-ora">
-            <option value="">Alege Ora (Fixă)</option>
-            <option value="08:00">08:00</option><option value="09:00">09:00</option>
-            <option value="10:00">10:00</option><option value="11:00">11:00</option>
-            <option value="12:00">12:00</option><option value="13:00">13:00</option>
-            <option value="14:00">14:00</option><option value="15:00">15:00</option>
-            <option value="16:00">16:00</option><option value="17:00">17:00</option>
-            <option value="18:00">18:00</option>
+          <option value="">Alege Ora (Fixă)</option>
+          <option value="08:00">08:00</option><option value="09:00">09:00</option>
+          <option value="10:00">10:00</option><option value="11:00">11:00</option>
+          <option value="12:00">12:00</option><option value="13:00">13:00</option>
+          <option value="14:00">14:00</option><option value="15:00">15:00</option>
+          <option value="16:00">16:00</option><option value="17:00">17:00</option>
+          <option value="18:00">18:00</option>
         </select>
         <textarea id="in-obs" placeholder="Note suplimentare..."></textarea>
       </div>
-      <div style="text-align:right; margin-top:15px;">
-        <button onclick="saveClient()" style="background:var(--green); color:#fff; border:none; padding:12px 35px; border-radius:10px; font-weight:700; cursor:pointer;">SALVEAZĂ</button>
+      <div style="text-align:right;margin-top:15px;">
+        <button onclick="saveClient()" style="background:var(--green);color:#fff;border:none;padding:12px 35px;border-radius:10px;font-weight:700;cursor:pointer;">SALVEAZĂ</button>
       </div>
     </div>
 
     <div class="tools">
-        <input type="text" id="search-input" class="search-box" placeholder="🔍 Caută după nume sau REF..." oninput="render()">
-        <div style="font-size:12px; font-weight:600; color:#888;">Orar: <span style="color:var(--secondary)">08:00 - 18:00</span></div>
+      <input type="text" id="search-input" class="search-box" placeholder="🔍 Caută după nume sau REF..." oninput="render()">
+      <div style="font-size:12px;font-weight:600;color:#888;">Orar: <span style="color:var(--secondary)">08:00 - 18:00</span></div>
     </div>
 
     <div class="table-card">
@@ -144,122 +210,229 @@ td{padding:16px;border-bottom:1px solid #f0f0f0;vertical-align:top;}
 </div>
 
 <script>
+// ===================== CONFIG =====================
+const WORKER_URL = 'https://proud-union-a480d4rriustax.d4riusfn7.workers.dev';
+
+// ===================== AUTH =====================
 const _u = "YWRtaW4="; const _p = "ZDRyaXVzdGF4MjAyNiE=";
 let clients = JSON.parse(localStorage.getItem('dtax_v4')) || [];
 let currentView = 'active';
+let pendingActionId = null;
 
 function checkAuth() {
-    if(btoa(document.getElementById('log-user').value) === _u && btoa(document.getElementById('log-pass').value) === _p) {
-        document.getElementById('login-page').style.display = 'none';
-        document.getElementById('admin-panel').style.display = 'block';
-        render();
-    }
+  if(btoa(document.getElementById('log-user').value) === _u && btoa(document.getElementById('log-pass').value) === _p) {
+    document.getElementById('login-page').style.display = 'none';
+    document.getElementById('admin-panel').style.display = 'block';
+    render();
+  } else {
+    showToast('❌ Date incorecte!', true);
+  }
 }
 
+// ===================== TOAST =====================
+function showToast(msg, isError = false) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = isError ? 'error' : '';
+  t.style.display = 'block';
+  setTimeout(() => t.style.display = 'none', 3500);
+}
+
+// ===================== MODAL =====================
+function openModal(id) { document.getElementById(id).classList.add('open'); }
+function closeModal(id) { document.getElementById(id).classList.remove('open'); pendingActionId = null; }
+
+// ===================== SAVE CLIENT =====================
 function saveClient() {
-    const n = document.getElementById('in-nume').value;
-    const o = document.getElementById('in-ora').value;
-    if(!n || !o) return alert("Numele și Ora sunt obligatorii!");
+  const n = document.getElementById('in-nume').value.trim();
+  const o = document.getElementById('in-ora').value;
+  if(!n || !o) return showToast('⚠️ Numele și Ora sunt obligatorii!', true);
 
-    clients.push({
-        id: Date.now(),
-        nume: n,
-        ref: document.getElementById('in-ref').value,
-        email: document.getElementById('in-email').value || '-',
-        tel: document.getElementById('in-tel').value || '-',
-        data: document.getElementById('in-data').value || '-',
-        ora: o,
-        obs: document.getElementById('in-obs').value || '',
-        status: 'active',
-        meta_info: '' // Ora plecare sau Motiv anulare
-    });
-    update();
-    document.querySelectorAll('.form-grid input:not(#in-ref), select, textarea').forEach(i => i.value = '');
+  clients.push({
+    id: Date.now(),
+    nume: n,
+    ref: document.getElementById('in-ref').value,
+    email: document.getElementById('in-email').value.trim() || '',
+    tel: document.getElementById('in-tel').value.trim() || '-',
+    data: document.getElementById('in-data').value || '-',
+    ora: o,
+    obs: document.getElementById('in-obs').value.trim() || '',
+    status: 'active',
+    meta_info: ''
+  });
+  update();
+  document.querySelectorAll('.form-grid input:not(#in-ref), .form-grid select, .form-grid textarea').forEach(i => i.value = '');
+  document.getElementById('in-ref').value = 'D4TAX-';
+  showToast('✅ Programare salvată!');
 }
 
+// ===================== CHANGE STATUS =====================
 function changeStatus(id, newStatus) {
-    let meta = "";
-    if(newStatus === 'done') {
-        meta = prompt("Ora de plecare a clientului:", "12:00");
-        if(meta === null) return;
-    } else if(newStatus === 'cancel') {
-        meta = prompt("Motivul anulării (Ex: Nu a răspuns, A reprogramat):", "Nu a mai venit");
-        if(meta === null) return;
-    }
+  pendingActionId = id;
+  const c = clients.find(x => x.id === id);
+  if(!c) return;
 
-    clients = clients.map(c => c.id === id ? {...c, status: newStatus, meta_info: meta} : c);
+  if(newStatus === 'cancel') {
+    document.getElementById('modal-cancel-email-preview').textContent = c.email || 'fără email';
+    document.getElementById('modal-cancel-motiv').value = 'Nu a mai venit';
+    openModal('modal-cancel');
+  } else if(newStatus === 'done') {
+    document.getElementById('modal-done-email-preview').textContent = c.email || 'fără email';
+    document.getElementById('modal-done-ora').value = '';
+    openModal('modal-done');
+  } else {
+    // trash / restore / active - fara email
+    clients = clients.map(x => x.id === id ? {...x, status: newStatus, meta_info: ''} : x);
     update();
+  }
+}
+
+async function confirmCancel() {
+  const id = pendingActionId;
+  const c = clients.find(x => x.id === id);
+  const motiv = document.getElementById('modal-cancel-motiv').value.trim() || 'Nu a mai venit';
+
+  closeModal('modal-cancel');
+
+  clients = clients.map(x => x.id === id ? {...x, status: 'cancel', meta_info: motiv} : x);
+  update();
+  showToast('📧 Se trimite email de anulare...');
+
+  if(c.email && c.email.includes('@')) {
+    try {
+      const resp = await fetch(WORKER_URL + '/api/send-cancel', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+          to_email: c.email,
+          to_name: c.nume,
+          ref_code: c.ref,
+          data_programare: c.data,
+          ora_programare: c.ora,
+          motiv: motiv
+        })
+      });
+      const data = await resp.json();
+      if(data.ok) showToast('✅ Email anulare trimis la ' + c.email);
+      else showToast('⚠️ Eroare trimitere email: ' + (data.error || 'necunoscută'), true);
+    } catch(err) {
+      showToast('⚠️ Eroare rețea: ' + err.message, true);
+    }
+  } else {
+    showToast('ℹ️ Programare anulată (fără email client)');
+  }
+}
+
+async function confirmDone() {
+  const id = pendingActionId;
+  const c = clients.find(x => x.id === id);
+  const oraPlecare = document.getElementById('modal-done-ora').value || '-';
+
+  closeModal('modal-done');
+
+  clients = clients.map(x => x.id === id ? {...x, status: 'done', meta_info: oraPlecare} : x);
+  update();
+  showToast('📧 Se trimite email de finalizare...');
+
+  if(c.email && c.email.includes('@')) {
+    try {
+      const resp = await fetch(WORKER_URL + '/api/send-done', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+          to_email: c.email,
+          to_name: c.nume,
+          ref_code: c.ref,
+          data_programare: c.data,
+          ora_programare: c.ora,
+          ora_plecare: oraPlecare
+        })
+      });
+      const data = await resp.json();
+      if(data.ok) showToast('✅ Email finalizare trimis la ' + c.email);
+      else showToast('⚠️ Eroare trimitere email: ' + (data.error || 'necunoscută'), true);
+    } catch(err) {
+      showToast('⚠️ Eroare rețea: ' + err.message, true);
+    }
+  } else {
+    showToast('ℹ️ Programare finalizată (fără email client)');
+  }
 }
 
 function permanentDelete(id) {
-    if(confirm("Ștergi definitiv această înregistrare?")) {
-        clients = clients.filter(c => c.id !== id);
-        updateStorage();
-    }
+  if(confirm('Ștergi definitiv această înregistrare?')) {
+    clients = clients.filter(c => c.id !== id);
+    update();
+    showToast('🗑️ Șters definitiv');
+  }
 }
 
+// ===================== TABS =====================
 function switchTab(v) {
-    currentView = v;
-    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-    document.getElementById('t-' + v).classList.add('active');
-    document.getElementById('form-section').style.display = v === 'active' ? 'block' : 'none';
-    render();
+  currentView = v;
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('t-' + v).classList.add('active');
+  document.getElementById('form-section').style.display = v === 'active' ? 'block' : 'none';
+  render();
 }
 
+// ===================== RENDER =====================
 function render() {
-    const body = document.getElementById('table-body');
-    const search = document.getElementById('search-input').value.toLowerCase();
-    body.innerHTML = '';
-    
-    clients.filter(c => {
-        let matchTab = (currentView === 'active' ? c.status === 'active' : (currentView === 'ended' ? (c.status === 'done' || c.status === 'cancel') : c.status === 'trash'));
-        let matchSearch = c.nume.toLowerCase().includes(search) || c.ref.toLowerCase().includes(search);
-        return matchTab && matchSearch;
-    }).forEach(c => {
-        let statusHtml = '';
-        if(c.status === 'active') statusHtml = '<span class="status-tag st-active">Confirmat</span>';
-        else if(c.status === 'done') statusHtml = `<span class="status-tag st-done">Finalizat • Plecare: ${c.meta_info}</span>`;
-        else if(c.status === 'cancel') statusHtml = `<span class="status-tag st-cancel">Anulat • Motiv: ${c.meta_info}</span>`;
-        else statusHtml = '<span class="status-tag st-trash">În Coș</span>';
+  const body = document.getElementById('table-body');
+  const search = document.getElementById('search-input').value.toLowerCase();
+  body.innerHTML = '';
 
-        let actions = '';
-        if(c.status === 'active') {
-            actions = `<button class="btn-green" onclick="changeStatus(${c.id}, 'done')">A VENIT</button>
-                       <button class="btn-yellow" onclick="changeStatus(${c.id}, 'cancel')">ANULAT</button>
-                       <button class="btn-red" onclick="changeStatus(${c.id}, 'trash')">🗑️</button>`;
-        } else if(c.status === 'trash') {
-            actions = `<button class="btn-restore" onclick="changeStatus(${c.id}, 'active')">RESTAURARE</button>
-                       <button class="btn-red" style="background:#000" onclick="permanentDelete(${c.id})">DEL FINAL</button>`;
-        } else {
-            // Tab Finalizate/Anulate
-            actions = `<button class="btn-restore" onclick="changeStatus(${c.id}, 'active')">RESTAURARE</button>
-                       <button class="btn-red" onclick="changeStatus(${c.id}, 'trash')">🗑️ COȘ</button>`;
-        }
+  clients.filter(c => {
+    const matchTab = currentView === 'active' ? c.status === 'active'
+      : currentView === 'ended' ? (c.status === 'done' || c.status === 'cancel')
+      : c.status === 'trash';
+    const matchSearch = c.nume.toLowerCase().includes(search) || c.ref.toLowerCase().includes(search);
+    return matchTab && matchSearch;
+  }).forEach(c => {
+    let statusHtml = '';
+    if(c.status === 'active') statusHtml = '<span class="status-tag st-active">Confirmat</span>';
+    else if(c.status === 'done') statusHtml = `<span class="status-tag st-done">Finalizat • Plecare: ${c.meta_info}</span>`;
+    else if(c.status === 'cancel') statusHtml = `<span class="status-tag st-cancel">Anulat • ${c.meta_info}</span>`;
+    else statusHtml = '<span class="status-tag st-trash">În Coș</span>';
 
-        body.innerHTML += `
-            <tr>
-                <td><strong>${c.nume}</strong><br><small style="color:var(--secondary);font-weight:700">${c.ref}</small></td>
-                <td style="font-size:12px;">📧 ${c.email}<br>📞 ${c.tel}</td>
-                <td>📅 ${c.data}<br>🕒 <strong>${c.ora}</strong></td>
-                <td>${statusHtml}<br><p style="font-size:11px; color:#666; margin-top:5px;">${c.obs}</p></td>
-                <td><div class="actions">${actions}</div></td>
-            </tr>`;
-    });
+    const emailDisplay = c.email && c.email.includes('@')
+      ? `📧 ${c.email}`
+      : `<span style="color:#ccc;font-style:italic">fără email</span>`;
 
-    const b = {
-        act: clients.filter(x => x.status === 'active').length,
-        end: clients.filter(x => x.status === 'done' || x.status === 'cancel').length,
-        trsh: clients.filter(x => x.status === 'trash').length
-    };
-    document.getElementById('b-active').innerText = b.act;
-    document.getElementById('b-ended').innerText = b.end;
-    document.getElementById('b-trash').innerText = b.trsh;
-    document.getElementById('s-active').innerText = b.act;
-    document.getElementById('s-ended').innerText = clients.filter(x => x.status === 'done').length;
+    let actions = '';
+    if(c.status === 'active') {
+      actions = `
+        <button class="btn-green" onclick="changeStatus(${c.id},'done')">✅ A VENIT</button>
+        <button class="btn-yellow" onclick="changeStatus(${c.id},'cancel')">❌ ANULAT</button>
+        <button class="btn-red" onclick="changeStatus(${c.id},'trash')">🗑️</button>`;
+    } else if(c.status === 'trash') {
+      actions = `
+        <button class="btn-restore" onclick="changeStatus(${c.id},'active')">♻️ RESTAURARE</button>
+        <button class="btn-red" style="background:#000" onclick="permanentDelete(${c.id})">💀 DEL FINAL</button>`;
+    } else {
+      actions = `
+        <button class="btn-restore" onclick="changeStatus(${c.id},'active')">♻️ RESTAURARE</button>
+        <button class="btn-red" onclick="changeStatus(${c.id},'trash')">🗑️ COȘ</button>`;
+    }
+
+    body.innerHTML += `
+      <tr>
+        <td><strong>${c.nume}</strong><br><small style="color:var(--secondary);font-weight:700">${c.ref}</small></td>
+        <td style="font-size:12px;">${emailDisplay}<br>📞 ${c.tel}</td>
+        <td>📅 ${c.data}<br>🕒 <strong>${c.ora}</strong></td>
+        <td>${statusHtml}<br><p style="font-size:11px;color:#666;margin-top:5px;">${c.obs}</p></td>
+        <td><div class="actions">${actions}</div></td>
+      </tr>`;
+  });
+
+  document.getElementById('b-active').innerText = clients.filter(x => x.status === 'active').length;
+  document.getElementById('b-ended').innerText = clients.filter(x => x.status === 'done' || x.status === 'cancel').length;
+  document.getElementById('b-trash').innerText = clients.filter(x => x.status === 'trash').length;
+  document.getElementById('s-active').innerText = clients.filter(x => x.status === 'active').length;
+  document.getElementById('s-ended').innerText = clients.filter(x => x.status === 'done').length;
 }
 
 function update() { localStorage.setItem('dtax_v4', JSON.stringify(clients)); render(); }
-function updateStorage() { update(); }
 </script>
 </body>
 </html>
