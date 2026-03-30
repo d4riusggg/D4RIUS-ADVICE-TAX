@@ -361,6 +361,40 @@ footer a:hover{color:var(--secondary)}
   color: #333;
   -webkit-appearance: none;
 }
+
+/* EXCEPTIE checkbox GDPR */
+#prog-consimtamant{
+  -webkit-appearance: auto !important;
+  appearance: auto !important;
+  width: 22px;
+  height: 22px;
+  min-width: 22px;
+  padding: 0 !important;
+  margin: 0;
+  border: 2px solid #ff7a18 !important;
+  border-radius: 6px;
+  background: #fff;
+  accent-color: #ff7a18;
+  box-shadow: 0 0 0 3px rgba(255,122,24,.12);
+  cursor: pointer;
+}
+
+#prog-consimtamant:checked{
+  box-shadow: 0 0 0 4px rgba(255,122,24,.2);
+}
+
+label[for="prog-consimtamant"]{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  color: #243447 !important;
+  text-transform: none !important;
+  letter-spacing: 0 !important;
+  line-height: 1.5;
+}
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus {
@@ -554,11 +588,12 @@ footer a:hover{color:var(--secondary)}
 <body>
 <header>
 <div class="container nav">
-  <a class="brand" href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">d4riusfn<span>TAX ADVICE S.R.L</span></a>
+  <a class="brand" href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">d4rius<span>TAX ADVICE S.R.L</span></a>
   <nav>
     <ul>
+     <li><a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">Home</a></li>
       <li><a href="#servicii">Servicii</a></li>
-      <li><a href="#despre">Despre</a></li>
+      <li><a href="#despre">Despre Noi</a></li>
       <li><a href="#blog">Blog</a></li>
       <li><a href="#contact">Contact</a></li>
       <li><a href="#programari" class="nav-prog">📅 Programeaza-te</a></li>
@@ -600,11 +635,12 @@ footer a:hover{color:var(--secondary)}
 <div class="container about">
   <div>
     <h2>Despre noi</h2>
-    <p>d4riusfnTAX ADVICE S.R.L este o firma nou-infiintata.</p>
-    <p>Contabilul coordonator are <strong>peste 15 ani experienta</strong> profesionala.</p>
+    <p>La <strong>D4RIUS TAX ADVICE</strong>, transformăm deciziile financiare în avantaje reale pentru afacerea ta.</p>
+    <p>Oferim consultanță în afaceri și management, cu soluții clare, rapide și orientate spre rezultate.</p>
+    <p>Punem accent pe simplitate, eficiență și rezultate concrete — fără complicații inutile.</p>
+    <p><strong>Tu construiești. Noi optimizăm.</strong></p>
     <div class="stats">
       <div class="stat"><h3>15+</h3><p>Ani experienta</p></div>
-      <div class="stat"><h3>100%</h3><p>Conformitate</p></div>
       <div class="stat"><h3 id="views">0</h3><p>Vizualizari site</p></div>
     </div>
   </div>
@@ -835,11 +871,19 @@ footer a:hover{color:var(--secondary)}
           </div>
 
          
+<div class="form-group" style="margin-top:6px;">
+  <label for="prog-consimtamant" style="text-transform:none;letter-spacing:0;font-weight:500;">
+    <input type="checkbox" id="prog-consimtamant" style="margin-right:8px;">
+    Am citit și sunt de acord cu <a href="politica-confidentialitate.html">Politica de confidențialitate</a>.
+  </label>
+  <span class="field-error" id="err-consimtamant">Trebuie să accepți politica de confidențialitate.</span>
+</div>
+
 <button type="button" class="prog-submit" id="prog-btn" onclick="submitProgramare()">
-            <span id="prog-btn-text">📅 Trimite Programarea</span>
-          </button>
-          <p class="prog-privacy">
-            🔒 Datele tale sunt protejate conform <a href="#">GDPR</a>. Nu trimitem spam. Esti contactat doar pentru confirmare.
+  <span id="prog-btn-text">📅 Trimite Programarea</span>
+</button>
+<p class="prog-privacy">
+  🔒 Datele tale sunt protejate conform <a href="politica-confidentialitate.html">Politicii de confidențialitate</a>.
           </p>
         </div>
 
@@ -865,7 +909,15 @@ footer a:hover{color:var(--secondary)}
   <div class="footer-grid">
     <div>
       <div class="footer-logo"><img src="D4RIUS TAX.png" alt="Logo d4riusTAX"></div>
-      <p class="footer-desc">Contabilitate si consultanta financiara.</p>
+<p class="footer-desc">
+  D4RIUS TAX ADVICE S.R.L.<br>
+  CUI: RO53616642<br>
+  Nr. Reg. Com.: J2026006054009<br>
+  Sediu social: Strada Magrini,nr 2,Valea Voievozilor, județul Dâmbovița, România<br>
+  Email: contact@d4riustax.advice.uetcompany.ro<br>
+  Telefon: +40 770 430 731
+</p>
+
       <div style="margin-top:16px;">
         <a href="https://www.facebook.com/profile.php?id=61580786733643" target="_blank" rel="noopener noreferrer" aria-label="Facebook d4riusTAX" style="display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;background:#1877f2;border-radius:8px;transition:.3s;" onmouseover="this.style.background='#0d65d9';this.style.transform='translateY(-3px)'" onmouseout="this.style.background='#1877f2';this.style.transform='translateY(0)'">
           <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="#fff"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.235 2.686.235v2.97h-1.513c-1.491 0-1.956.93-1.956 1.884v2.25h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg>
@@ -873,7 +925,7 @@ footer a:hover{color:var(--secondary)}
       </div>
     </div>
     <div>
-      <h4>d4riusfnTAX ADVICE S.R.L</h4>
+      <h4>d4riusTAX ADVICE S.R.L</h4>
       <p class="footer-desc">Firma cu experienta de peste 15 ani in domeniul financiar-contabil.</p>
     </div>
     <div>
@@ -884,19 +936,23 @@ footer a:hover{color:var(--secondary)}
       <a href="#contact">Contact</a>
       <a href="#programari">Programari</a>
     </div>
-    <div>
-      <h4>Sitemap</h4>
-      <a href="index.html">🏠 Pagina Principala</a>
-      <a href="#servicii">📊 Servicii</a>
-      <a href="#despre">👥 Despre Noi</a>
-      <a href="#blog">📝 Blog</a>
-      <a href="#contact">📞 Contact</a>
-      <a href="#programari">📅 Programari</a>
-      <a href="404.html">🔗 Pagina 404</a>
-    </div>
+    
+ <div>
+  <h4>Sitemap</h4>
+  <a href="index.html">🏠 Pagina Principala</a>
+  <a href="#servicii">📊 Servicii</a>
+  <a href="#despre">👥 Despre Noi</a>
+  <a href="#blog">📝 Blog</a>
+  <a href="#contact">📞 Contact</a>
+  <a href="#programari">📅 Programari</a>
+  <a href="politica-confidentialitate.html">Politică de confidențialitate</a>
+  <a href="politica-cookies.html">Politică de cookies</a>
+  <a href="termeni-si-conditii.html">Termeni și condiții</a>
+</div>
+
   </div>
   <hr class="footer-divider">
-  <div class="copyright">© 2026 d4riusfnTAX ADVICE S.R.L - Toate drepturile rezervate</div>
+  <div class="copyright">© 2026 d4riusTAX ADVICE S.R.L - Toate drepturile rezervate</div>
 </div>
 </footer>
 
@@ -1039,6 +1095,8 @@ async function submitProgramare() {
   const ora = document.getElementById('prog-ora').value;
   const serviciu = document.getElementById('prog-serviciu').value;
   const mesaj = document.getElementById('prog-mesaj').value.trim();
+  const consimtamant = document.getElementById('prog-consimtamant').checked;
+
 
   const today = new Date(); today.setHours(0,0,0,0);
   setFieldError('prog-nume','err-nume', !nume);
@@ -1047,8 +1105,10 @@ async function submitProgramare() {
   setFieldError('prog-tel','err-tel', !validatePhone(tel));
   setFieldError('prog-data','err-data', !data || new Date(data) < today);
   setFieldError('prog-serviciu','err-serviciu', !serviciu);
+  setFieldError('prog-consimtamant','err-consimtamant', !consimtamant);
 
-  if (!nume || !prenume || !validateEmail(email) || !validatePhone(tel) || !data || new Date(data) < today || !serviciu) {
+
+if (!nume || !prenume || !validateEmail(email) || !validatePhone(tel) || !data || new Date(data) < today || !serviciu || !consimtamant) {
     showProgToast('Completeaza corect toate campurile obligatorii', true);
     const firstErr = document.querySelector('#programari .form-group input.error, #programari .form-group select.error');
     if (firstErr) firstErr.scrollIntoView({ behavior:'smooth', block:'center' });
@@ -1119,11 +1179,13 @@ function resetForm() {
   document.getElementById('prog-data').value = '';
   document.getElementById('prog-serviciu').value = '';
   document.getElementById('prog-mesaj').value = '';
+  document.getElementById('prog-consimtamant').checked = false;
   ['prog-nume','prog-prenume','prog-email','prog-tel','prog-data','prog-serviciu'].forEach(id => {
     const el = document.getElementById(id);
     if (el) el.classList.remove('error');
   });
-  ['err-nume','err-prenume','err-email','err-tel','err-data','err-serviciu'].forEach(id => {
+['err-nume','err-prenume','err-email','err-tel','err-data','err-serviciu','err-consimtamant'].forEach(id => {
+
     const el = document.getElementById(id);
     if (el) el.classList.remove('visible');
   });
