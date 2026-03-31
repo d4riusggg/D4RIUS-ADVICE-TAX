@@ -582,6 +582,14 @@ label[for="prog-consimtamant"]{
   .form-row{grid-template-columns:1fr;}
   .prog-form-header{flex-direction:column;text-align:center;gap:10px;}
 }
+#cookie-banner{position:fixed;bottom:0;left:0;right:0;background:linear-gradient(135deg,var(--dark),#000);color:#fff;padding:18px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;z-index:99998;box-shadow:0 -4px 20px rgba(0,0,0,.3);flex-wrap:wrap;}
+#cookie-banner p{font-size:14px;color:#ccc;margin:0;flex:1;}
+#cookie-banner a{color:var(--secondary);text-decoration:none;font-weight:600;}
+.cookie-btns{display:flex;gap:10px;flex-shrink:0;}
+.cookie-accept{background:linear-gradient(135deg,var(--secondary),#ff9a3c);color:#fff;border:none;padding:10px 22px;border-radius:50px;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;font-size:14px;transition:.3s;}
+.cookie-accept:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(255,122,24,.5);}
+.cookie-refuse{background:transparent;color:#aaa;border:2px solid #444;padding:10px 22px;border-radius:50px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;font-size:14px;transition:.3s;}
+.cookie-refuse:hover{border-color:#aaa;color:#fff;}
 </style>
 </head>
 
@@ -1277,6 +1285,23 @@ function hideTyping(){const t=document.getElementById('typingEl');if(t)t.remove(
 
 async function sendExpert(){if(!expertMode)return;const inp=document.getElementById('expert-input');const txt=inp.value.trim();if((!txt&&!attachedFile)||expertBusy)return;let displayHtml='';let apiContent=[];if(attachedFile){const file=attachedFile;const isImg=file.type.startsWith('image/');const b64=await fileToBase64(file);if(isImg){displayHtml+=`<img src="${b64}" class="bubble-img" alt="${file.name}">`;apiContent.push({type:'image',source:{type:'base64',media_type:file.type,data:b64.split(',')[1]}});}else{const ext=file.name.split('.').pop().toUpperCase();const icons={PDF:'📄',DOC:'📝',DOCX:'📝',XLS:'📊',XLSX:'📊',TXT:'📃'};displayHtml+=`<div class="bubble-file-row"><span class="bubble-file-icon">${icons[ext]||'📎'}</span><span class="bubble-file-info">${file.name}</span></div>`;if(file.type==='application/pdf'){apiContent.push({type:'document',source:{type:'base64',media_type:'application/pdf',data:b64.split(',')[1]}});}else{apiContent.push({type:'text',text:`[Utilizatorul a atasat fisierul: ${file.name}]`});}}}if(txt){displayHtml+=(displayHtml?'<br>':'')+txt;apiContent.push({type:'text',text:txt});}if(!apiContent.length)return;addWaMessage(displayHtml,'user');inp.value='';inp.style.height='auto';clearFile();expertBusy=true;document.getElementById('expert-send').disabled=true;showTyping();expertHistory.push({role:'user',content:apiContent.length===1&&apiContent[0].type==='text'?apiContent[0].text:apiContent});try{const resp=await fetch(WORKER_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1024,system:'Esti expertul virtual al firmei d4riusTAX ADVICE S.R.L din Targoviste, Romania. Firma ofera contabilitate si consultanta financiara cu peste 15 ani experienta. Esti prietenos, profesional, concis. Specializare: contabilitate, TVA, CAS, CASS, ANAF, D112, D300, SRL, PFA, ONG, salarizare, optimizare fiscala legala. Daca utilizatorul trimite imagini sau documente, analizeaza-le si raspunde relevant. DATE DE CONTACT FIRMA (OBLIGATORIU SA LE FURNIZEZI CAND SUNT CERUTE): Email: contact@d4riustax.advice.uetcompany.ro | Telefon: +40 770 430 731 | Adresa: Targoviste, Dambovita | Program: Luni-Vineri 10:00-18:00, Sambata-Duminica 11:00-18:00. IMPORTANT: Cand cineva intreaba de email, adresa, telefon sau orice date de contact, furnizeaza-le DIRECT si COMPLET fara sa trimiti utilizatorul sa sune undeva.',messages:expertHistory})});if(!resp.ok)throw new Error('HTTP '+resp.status);const data=await resp.json();hideTyping();let reply='';for(const block of data.content){if(block.type==='text')reply+=block.text;}expertHistory.push({role:'assistant',content:reply});addWaMessage(reply.replace(/\n/g,'<br>'),'bot');}catch(err){hideTyping();addWaMessage('⚠️ Eroare conexiune. Contacteaza-ne la <a href="tel:+40770430731" style="color:#6366f1;font-weight:700">+40 770 430 731</a>','bot');}expertBusy=false;document.getElementById('expert-send').disabled=false;document.getElementById('expert-input').focus();}
 function fileToBase64(file){return new Promise((res,rej)=>{const r=new FileReader();r.onload=()=>res(r.result);r.onerror=()=>rej(new Error('Read failed'));r.readAsDataURL(file);});}
+function cookieChoice(accepted){
+  localStorage.setItem('cookie_consent', accepted ? 'accepted' : 'refused');
+  document.getElementById('cookie-banner').style.display='none';
+}
+(function(){
+  if(localStorage.getItem('cookie_consent')){
+    document.getElementById('cookie-banner').style.display='none';
+  }
+})();
 </script>
+<div id="cookie-banner">
+  <p>🍪 Acest site folosește cookie-uri și tehnologii similare necesare pentru funcționare și, după caz, pentru reținerea preferințelor tale. Poți afla mai multe în <a href="politica-cookies.html">Politica de cookies</a> și <a href="politica-confidentialitate.html">Politica de confidențialitate</a>.</p>
+  <div class="cookie-btns">
+    <button class="cookie-refuse" onclick="cookieChoice(false)">Refuz</button>
+    <button class="cookie-accept" onclick="cookieChoice(true)">Accept</button>
+  </div>
+</div>
+
 </body>
 </html>

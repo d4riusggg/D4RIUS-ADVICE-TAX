@@ -92,15 +92,15 @@
     <section class="hero">
       <h1>Politica de confidentialitate</h1>
       <p>d4riusTAX ADVICE S.R.L</p>
-      <p class="muted">Ultima actualizare: 30.03.2026</p>
+      <p class="muted">Ultima actualizare: 31.03.2026</p>
     </section>
 
     <section class="card">
       <h2>1. Operatorul datelor</h2>
       <p><strong>D4RIUS TAX ADVICE S.R.L.</strong></p>
-      <p>CUI: <strong>RO53616642</strong></p>
+      <p>CUI: <strong>RO53619642</strong></p>
       <p>Nr. Reg. Com.: <strong>J2026006054009</strong></p>
-      <p>Sediu social: <strong>Strada Magrini, Valea Voievozilor, Dambovita, Romania</strong></p>
+      <p>Sediu social: <strong>Strada Magrini, nr. 2, Valea Voievozilor, judetul Dambovita, Romania</strong></p>
       <p>Email: <strong>contact@d4riustax.advice.uetcompany.ro</strong></p>
       <p>Telefon: <strong>+40 770 430 731</strong></p>
     </section>
@@ -111,120 +111,125 @@
         <li>Nume si prenume.</li>
         <li>Adresa de email.</li>
         <li>Numar de telefon.</li>
-        <li>Data/ora programarii, serviciu selectat, mesaj optional, status programare.</li>
-        <li>Identificator intern de referinta programare.</li>
-        <li>Date tehnice minime pentru functionarea site-ului (localStorage/sessionStorage).</li>
+        <li>Data si ora programarii, serviciul selectat, mesajul optional si statusul programarii.</li>
+        <li>Identificator intern de referinta al programarii.</li>
+        <li>Date tehnice minime necesare functionarii site-ului, inclusiv date stocate prin localStorage si/sau sessionStorage pentru functii tehnice.</li>
+        <li>Date transmise prin chat, inclusiv eventuale fisiere sau imagini incarcate voluntar de utilizator.</li>
       </ul>
     </section>
 
     <section class="card">
       <h2>3. Cum colectam datele</h2>
       <ul>
-        <li>Direct de la utilizator, prin formularul de programare de pe site.</li>
-        <li>Prin comunicari directe cu operatorul (telefon/email).</li>
-        <li>In panoul intern de administrare, unde datele pot fi introduse manual de operator in scop operational.</li>
+        <li>Direct de la utilizator, prin formularul de programare disponibil pe site.</li>
+        <li>Prin comunicari directe cu operatorul, inclusiv prin telefon sau email.</li>
+        <li>Prin utilizarea componentei de chat disponibila pe site.</li>
+        <li>In panoul intern de administrare, unde anumite date pot fi introduse manual de operator in scop operational.</li>
       </ul>
       <div class="note">
-        Datele introduse manual in agenda interna sunt folosite exclusiv pentru programari, comunicare si evidenta operationala.
+        Datele introduse in agenda interna sunt utilizate exclusiv pentru gestionarea programarilor, comunicarea cu clientii si evidenta operationala interna.
       </div>
     </section>
 
     <section class="card">
       <h2>4. Scopuri si temeiuri legale</h2>
       <ul>
-        <li>Preluarea si administrarea programarilor: demersuri precontractuale / executarea contractului.</li>
-        <li>Comunicari operationale (confirmare, anulare, finalizare): interes legitim si/sau executarea contractului.</li>
-        <li>Evidenta financiar-contabila si conformare legala: obligatie legala.</li>
-        <li>Apararea drepturilor in caz de litigiu: interes legitim.</li>
+        <li>Preluarea si administrarea solicitarilor de programare: demersuri precontractuale si/sau executarea contractului.</li>
+        <li>Comunicari operationale privind confirmarea, reprogramarea sau anularea: interes legitim si/sau executarea contractului.</li>
+        <li>Gestionarea solicitarilor transmise prin chat sau prin alte mijloace de contact: interes legitim si/sau demersuri precontractuale.</li>
+        <li>Respectarea obligatiilor legale aplicabile, inclusiv financiar-contabile: obligatie legala.</li>
+        <li>Apararea drepturilor si intereselor legitime ale operatorului in caz de dispute sau litigii: interes legitim.</li>
       </ul>
     </section>
 
     <section class="card">
-      <h2>5. Fluxul real al datelor (programari + email)</h2>
+      <h2>5. Fluxul datelor pentru programari si email</h2>
       <ul>
-        <li>Formularul trimite datele catre endpoint-ul Cloudflare Worker (<code>/api/send-confirmation</code>).</li>
-        <li>Worker-ul trimite email de confirmare prin SendGrid.</li>
-        <li>La email poate exista CC operational catre administrator: <strong>dariusdragan2013@gmail.com</strong>.</li>
-        <li>Din panoul admin, la anulare/finalizare, se trimit emailuri prin <code>/api/send-cancel</code> si <code>/api/send-done</code>.</li>
+        <li>Datele completate in formular pot fi transmise catre endpoint-ul tehnic al operatorului, inclusiv prin infrastructura de tip Cloudflare Worker.</li>
+        <li>Pentru confirmarile operationale se poate utiliza un serviciu de trimitere email, inclusiv SendGrid.</li>
+        <li>Pentru gestionarea operationala a solicitarilor poate exista transmitere email catre adrese interne/operationale ale operatorului, inclusiv in copie, acolo unde este necesar pentru administrarea programarilor.</li>
+        <li>In functie de operatiunile efectuate intern, se pot transmite mesaje de confirmare, anulare sau finalizare a programarilor.</li>
       </ul>
       <div class="note">
-        Datele din email pot include: nume, email, cod referinta, data, ora, mesaj/motiv, status.
+        Datele incluse in comunicarile operationale pot cuprinde numele, adresa de email, telefonul, codul de referinta, data, ora, serviciul selectat, mesajul utilizatorului, motivul anularii sau alte informatii strict necesare pentru gestionarea programarii.
       </div>
     </section>
 
     <section class="card">
-      <h2>6. Flux chat AI</h2>
+      <h2>6. Fluxul datelor pentru chat AI</h2>
       <ul>
-        <li>Mesajele trimise in chat sunt procesate prin Worker si transmise furnizorului AI (Anthropic) pentru raspuns.</li>
-        <li>Recomandam sa nu fie introduse date sensibile in chat daca nu sunt strict necesare.</li>
+        <li>Mesajele transmise prin chat pot fi procesate prin infrastructura tehnica a operatorului si transmise catre furnizorul AI utilizat pentru generarea raspunsurilor.</li>
+        <li>Daca utilizatorul alege sa incarce fisiere sau imagini in chat, aceste date pot fi transmise pentru analiza in acelasi scop.</li>
+        <li>Recomandam sa nu fie introduse in chat date sensibile sau excesive daca acestea nu sunt strict necesare.</li>
       </ul>
     </section>
 
     <section class="card">
       <h2>7. Destinatari / imputerniciti</h2>
       <ul>
-        <li>Cloudflare (infrastructura Worker/API).</li>
-        <li>SendGrid (trimitere emailuri).</li>
-        <li>Anthropic (procesare mesaje chat AI).</li>
-        <li>Personal autorizat al operatorului.</li>
+        <li>Cloudflare, pentru infrastructura tehnica si functionarea endpoint-urilor/API-urilor utilizate.</li>
+        <li>SendGrid, pentru transmiterea comunicarilor prin email.</li>
+        <li>Furnizorul AI utilizat pentru componenta de chat, inclusiv Anthropic, daca acesta este activ in configuratia tehnica a site-ului.</li>
+        <li>Personalul autorizat al operatorului.</li>
+        <li>Autoritati publice sau institutii competente, atunci cand exista obligatie legala.</li>
       </ul>
     </section>
 
     <section class="card">
       <h2>8. Transferuri internationale</h2>
-      <p>Unii furnizori pot prelucra date in afara Spatiului Economic European. In aceste situatii, transferurile se realizeaza in baza mecanismelor legale aplicabile (de ex. clauze contractuale standard), dupa caz.</p>
+      <p>Unii furnizori tehnici pot prelucra date in afara Spatiului Economic European. In astfel de situatii, operatorul urmareste utilizarea mecanismelor legale aplicabile pentru protectia datelor, dupa caz.</p>
     </section>
 
     <section class="card">
       <h2>9. Stocare locala in panoul intern</h2>
       <ul>
-        <li>Anumite date operationale pot fi stocate local in browserul operatorului (localStorage).</li>
+        <li>Anumite date operationale pot fi stocate local in browserul operatorului, in cadrul unui instrument intern de administrare.</li>
         <li>Accesul la dispozitivul de administrare trebuie limitat la persoane autorizate.</li>
-        <li>Operatorul aplica masuri organizationale: parola de acces, dispozitiv protejat, acces restrictionat.</li>
+        <li>Operatorul aplica masuri organizationale rezonabile, precum restrictionarea accesului la dispozitiv si controlul accesului intern.</li>
       </ul>
     </section>
 
     <section class="card">
       <h2>10. Perioada de stocare</h2>
       <ul>
-        <li>Date de programare: pana la 24 luni de la ultima interactiune, daca legea nu impune alt termen.</li>
-        <li>Date necesare obligatiilor legale/fiscale: conform termenelor legale.</li>
-        <li>Date stocate local in browser: pana la stergere manuala sau resetare browser/dispozitiv.</li>
+        <li>Datele de programare sunt pastrate, de regula, pana la 24 luni de la ultima interactiune, daca legea nu impune un termen diferit.</li>
+        <li>Datele necesare pentru indeplinirea obligatiilor legale sunt pastrate conform termenelor prevazute de lege.</li>
+        <li>Datele stocate local in browser raman pana la stergerea manuala, resetarea browserului/dispozitivului sau pana la expirarea functionala a acestora.</li>
       </ul>
     </section>
 
     <section class="card">
       <h2>11. Drepturile persoanei vizate</h2>
-      <p>Persoanele vizate au dreptul la acces, rectificare, stergere, restrictionare, opozitie, portabilitate si dreptul de a depune plangere la ANSPDCP.</p>
-      <p>Pentru exercitarea drepturilor: <strong>contact@d4riustax.advice.uetcompany.ro</strong></p>
+      <p>Persoanele vizate beneficiaza, in conditiile legii, de dreptul de acces, rectificare, stergere, restrictionare, opozitie, portabilitate si de dreptul de a depune plangere la autoritatea competenta pentru protectia datelor.</p>
+      <p>Pentru exercitarea drepturilor, ne poti contacta la <strong>contact@d4riustax.advice.uetcompany.ro</strong>.</p>
     </section>
 
     <section class="card">
       <h2>12. Securitate</h2>
-      <p>Aplicam masuri tehnice si organizatorice rezonabile pentru protectia datelor. Nicio metoda online nu poate garanta securitate absoluta.</p>
+      <p>Operatorul aplica masuri tehnice si organizatorice rezonabile pentru protectia datelor. Cu toate acestea, nicio metoda de transmitere sau stocare electronica nu poate garanta securitate absoluta.</p>
       <div class="note">
-        Recomandare tehnica: credientialele si cheile API trebuie stocate in secrete securizate (ex. Worker Secrets), nu in cod public.
+        Recomandare tehnica: credentialele, cheile API si alte elemente sensibile trebuie pastrate in mecanisme securizate, nu in cod public.
       </div>
     </section>
 
     <section class="card">
       <h2>13. Incidente de securitate</h2>
-      <p>In cazul unui incident de securitate care poate genera risc pentru persoanele vizate, operatorul aplica proceduri de evaluare, limitare a impactului si notificare conform legislatiei aplicabile.</p>
+      <p>In cazul unui incident de securitate cu impact asupra datelor personale, operatorul va analiza situatia si va adopta masurile necesare potrivit legislatiei aplicabile.</p>
     </section>
 
     <section class="card">
       <h2>14. Decizii automate si profilare</h2>
-      <p>Nu utilizam decizii automate cu efect juridic asupra persoanelor vizate si nu realizam profilare in scop de marketing automatizat.</p>
+      <p>Site-ul nu este destinat luarii unor decizii automate cu efect juridic asupra persoanelor vizate si nu urmareste profilarea in scop de marketing automatizat.</p>
     </section>
 
     <section class="card">
       <h2>15. Cookie-uri si date tehnice</h2>
-      <p>Site-ul foloseste doar mecanisme tehnice necesare functionarii (de ex. stocare locala pentru functionalitati). Pentru detalii, vezi si <a href="politica-cookies.html">Politica de Cookies</a>.</p>
+      <p>Site-ul utilizeaza mecanisme tehnice necesare functionarii, inclusiv stocare locala pentru anumite functionalitati. Pentru detalii suplimentare, vezi <a href="politica-cookies.html">Politica de cookies</a>.</p>
     </section>
 
     <section class="card">
       <h2>16. Actualizari ale politicii</h2>
-      <p>Putem actualiza periodic aceasta politica. Versiunea curenta este publicata pe aceasta pagina, cu data ultimei actualizari.</p>
+      <p>Aceasta politica poate fi actualizata periodic. Versiunea curenta este publicata pe aceasta pagina, impreuna cu data ultimei actualizari.</p>
       <p><a href="index.html">Inapoi la pagina principala</a></p>
     </section>
 
