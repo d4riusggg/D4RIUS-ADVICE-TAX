@@ -1210,9 +1210,39 @@ const userEmail = sesiune && sesiune.email
     created: new Date().toISOString()
   };
 
-  const existing = JSON.parse(localStorage.getItem('d4tax_programari') || '[]');
-  existing.push(programare);
-  localStorage.setItem('d4tax_programari', JSON.stringify(existing));
+// Salveaza local (fallback)
+const existing = JSON.parse(localStorage.getItem('d4tax_programari') || '[]');
+existing.push(programare);
+// Salveaza pe server daca e logat
+try {
+  const sesLocal = JSON.parse(localStorage.getItem('d4tax_session') || 'null');
+  if (sesLocal && sesLocal.token) {
+    await fetch('https://proud-union-a480d4rriustax.d4riusfn7.workers.dev/api/programari/save', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + sesLocal.token
+      },
+      body: JSON.stringify(programare)
+    });
+  }
+} catch(e) { console.warn('Server save failed, local only', e); }
+
+
+// Salveaza pe server daca e logat
+try {
+  const sesLocal = JSON.parse(localStorage.getItem('d4tax_session') || 'null');
+  if (sesLocal && sesLocal.token) {
+    await fetch('https://proud-union-a480d4rriustax.d4riusfn7.workers.dev/api/programari/save', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + sesLocal.token
+      },
+      body: JSON.stringify(programare)
+    });
+  }
+} catch(e) { console.warn('Server save failed, local only', e); }
 
 
   try {

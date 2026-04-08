@@ -473,9 +473,26 @@ function belongsToUser(p, emailUser) {
   return a === emailUser || b === emailUser;
 }
 
-function renderProgramari() {
+async function renderProgramari() {
   const sesiune = getSession();
   if (!sesiune || !sesiune.email) return;
+  // Sincronizeaza de pe server
+try {
+  const resp = await fetch(
+    'https://proud-union-a480d4rriustax.d4riusfn7.workers.dev/api/programari/get',
+    { headers: { 'Authorization': 'Bearer ' + sesiune.token } }
+  );
+  if (resp.ok) {
+    const data = await resp.json();
+    if (data.programari && data.programari.length > 0) {
+      // Merge server + local (fara duplicate)
+      const local = getProgramari();
+      const serverIds = new Set(data.programari.map(p => p.id || p.ref));
+      const onlyLocal = local.filter(p => !serverIds.has(p.id) && !serverIds.has(p.ref));
+      saveProgramari([...data.programari, ...onlyLocal]);
+    }
+  }
+} catch(e) { console.warn('Sync failed, using local', e); }
 
   const emailUser = sesiune.email.trim().toLowerCase();
   const toate     = getProgramari();
