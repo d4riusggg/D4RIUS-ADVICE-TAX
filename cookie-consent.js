@@ -1,4 +1,3 @@
-// Cookie consent helper for d4riusTAX pages.
 (function () {
   var STORAGE_KEY = "cookie_consent";
   var COOKIE_NAME = "cookie_consent";
@@ -11,7 +10,8 @@
       date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
       expires = "; expires=" + date.toUTCString();
     }
-    document.cookie = name + "=" + encodeURIComponent(value) + expires + "; path=/; SameSite=Lax";
+    document.cookie =
+      name + "=" + encodeURIComponent(value) + expires + "; path=/; SameSite=Lax";
   }
 
   function getCookie(name) {
@@ -51,31 +51,63 @@
     document.documentElement.setAttribute("data-cookie-consent", value);
   }
 
-  function updateBannerVisibility() {
+  function showBanner() {
     var banner = document.getElementById("cookie-banner");
-    if (!banner) {
+    if (banner) {
+      banner.style.display = "flex";
+    }
+  }
+
+  function hideBanner() {
+    var banner = document.getElementById("cookie-banner");
+    if (banner) {
+      banner.style.display = "none";
+    }
+  }
+
+  function enableOptionalServices() {
+    // Aici pornești doar scripturile neesențiale.
+    // Exemplu: Google Analytics, Meta Pixel, Hotjar etc.
+    // Dacă nu folosești nimic din astea, lasă gol.
+    window.optionalCookiesEnabled = true;
+  }
+
+  function disableOptionalServices() {
+    // Aici te asiguri că nu rulează servicii neesențiale.
+    window.optionalCookiesEnabled = false;
+  }
+
+  function applyConsent() {
+    var consent = getConsent();
+
+    if (!consent) {
+      disableOptionalServices();
+      showBanner();
       return;
     }
 
-    var consent = getConsent();
-    banner.style.display = consent ? "none" : "flex";
+    document.documentElement.setAttribute("data-cookie-consent", consent);
 
-    if (consent) {
-      document.documentElement.setAttribute("data-cookie-consent", consent);
+    if (consent === "accepted") {
+      enableOptionalServices();
+    } else {
+      disableOptionalServices();
     }
+
+    hideBanner();
   }
 
   window.cookieChoice = function (accepted) {
     var value = accepted ? "accepted" : "refused";
     persistConsent(value);
-    updateBannerVisibility();
+    applyConsent();
   };
 
   window.getCookieConsent = getConsent;
 
   if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", updateBannerVisibility);
+    document.addEventListener("DOMContentLoaded", applyConsent);
   } else {
-    updateBannerVisibility();
+    applyConsent();
   }
 })();
