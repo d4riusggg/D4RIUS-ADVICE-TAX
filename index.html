@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="ro">
 <head>
@@ -12,7 +13,7 @@
 <meta property="og:image" content="https://www.d4riustaxadvice.ro/logo.png">
 <meta property="og:url" content="https://www.d4riustax.advice.uetcompany.ro.ro">
 <meta property="og:type" content="website">
-<link rel="icon" type="image/png" href="D4RIUS TAX.png">
+<link rel="icon" type="image/png" href="d4rius tax advice logo nou.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -750,7 +751,7 @@ body{
     </ul>
   </nav>
   <div class="logo-box">
-    <img src="D4RIUS TAX.png" alt="Logo d4riusTAX" onclick="window.scrollTo({top:0,behavior:'smooth'})" style="cursor:pointer;">
+    <img src="d4rius tax advice logo nou.png" alt="Logo d4riusTAX" onclick="window.scrollTo({top:0,behavior:'smooth'})" style="cursor:pointer;">
   </div>
 </div>
 </header>
@@ -1110,7 +1111,7 @@ body{
 <div class="container">
   <div class="footer-grid">
     <div>
-      <div class="footer-logo"><img src="D4RIUS TAX.png" alt="Logo d4riusTAX"></div>
+      <div class="footer-logo"><img src="d4rius tax advice logo nou.png" alt="Logo d4riusTAX"></div>
 <p class="footer-desc">
   D4RIUS TAX ADVICE S.R.L.<br>
   CUI: RO53619742<br>
@@ -1173,7 +1174,7 @@ body{
   </div>
   <div id="expert-header-bar">
     <div class="exp-logo-circle">
-      <img src="D4RIUS TAX.png" alt="logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <img src="d4rius tax advice logo nou.png" alt="logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
       <span style="display:none">🏢</span>
     </div>
     <div class="exp-hinfo">
@@ -1504,7 +1505,7 @@ function closeChat(){document.getElementById('chatbot-box').style.display='none'
 function getTime(){const now=new Date();return now.getHours().toString().padStart(2,'0')+':'+now.getMinutes().toString().padStart(2,'0');}
 const userAvatarSVG=`<svg viewBox="0 0 24 24" fill="#fff" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" fill="#fff"/></svg>`;
 
-function addWaMessage(html,type){const msgs=document.getElementById('chatbot-messages');const row=document.createElement('div');row.className='wa-row '+(type==='user'?'user-row':'bot-row');const av=document.createElement('div');av.className='wa-av '+(type==='user'?'user-av':'bot-av');if(type==='user'){av.innerHTML=userAvatarSVG;}else{av.innerHTML=`<img src="D4RIUS TAX.png" alt="logo" onerror="this.style.display='none';this.parentElement.innerHTML='🏢'">`;}const bbl=document.createElement('div');bbl.className='wa-bbl '+(type==='user'?'user-bbl':'bot-bbl')+(expertMode&&type==='bot'?' expert-bbl':'');bbl.innerHTML=html+`<span class="wa-time">${getTime()}</span>`;bbl.querySelectorAll('.bubble-img').forEach(function(img){img.onclick=function(){openLightbox(this.src);};});if(type==='user'){row.appendChild(bbl);row.appendChild(av);}else{row.appendChild(av);row.appendChild(bbl);}msgs.appendChild(row);msgs.scrollTop=msgs.scrollHeight;saveChatState();}
+function addWaMessage(html,type){const msgs=document.getElementById('chatbot-messages');const row=document.createElement('div');row.className='wa-row '+(type==='user'?'user-row':'bot-row');const av=document.createElement('div');av.className='wa-av '+(type==='user'?'user-av':'bot-av');if(type==='user'){av.innerHTML=userAvatarSVG;}else{av.innerHTML=`<img src="d4rius tax advice logo nou.png" alt="logo" onerror="this.style.display='none';this.parentElement.innerHTML='🏢'">`;}const bbl=document.createElement('div');bbl.className='wa-bbl '+(type==='user'?'user-bbl':'bot-bbl')+(expertMode&&type==='bot'?' expert-bbl':'');bbl.innerHTML=html+`<span class="wa-time">${getTime()}</span>`;bbl.querySelectorAll('.bubble-img').forEach(function(img){img.onclick=function(){openLightbox(this.src);};});if(type==='user'){row.appendChild(bbl);row.appendChild(av);}else{row.appendChild(av);row.appendChild(bbl);}msgs.appendChild(row);msgs.scrollTop=msgs.scrollHeight;saveChatState();}
 function addMessage(text,type){if(expertMode){addWaMessage(text,type||'bot');return;}const div=document.createElement('div');div.className='msg '+(type||'bot');div.innerHTML=text;const msgs=document.getElementById('chatbot-messages');msgs.appendChild(div);msgs.scrollTop=msgs.scrollHeight;saveChatState();}
 
 function showMainMenu(){exitExpertMode();document.getElementById('chatbot-options').innerHTML=`<button class="option-btn expert-option" onclick="openExpert()"><span class="option-icon">🧑‍💼</span><span>Discuta cu un Expert AI</span></button><button class="option-btn" onclick="showServicii()"><span class="option-icon">📊</span><span>Servicii oferite</span></button><button class="option-btn" onclick="showProgram()"><span class="option-icon">🕐</span><span>Program de lucru</span></button><button class="option-btn" onclick="showInfiintare()"><span class="option-icon">🏢</span><span>Infiintare firma</span></button><button class="option-btn" onclick="showDocumente()"><span class="option-icon">📄</span><span>Documente necesare</span></button><button class="option-btn" onclick="showFiscalitate()"><span class="option-icon">📋</span><span>Fiscalitate si declaratii</span></button><button class="option-btn" onclick="showOptimizare()"><span class="option-icon">💡</span><span>Optimizare fiscala</span></button><button class="option-btn" onclick="showDespre()"><span class="option-icon">👥</span><span>Despre noi</span></button><button class="option-btn" onclick="showIntrebari()"><span class="option-icon">❓</span><span>Intrebari frecvente</span></button><button class="option-btn contact-option" onclick="showContact()"><span class="option-icon">📞</span><span>Contacteaza-ne acum</span></button>`;saveChatState();}
@@ -1531,7 +1532,7 @@ function confirmSend(){attachedFile=pendingFile;pendingFile=null;document.getEle
 function showFilePreviewStrip(file){const strip=document.getElementById('file-preview-strip');const visual=document.getElementById('fp-visual');const nameEl=document.getElementById('fp-name-el');const sizeEl=document.getElementById('fp-size-el');nameEl.textContent=file.name;sizeEl.textContent=(file.size/1024).toFixed(1)+' KB';const isImg=file.type.startsWith('image/');if(isImg){const reader=new FileReader();reader.onload=function(e){visual.innerHTML=`<img src="${e.target.result}" class="fp-thumb" alt="preview">`;};reader.readAsDataURL(file);}else{const ext=file.name.split('.').pop().toUpperCase();const icons={PDF:'📄',DOC:'📝',DOCX:'📝',XLS:'📊',XLSX:'📊',TXT:'📃'};visual.innerHTML=`<div class="fp-icon">${icons[ext]||'📎'}</div>`;}strip.classList.add('visible');}
 function clearFile(){attachedFile=null;pendingFile=null;const strip=document.getElementById('file-preview-strip');strip.classList.remove('visible');document.getElementById('fp-visual').innerHTML='';document.getElementById('file-input').value='';}
 
-function showTyping(){const msgs=document.getElementById('chatbot-messages');const row=document.createElement('div');row.className='wa-typing-row';row.id='typingEl';const av=document.createElement('div');av.className='wa-av bot-av';av.innerHTML=`<img src="D4RIUS TAX.png" alt="logo" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none';this.parentElement.innerHTML='🏢'">`;const bbl=document.createElement('div');bbl.className='typing-bbl';bbl.innerHTML='<div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div>';row.appendChild(av);row.appendChild(bbl);msgs.appendChild(row);msgs.scrollTop=msgs.scrollHeight;}
+function showTyping(){const msgs=document.getElementById('chatbot-messages');const row=document.createElement('div');row.className='wa-typing-row';row.id='typingEl';const av=document.createElement('div');av.className='wa-av bot-av';av.innerHTML=`<img src="d4rius tax advice logo nou.png" alt="logo" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none';this.parentElement.innerHTML='🏢'">`;const bbl=document.createElement('div');bbl.className='typing-bbl';bbl.innerHTML='<div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div>';row.appendChild(av);row.appendChild(bbl);msgs.appendChild(row);msgs.scrollTop=msgs.scrollHeight;}
 function hideTyping(){const t=document.getElementById('typingEl');if(t)t.remove();}
 
 async function sendExpert(){if(!expertMode)return;const inp=document.getElementById('expert-input');const txt=inp.value.trim();if((!txt&&!attachedFile)||expertBusy)return;let displayHtml='';let apiContent=[];if(attachedFile){const file=attachedFile;const isImg=file.type.startsWith('image/');const b64=await fileToBase64(file);if(isImg){displayHtml+=`<img src="${b64}" class="bubble-img" alt="${file.name}">`;apiContent.push({type:'image',source:{type:'base64',media_type:file.type,data:b64.split(',')[1]}});}else{const ext=file.name.split('.').pop().toUpperCase();const icons={PDF:'📄',DOC:'📝',DOCX:'📝',XLS:'📊',XLSX:'📊',TXT:'📃'};displayHtml+=`<div class="bubble-file-row"><span class="bubble-file-icon">${icons[ext]||'📎'}</span><span class="bubble-file-info">${file.name}</span></div>`;if(file.type==='application/pdf'){apiContent.push({type:'document',source:{type:'base64',media_type:'application/pdf',data:b64.split(',')[1]}});}else{apiContent.push({type:'text',text:`[Utilizatorul a atasat fisierul: ${file.name}]`});}}}if(txt){displayHtml+=(displayHtml?'<br>':'')+txt;apiContent.push({type:'text',text:txt});}if(!apiContent.length)return;addWaMessage(displayHtml,'user');inp.value='';inp.style.height='auto';clearFile();expertBusy=true;document.getElementById('expert-send').disabled=true;showTyping();expertHistory.push({role:'user',content:apiContent.length===1&&apiContent[0].type==='text'?apiContent[0].text:apiContent});try{const resp=await fetch(WORKER_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1024,system:'Esti expertul virtual al firmei d4riusTAX ADVICE S.R.L din ValeaVoievozilor, Romania. Firma ofera contabilitate si consultanta financiara cu peste 15 ani experienta. Esti prietenos, profesional, concis. Specializare: contabilitate, TVA, CAS, CASS, ANAF, D112, D300, SRL, PFA, ONG, salarizare, optimizare fiscala legala. Daca utilizatorul trimite imagini sau documente, analizeaza-le si raspunde relevant. DATE DE CONTACT FIRMA (OBLIGATORIU SA LE FURNIZEZI CAND SUNT CERUTE): Email: contact@d4riustax.advice.uetcompany.ro | Telefon: +40 770 430 731 | Adresa: Valea Voievozilor, Dambovita | Program: Luni-Vineri 10:00-18:00, Sambata-Duminica 11:00-18:00. IMPORTANT: Cand cineva intreaba de email, adresa, telefon sau orice date de contact, furnizeaza-le DIRECT si COMPLET fara sa trimiti utilizatorul sa sune undeva.',messages:expertHistory})});if(!resp.ok)throw new Error('HTTP '+resp.status);const data=await resp.json();hideTyping();let reply='';for(const block of data.content){if(block.type==='text')reply+=block.text;}expertHistory.push({role:'assistant',content:reply});addWaMessage(reply.replace(/\n/g,'<br>'),'bot');}catch(err){hideTyping();addWaMessage('⚠️ Eroare conexiune. Contacteaza-ne la <a href="tel:+40770430731" style="color:#6366f1;font-weight:700">+40 770 430 731</a>','bot');}expertBusy=false;document.getElementById('expert-send').disabled=false;document.getElementById('expert-input').focus();}
